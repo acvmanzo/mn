@@ -9,5 +9,7 @@ minimum to the subsequent maximum (i.e., cibarial emptying). These times
 are then averaged for each trace and a graph of the average filling and
 emptying times is generated.
 
+findphaseargs.py - Settings used for findphase* scripts.
+
 peaklib.py - A library containing functions for determining the duration of
 cibarial emptying and filling.
