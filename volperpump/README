@@ -1,0 +1,4 @@
+volperpump.py - A script that calculates the volume of fluid ingested per
+pump for each fly. Takes the data from the ingestion rate and pump
+frequency summary files and finds the volume per pump as ingestion rate/
+frequency.

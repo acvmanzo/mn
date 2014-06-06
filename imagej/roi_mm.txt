@@ -1,0 +1,30 @@
+// For use with the python file 'roi_mm.py'; used for performing multi-measure on behavior videos 
+// using pre-specified ROIs.
+
+arg = getArgument;
+a = split(arg, "%");
+
+num = a[0];
+first = a[1];
+roifile = a[2];
+resfile = a[3];
+
+run("Set Measurements...", "  mean redirect=None decimal=3");
+// Opens the appropriate Image sequence.
+run("Image Sequence...", "open=first number=num starting=1 increment=1 scale=100 file=[] or=[] sort use");
+
+// Opens the corresponding rois. Runs multimeasure and saves the results to results1.txt
+//run("ROI Manager...");
+roiManager("Open", roifile);
+roiManager("Deselect");   
+roiManager("Multi Measure");
+saveAs("Measurements", resfile);
+run("Close");
+
+
+//x = roiManager("count")
+//print(x)
+
+
+//print(a[1])
+

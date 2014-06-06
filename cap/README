@@ -1,0 +1,13 @@
+pcapm.py - A library of functions used to analyze the capillary movies.
+Functions calculate the change in length in capillary fluid after drinking
+and the rate of ingestion from data generated in ImageJ. The duration is
+manually determined by counting the number of frames where drinking is
+occuring.
+
+pcapmbatch.py - A script that calculates the rate of ingestion for multiple
+pumping movies and generates a summary file and graphs.
+
+plotpcapm.py - A script that plots the capillary data.
+
+
+

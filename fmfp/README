@@ -1,0 +1,21 @@
+convflyfmfs.py - A script that converts a single fmf file to an image
+sequence and white balances it.
+
+fmfpbatch.py - A script that batch converts multiple fmf files to image
+sequences and white balances them.
+
+fmfplib.py - A library of functions used for converting fmf files to image
+sequences and white balancing.
+
+fmftoimg.py - A script that converts multiple fmf files to a single image
+for each file without white balancing.
+
+gc_flypics.py - A script that converts multiple fmf files to an image
+sequence without white balancing.
+
+sortcapmovies.py - A script that moves capillary movies from the main fmf
+folder to another folder named 'capfmfs'.
+
+sortfmfs.py - A script that moves movies suitable for analysis (i.e., where
+the fly drinks) from the main fmf folder to another folder named
+'validfmfs'.

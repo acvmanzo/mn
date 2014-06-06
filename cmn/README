@@ -1,0 +1,34 @@
+batch_formc.py - Batch form of for_mc.py (see below).
+
+cmn.py - A library of functions used in multiple analyses.
+
+flymovielist.py - Takes a list of movie files and rewrites them in a format
+that can be used in an ImageJ macro.
+
+for_mc.py, for_mcgc.py, batch_formc.py - Rewrite summary files of behavioral
+and gcamp data so they can be read by Matlab.
+
+for_mcgc.py - See above.
+
+movielist.py - Takes the data in the 'moviematch.txt' file and rewrites them
+into a lsit of movies that can be used in an ImageJ macro. Used for
+analysis of dtrpa1 movies.
+
+plot_pooled.py - Plots pooled results of mutant behavioral data.
+
+plot_pooled_wt.py - Plots pooled results of wild type behavioral data.
+
+pool_results.py - Pools results from multiple experiments
+
+rulercal.py - From an ImageJ-generated text file listing the lengths of a
+line spanning 0.2 mm, calculates the conversion of pixels to mm. Used to
+find conversion factor for the micrometer used to generate scale bars for
+images taken using the Firefly MV camera.
+
+writefiles.py - Writes different values into new files.
+
+writejpglist.py - Writes a list of jpeg files. Used to generate the file
+'list.txt' which is a list of jpegs that mplayer will play (here, first 900
+jpeg files). Used to analyze the dtrpa1 movies (useful so it loads exactly
+30 seconds of the movie).
+

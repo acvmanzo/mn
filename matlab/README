@@ -1,0 +1,38 @@
+old_scripts/ - These early Matlab test scripts were written to analyze gcamp
+data and pump frequency data. I eventually wrote Python scripts to replace
+these. 
+
+
+batch_mc.m - Performs motion compensation of gcamp movies using DipImage. Run
+from a folder containing files to be motion-compensated.
+
+b_heatmap_dff.m - Generates a heatmap movie from a gcamp movie file for each
+movie in a directory. 
+
+b_heatmap_dff_1frame.m - Batch form of heatmap_dff_frame.m
+
+ci_binomial.m - Calculates the Clopper-Pearson binomial confidence interval  
+
+ci_binomial_batch.m - Batch form of ci_binomial.m
+
+fheatmap_dff_1frame.m - Function form of heatmap_dff_1frame.m
+
+heatmap_dff_1frame.m - Generates a heatmap image of the peak deltaf/f frame from a
+gcamp movie
+
+imaging_params.m - Sample imaging_params.m file for use in making heat maps. 
+
+mcomp.m - Performs the matlab function multcompare on data (one-way ANOVA
+followed by Tukey-Kramer test to control for multiple comparisons). For use
+with text files generated using the for_mc.py and for_mcgc.py functions. 
+
+mcomp_anovan.m - Similar to mcomp.m, but performs a two-way ANOVA
+
+mcompbatch.m - Batch function implementing mcomp.m; use from a folder with
+multiple text files
+
+mcompbatch_anovan.m - Similar to mcompbatch.m, but performs a two-way ANOVA
+
+
+
+

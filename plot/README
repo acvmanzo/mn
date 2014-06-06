@@ -1,0 +1,3 @@
+genplotlib.py - A library of functions for plotting bar graphs of the data.
+
+roiplot.py - A script for plotting the raw intensity data.

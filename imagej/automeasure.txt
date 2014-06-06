@@ -1,0 +1,906 @@
+// The commented code below is an old version of automeasure.
+
+// This macro measures the average intensity of the ROI selection over multiple slices
+// and saves the Results and ROI set as results1.txt and roi1.zip. 
+// It also creates a directory in the specified folder that is named after
+// the title of the open image, and saves these files
+// to this directory. 
+
+var EXPT = "Documents/lab/motor_neurons/imaging/423thirsty/"
+
+
+macro "Automeasure-haust width [h]" {
+
+y=getTitle();
+print(y);
+
+// Returns the name of the movie from the subtitle of the image.
+home = getDirectory("home") + EXPT;
+myDir = home + "data_hwidth/" + y + File.separator;
+print(myDir)
+  File.makeDirectory(myDir);
+  if (!File.exists(myDir))
+      exit("Unable to create directory");
+  print("");
+
+roidir = home + "roijpgs_hwidth/";
+
+
+// Measures the length of the line ROI.
+roiManager("Deselect");  
+roiManager("Measure");
+selectWindow("Results");
+saveAs("Measurements", myDir+"results1.txt");
+selectWindow("Results");
+run("Close");
+
+// 
+run("Line Width...", "line=2");
+x = roiManager("count");
+
+// Draws the line onto the image and saves as a jpeg.
+sn = getSliceNumber();
+setSlice(sn);
+run("Line Width...", "line=2");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+saveAs("Jpeg", roidir+y+"_slice"+sn+"draw.jpg");
+
+
+// Saves the line into the file roi_width.zip.
+roiManager("Save", myDir+"roi1.zip");
+roiManager("reset");
+}
+
+
+macro "Automeasure-prob tip area [f]" {
+
+run("Set Measurements...", "  area redirect=None decimal=3");
+y=getTitle();
+print(y);
+
+home = getDirectory("home") + EXPT;
+myDir = home + "data_area_liquid/" + y + File.separator;
+print(myDir)
+  File.makeDirectory(myDir);
+  if (!File.exists(myDir))
+      exit("Unable to create directory");
+  print("");
+
+roidir = home + "roijpgs_area_liquid/";
+
+
+roiManager("Deselect");  
+roiManager("Measure");
+saveAs("Measurements", myDir+"results1.txt");
+selectWindow("Results");
+run("Close");
+
+roiManager("Save", myDir+"roi1.zip");
+
+
+run("Line Width...", "line=2");
+x = roiManager("count");
+
+
+for (i=0; i<(x);  i++) {
+       roiManager("select", i);
+       roiManager("Draw");
+       sn = getSliceNumber();
+       saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+       saveAs("Jpeg", roidir+y+"_slice"+sn+"draw.jpg");
+       print(i);
+       print(sn);
+    }
+roiManager("reset");
+close();
+}
+
+
+macro "Automeasure-pump [b]" {
+
+run("Set Measurements...", "  area redirect=None decimal=3");
+y=getTitle();
+print(y);
+
+home = getDirectory("home") + EXPT;
+myDir = home + "data_pump/" + y + File.separator;
+print(myDir)
+  File.makeDirectory(myDir);
+  if (!File.exists(myDir))
+      exit("Unable to create directory");
+  print("");
+
+roidir = home + "cibroijpgs/";
+
+
+roiManager("Deselect");  
+roiManager("Measure");
+saveAs("Measurements", myDir+"results1.txt");
+selectWindow("Results");
+run("Close");
+
+roiManager("Save", myDir+"roi1.zip");
+
+
+run("Line Width...", "line=2");
+x = roiManager("count");
+
+
+for (i=0; i<(x);  i++) {
+       roiManager("select", i);
+       roiManager("Draw");
+       sn = getSliceNumber();
+       saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+       saveAs("Jpeg", roidir+y+"_slice"+sn+"draw.jpg");
+       print(i);
+       print(sn);
+    }
+roiManager("reset");
+close();
+}
+
+macro "Automeasure-dtrpa1 [u]" {
+
+// Sets the program to measure the mean intensity.
+run("Set Measurements...", "  mean redirect=None decimal=3");
+
+y=getTitle();
+print(y);
+60
+// Defines the experiment and data directories.
+home = getDirectory("home") + EXPT;
+
+myDir = home + "data/" + y + File.separator;
+  File.makeDirectory(myDir);
+  if (!File.exists(myDir))
+      exit("Unable to create directory");
+  print("");
+// print(myDir);
+
+// Defines the directory to store roi images for easy error checking.
+roijpgDir = home + "roi_jpegs/";
+
+// Gets slice number of current image (used to draw ROIs for the double-roi image).
+sn = getSliceNumber();
+
+// Saves the ROIs as 'roi1.zip'
+roiManager("Deselect");   
+roiManager("Save", myDir+"roi1.zip");
+// roiManager("reset");
+
+// Measures using multimeasure.
+roiManager("Multi Measure");
+saveAs("Measurements", myDir+"results1.txt");
+selectWindow("Results");
+run("Close");
+
+//Draws the first ROI and saves it in both the data/movie folder and in the roi_jpegs folder.
+roiManager("Select", 0);
+run("Line Width...", "line=2");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"roi.jpg");
+saveAs("Jpeg", roijpgDir+y+"_roi.jpg");
+
+roiManager("reset");
+close();
+
+}
+
+
+macro "Automeasure-dtrpa1-roionly [p]" {
+
+// Sets the program to measure the mean intensity.
+run("Set Measurements...", "  mean redirect=None decimal=3");
+
+y=getTitle();
+print(y);
+60
+// Defines the experiment and data directories.
+home = getDirectory("home") + EXPT;
+
+myDir = home + "data/" + y + File.separator;
+  File.makeDirectory(myDir);
+  if (!File.exists(myDir))
+      exit("Unable to create directory");
+  print("");
+// print(myDir);
+
+// Defines the directory to store roi images for easy error checking.
+roijpgDir = home + "roi_jpegs/";
+
+// Gets slice number of current image (used to draw ROIs for the double-roi image).
+sn = getSliceNumber();
+
+// Saves the ROIs as 'roi1.zip'
+roiManager("Deselect");   
+roiManager("Save", myDir+"roi1.zip");
+// roiManager("reset");
+
+// Measures using multimeasure.
+//roiManager("Multi Measure");
+//saveAs("Measurements", myDir+"results1.txt");
+//selectWindow("Results");
+//run("Close");
+
+//Draws the first ROI and saves it in both the data/movie folder and in the roi_jpegs folder.
+roiManager("Select", 0);
+run("Line Width...", "line=2");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"roi.jpg");
+saveAs("Jpeg", roijpgDir+y+"_roi.jpg");
+
+
+roiManager("reset");
+close();
+
+}
+
+
+
+macro "Automeasure [n]" {
+
+// Sets the program to measure the mean intensity.
+run("Set Measurements...", "  mean redirect=None decimal=3");
+
+y=getTitle();
+print(y);
+60
+// Defines the experiment and data directories.
+// home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "lof/"  +  "test_roi2_position/";
+home = getDirectory("home") + EXPT;
+
+myDir = home + "data/" + y + File.separator;
+  File.makeDirectory(myDir);
+  if (!File.exists(myDir))
+      exit("Unable to create directory");
+  print("");
+// print(myDir);
+
+// Defines the directory to store roi images for easy error checking.
+roijpgDir = home + "roi_jpegs/";
+
+// Gets slice number of current image (used to draw ROIs for the double-roi image).
+sn = getSliceNumber();
+
+// Saves the ROIs as 'roi1.zip'
+roiManager("Deselect");   
+roiManager("Save", myDir+"roi1.zip");
+// roiManager("reset");
+
+// Measures using multimeasure.
+roiManager("Multi Measure");
+saveAs("Measurements", myDir+"results1.txt");
+selectWindow("Results");
+run("Close");
+
+//Draws the first ROI and saves it in both the data/movie folder and in the roi_jpegs folder.
+roiManager("Select", 0);
+run("Line Width...", "line=2");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"roi1.jpg");
+saveAs("Jpeg", roijpgDir+y+"_roi1.jpg");
+
+//Draws the second ROI and saves it in both the data/movie folder and in the roi_jpegs folder.
+roiManager("Select", 1);
+run("Line Width...", "line=2");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"roi2.jpg");
+saveAs("Jpeg", roijpgDir+y+"_roi2.jpg");
+
+//Redraws the two ROIs on the same slice (set at the start), and saves it.
+roiManager("Select", 0);
+setSlice(sn);
+roiManager("Add");
+roiManager("Delete");
+roiManager("Select", 0);
+setSlice(sn);
+roiManager("Add");
+roiManager("Delete");
+
+run("Line Width...", "line=2");
+roiManager("Draw");
+
+saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+saveAs("Jpeg", roijpgDir+y+"_slice"+sn+"_draw.jpg");
+close();
+
+}
+
+
+macro "Automeasure-roi only [r]" {
+
+// Sets the program to measure the mean intensity.
+// run("Set Measurements...", "  mean redirect=None decimal=3");
+
+y=getTitle();
+print(y);
+60
+// Defines the experiment and data directories.
+//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "lof/"  +  "2011-0331_423_tnt/";
+home = getDirectory("home") + EXPT;
+myDir = home + "data/" + y + File.separator;
+File.mkdir(myDir);
+if (!File.exists(myDir))
+    //exit("Unable to create directory");
+    print("Unable to create directory");
+
+// Defines the directory to store roi images for easy error checking.
+roijpgDir = home + "roi_jpegs/";
+
+// Gets slice number of current image (used to draw ROIs for the double-roi image).
+sn = getSliceNumber();
+
+// Saves the ROIs as 'roi1.zip'
+roiManager("Deselect");   
+print(myDir + "roi1.zip");
+roiManager("Save", myDir + "roi1.zip");
+// roiManager("reset");
+
+// Measures using multimeasure.
+// roiManager("Multi Measure");
+// saveAs("Measurements", myDir+"results1.txt");
+// selectWindow("Results");
+// run("Close");
+
+//Draws the first ROI and saves it in both the data/movie folder and in the roi_jpegs folder.
+roiManager("Select", 0);
+run("Line Width...", "line=2");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"roi1.jpg");
+saveAs("Jpeg", roijpgDir+y+"_roi1.jpg");
+
+//Draws the second ROI and saves it in both the data/movie folder and in the roi_jpegs folder.
+roiManager("Select", 1);
+run("Line Width...", "line=2");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"roi2.jpg");
+saveAs("Jpeg", roijpgDir+y+"_roi2.jpg");
+
+//Redraws the two ROIs on the same slice (set at the start), and saves it.
+roiManager("Select", 0);
+setSlice(sn);
+roiManager("Add");
+roiManager("Delete");
+roiManager("Select", 0);
+setSlice(sn);
+roiManager("Add");
+roiManager("Delete");
+
+run("Line Width...", "line=2");
+roiManager("Draw");
+
+saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+saveAs("Jpeg", roijpgDir+y+"_slice"+sn+"_draw.jpg");
+close();
+
+}
+
+
+macro "Automeasure-cib_abd [o]" {
+
+run("Set Measurements...", "area redirect=None decimal=3");
+
+y=getTitle();
+print(y);
+
+//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "imaging/" + "112648/" + "flypics/" + "data/"
+home = getDirectory("home") + EXPT;
+
+myDir = home+"data/"+y+File.separator;
+  File.makeDirectory(myDir);
+  if (!File.exists(myDir))
+      exit("Unable to create directory");
+  print("");
+// print(myDir);
+
+
+roiManager("Deselect");  
+roiManager("Measure");
+saveAs("Measurements", myDir+"results1.txt");
+selectWindow("Results");
+run("Close");
+
+run("Line Width...", "line=2");
+x = roiManager("count");
+
+for (i=0; i<(x);  i++) {
+       roiManager("select", i);
+       roiManager("Draw");
+       sn = getSliceNumber();
+       saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+
+       print(i);
+       print(sn);
+   }
+//close();
+
+roiManager("Save", myDir+"roi1.zip");
+//roiManager("reset");
+}
+
+
+macro "Automeasure-capillary [l]" {
+
+// Returns the name of the movie from the subtitle of the image.
+x = getInfo("image.subtitle");
+i = indexOf(x, "mov");
+q = indexOf(x, "_000", i);
+
+y = substring(x, i, q);
+print(y);
+
+// Defines the experiment directory.
+//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "lof/" + "2011-0329_423_tnt/" + "data_cap/"
+home = getDirectory("home") + EXPT + 'data_cap/';
+
+myDir = home+y+File.separator;
+ File.makeDirectory(myDir);
+ if (!File.exists(myDir))
+   exit("Unable to create directory");
+ print("");
+// print(myDir);
+
+// Measures the length of the line ROI.
+roiManager("Deselect");  
+roiManager("Measure");
+selectWindow("Results");
+saveAs("Measurements", myDir+"results1.txt");
+selectWindow("Results");
+run("Close");
+
+// 
+run("Line Width...", "line=2");
+x = roiManager("count");
+
+// Draws the line onto the image and saves as a jpeg.
+sn = getSliceNumber();
+setSlice(sn);
+run("Line Width...", "line=2");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+
+//sn1 = sn+1;
+//setSlice(sn1);
+
+// Saves the line into the file roi1.zip.
+roiManager("Save", myDir+"roi1.zip");
+roiManager("reset");
+}
+
+
+macro "DrawROIs [d]" {
+
+roiManager("reset");
+
+y=getTitle();
+print(y);
+
+home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "lof/"  +  "2010-1130_tnt/";
+myDir = home + "data/" + y + File.separator;
+rois = myDir + "/roi1.zip";
+roijpgDir = home + "roi_jpegs/";
+
+roiManager("Open", rois);
+
+roiManager("Select", 1);
+sn = getSliceNumber();
+
+roiManager("Deselect");  
+
+
+// print(sn);
+
+// Draws the first ROI and saves the file as roi1.jpg.
+
+roiManager("Select", 0);
+run("Line Width...", "line=2");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"roi1.jpg");
+saveAs("Jpeg", roijpgDir+y+"_roi1.jpg");
+roiManager("Select", 1);
+run("Line Width...", "line=2");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"roi2.jpg");
+saveAs("Jpeg", roijpgDir+y+"_roi2.jpg");
+
+
+roiManager("Select", 0);
+setSlice(sn);
+roiManager("Add");
+roiManager("Delete");
+run("Line Width...", "line=2");
+roiManager("Draw");
+
+saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+saveAs("Jpeg", roijpgDir+y+"slice"+sn+"_draw.jpg");
+close();
+
+
+}
+
+
+
+macro "Automeasure-gcamp [g]" {
+
+// Sets the program to measure the mean intensity.
+run("Set Measurements...", "  mean redirect=None decimal=3");
+
+z=getTitle();
+y = replace(z, "XY0_Z0_T000_C0_mc.avi", "mc");
+print(y);
+
+// Defines the experiment and data directories.
+//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "imaging/" + "112204/";
+home = getDirectory("home") + EXPT;
+myDir = home+"data/"+y+File.separator;
+  File.makeDirectory(myDir);
+  if (!File.exists(myDir))
+      exit("Unable to create directory");
+  print("");
+// print(myDir);
+
+// Defines the directory to store roi images for easy error checking.
+roijpgDir = home + "roi_jpegs/";
+
+// Gets slice number of current image (used to draw ROIs for the double-roi image).
+sn = getSliceNumber();
+
+// Saves the ROIs as 'roi1.zip'
+roiManager("Deselect");   
+roiManager("Save", myDir+"roi1.zip");
+// roiManager("reset");
+
+// Measures using multimeasure.
+roiManager("Multi Measure");
+saveAs("Measurements", myDir+"results1.txt");
+selectWindow("Results");
+run("Close");
+
+// Changes the file to RGB format.
+run("RGB Color");
+// Sets the ROI color to be red.
+run("Colors...", "foreground=red background=black selection=yellow");
+
+
+//Draws the ROI and saves it in both the data/movie folder and in the roi_jpegs folder.
+setSlice(sn);
+roiManager("Select", 0);
+run("Line Width...", "line=1");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"roi1.jpg");
+saveAs("Jpeg", roijpgDir+y+"_roi1.jpg");
+
+if (roiManager("count")>1) {
+      
+    //Draws the second ROI and saves it in both the data/movie folder and in the roi_jpegs folder.
+    setSlice(sn+1);
+    roiManager("Select", 1);
+    run("Line Width...", "line=1");
+    roiManager("Draw");
+    saveAs("Jpeg", myDir+"roi2.jpg");
+    saveAs("Jpeg", roijpgDir+y+"_roi2.jpg");
+
+    //Redraws the two ROIs on the same slice (set at the start), and saves it.
+    roiManager("Select", 0);
+    setSlice(sn);
+    roiManager("Add");
+    roiManager("Delete");
+    roiManager("Select", 0);
+    setSlice(sn);
+    roiManager("Add");
+    roiManager("Delete");
+
+    run("Line Width...", "line=1");
+    roiManager("Draw");
+
+    saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+    saveAs("Jpeg", roijpgDir+y+"_slice"+sn+"_draw.jpg");
+
+    
+};
+roiManager("reset");
+close();
+
+}
+
+
+macro "Automeasure-gcamp-dye area [a]" {
+
+run("Set Measurements...", "area redirect=None decimal=3");
+
+y=getTitle();
+print(y);
+
+//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "imaging/" + "112648/" + "flypics/" + "data/"
+home = getDirectory("home") + EXPT;
+
+myDir = home + "flypics/" + "data/" + y + File.separator;
+  File.makeDirectory(myDir);
+  if (!File.exists(myDir))
+      exit("Unable to create directory");
+  print("");
+// print(myDir);
+
+roijpgDir = home + "roi_jpegs/";
+
+roiManager("Deselect");  
+roiManager("Measure");
+saveAs("Measurements", myDir+"results1.txt");
+selectWindow("Results");
+run("Close");
+
+run("Line Width...", "line=2");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"roi.jpg");
+saveAs("Jpeg", roijpgDir+y+"_roi.jpg");
+
+
+run("Line Width...", "line=2");
+x = roiManager("count");
+
+for (i=0; i<(x);  i++) {
+       roiManager("select", i);
+       roiManager("Draw");
+       sn = getSliceNumber();
+       saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+
+       print(i);
+       print(sn);
+   }
+
+
+roiManager("Save", myDir+"roi1.zip");
+roiManager("reset");
+close();
+}
+
+
+macro "Automeasure-gcamp-dye intensity [x]" {
+
+run("Set Measurements...", "mean redirect=None decimal=3");
+
+y=getTitle();
+print(y);
+
+//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "imaging/" + "112648/" + "flypics/" + "data/"
+home = getDirectory("home") + EXPT;
+
+myDir = home + "flypics/" + "data/" + y + File.separator;
+  File.makeDirectory(myDir);
+  if (!File.exists(myDir))
+      exit("Unable to create directory");
+  print("");
+// print(myDir);
+
+roijpgDir = home + "roi_jpegs/";
+
+roiManager("Deselect");  
+roiManager("Measure");
+saveAs("Measurements", myDir+"results_int.txt");
+selectWindow("Results");
+run("Close");
+
+run("Line Width...", "line=2");
+roiManager("Draw");
+saveAs("Jpeg", myDir+"roi_int.jpg");
+saveAs("Jpeg", roijpgDir+y+"_roi_int.jpg");
+
+
+run("Line Width...", "line=2");
+x = roiManager("count");
+
+for (i=0; i<(x);  i++) {
+       roiManager("select", i);
+       roiManager("Draw");
+       sn = getSliceNumber();
+       saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+
+       print(i);
+       print(sn);
+   }
+
+
+roiManager("Save", myDir+"roi_int.zip");
+roiManager("Select", 0);
+roiManager("Delete");
+roiManager("Select", 0);
+roiManager("Delete");
+close();
+}
+
+
+macro "Automeasure-cibopen [c]" {
+
+run("Set Measurements...", "  area redirect=None decimal=3");
+y=getTitle();
+print(y);
+
+home = getDirectory("home") + EXPT;
+myDir = home + "data_cibarea/" + y + File.separator;
+  File.makeDirectory(myDir);
+  if (!File.exists(myDir))
+      exit("Unable to create directory");
+  print("");
+
+roidir = home + "cibroijpgs/";
+
+
+roiManager("Deselect");  
+roiManager("Measure");
+saveAs("Measurements", myDir+"results1.txt");
+selectWindow("Results");
+run("Close");
+
+roiManager("Save", myDir+"roi1.zip");
+
+
+run("Line Width...", "line=2");
+x = roiManager("count");
+
+
+for (i=0; i<(x);  i++) {
+       roiManager("select", i);
+       roiManager("Draw");
+       sn = getSliceNumber();
+       saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+       saveAs("Jpeg", roidir+y+"_slice"+sn+"draw.jpg");
+       print(i);
+       print(sn);
+    }
+
+roiManager("reset");
+}
+
+macro "addroi [t]" {
+    roiManager("Add");
+}
+
+
+//macro "setslice-690 [q]"  {
+//   setSlice(690);
+//}
+
+//macro "setslice-790 [w]"  {
+//    setSlice(790);
+//}
+
+//macro "setslice-890 [e]"  {
+//    setSlice(890);
+//}
+
+macro "zoom in [v]"  {
+    run("In");
+}
+
+macro "selectoval [w]" {
+    setTool("oval");
+}
+
+macro "selectline [e]" {
+    setTool("line");
+}
+
+macro "selectpolygon [q]" {
+    setTool("polygon");
+}
+
+macro "Open-ROI [z]" {
+
+home = getDirectory("home") + EXPT;
+x = getDirectory("image")
+print(x);
+a = split(x,  "/");
+print(a[9]);
+myDir = home + "flypics/" + "data/" ;
+m = myDir + a[9] + "/roi1.zip";
+print(m);
+roiManager("Open", m);
+
+roiManager("select", 1);
+n = getInfo("selection.name");
+b = split(n, "-");
+
+roiManager("select", 0);
+setSlice(b[0]);
+roiManager("Add");
+
+roiManager("select", 0);
+roiManager("Delete");
+
+}
+
+//macro "Automeasure-cibopen [c]" {
+
+//run("Set Measurements...", "  area redirect=None decimal=3");
+
+//y=getTitle();
+//print(y);
+
+//home = getDirectory("home") + EXPT;
+//myDir = getDirectory("image"); 
+
+//roidir = home + "cibroidir/"
+//print(roidir)
+
+
+
+
+//roiManager("Deselect");  
+//roiManager("Measure");
+//saveAs("Measurements", myDir+"results1.txt");
+//selectWindow("Results");
+//run("Close");
+
+//run("Line Width...", "line=2");
+//x = roiManager("count");
+
+//for (i=0; i<(x);  i++) {
+       //roiManager("select", i);
+       //roiManager("Draw");
+      
+       //subtitle = split(getInfo("image.subtitle"));
+       //f0 = subtitle[1];
+      // f1 = replace(f0, "\\(", "" );
+       //frame = replace(f1, "\\);", "");
+       //saveAs("Jpeg", roidir+frame+"_"+i+"_draw.jpg");
+
+       //print(i);
+//   }
+
+//roiManager("Save", myDir+"roi1.zip");
+//}
+
+
+
+//macro "Automeasure2 [n]" {
+
+//w=getTitle();
+//y=replace(w, ".avi", "");
+//print(y);
+
+//home = getDirectory("home") + "Documents/" + "Lab/" +  "wb/" + "results/";
+
+//myDir = home+y+File.separator;
+//  File.makeDirectory(myDir);
+//  if (!File.exists(myDir))
+//      exit("Unable to create directory");
+//  print("");
+//  print(myDir);
+//  
+//roiManager("Multi Measure");
+//saveAs("Measurements", myDir+"results1.txt");
+
+//sn = getSliceNumber();
+//print(sn);
+
+//setSlice(sn);
+
+
+//run("Z Project...", "start="+sn+" stop="+sn+" projection=[Sum Slices]");
+//run("RGB Color");
+//setLineWidth(6);
+//roiManager("Draw");
+//saveAs("Jpeg", myDir+"slice"+sn+"draw.jpg");
+//close();
+
+//roiManager("Save", myDir+"roi1.zip");
+//roiManager("reset");
+//selectWindow("Results");
+//run("Close");
+//close();
+
+
+//run("Line Width...", "line=2");
+//x = nSlices;
+
+//for (i=1; i<(x+1);  i++) {
+       //print(i);
+       //setSlice(i);
+       //roiManager("Draw");
+       //subtitle = split(getInfo("image.subtitle"));
+       //f0 = subtitle[1];
+       //f1 = replace(f0, "\\(", "" );
+       //frame = replace(f1, "\\);", "");
+       //print(frame);
+       //saveAs("Jpeg", roidir+frame+"_draw.jpg");

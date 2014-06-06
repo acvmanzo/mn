@@ -1,0 +1,14 @@
+dftf.py - A library of functions used for finding the pump frequency.
+Calculates the fourier transform of the mean intensity traces and finds its
+peak. 
+
+dftfbatch.py - A script that calculates the pump frequency for multiple
+movies.  Generates a summary file and plots the data.
+
+dftfbatch_gc.py - A script for calculating the frequencies in gcamp signals.
+
+dftfcorr.py - A script for implementing manual corrections to the dft
+results in the minority of cases where the wrong peak is identified.
+
+sinewavedftf.py - A test script for calculating the fourier transform of
+sine waves of a specific frequency.

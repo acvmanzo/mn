@@ -1,0 +1,26 @@
+These scripts are used to generate parameter files which are then used in
+running the other scripts. The parameter files contain information such as
+the experimental condition, the sampling frequency, the movie frames for
+analysis, etc.
+
+genallparams.py - Generates parameter files for analyzing pump frequency,
+ingestion rate, and cibarial filling/emptying duration.
+
+gencapparams.py - Generates parameter files for analyzing ingestion rate.
+
+gengc_freqparams.py - Generates parameter files for analyzing the frequency
+of gcamp traces.
+
+gengcparams.py - Generates parameter files for analyzing gcamp traces.
+
+genparams.py - Generates parameter files for analyzing pump frequency.
+
+genparamsgf.py - Generates parameter files for analyzing dtrpa1 data.
+
+genparamslf.py - Generates parameter files for analyzing mutant data.
+
+genparamslib.py - A library of functions for generating parameter files for
+data analysis.
+
+genpdframes.py - Generates parameter files for analyzing cibarial
+filling/emptying duration.

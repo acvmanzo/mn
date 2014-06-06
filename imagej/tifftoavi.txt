@@ -1,0 +1,9 @@
+arg = getArgument;
+a = split(arg, "%");
+input = a[0];
+output = a[1];
+print(arg)
+open(input);
+run("AVI... ", "compression=Uncompressed frame=12 save=output");
+close()
+

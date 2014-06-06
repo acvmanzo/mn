@@ -1,0 +1,13 @@
+findphase1.py - Script for identifying the maxima and minima of each
+intensity trace.
+
+findphase2.py - Script for manually correcting the maxima and minima.
+
+findphase3.py - Script that calculates the time between each maximum to the
+subsequent minimum (i.e., cibarial filling) and the time between each
+minimum to the subsequent maximum (i.e., cibarial emptying). These times
+are then averaged for each trace and a graph of the average filling and
+emptying times is generated.
+
+peaklib.py - A library containing functions for determining the duration of
+cibarial emptying and filling.

@@ -1,0 +1,47 @@
+721_ttest_pumps.py - Script for calculating the p-value of pump data for 721
+x dtrpa1 flies compared to controls using the ttest.
+
+ciblib.py - A library of functions used for finding the area of the
+cibarium and comparing these areas before and during dtrpa1 activation. The
+input data is from ImageJ (an ROI is drawn around the blue region of the
+cibarium in 3 slices). These areas are averaged. To find the difference,
+the area before dtrpa1 activation is subtracted from the area during dtrpa1
+activation. 
+
+comparea.py - Script for calculating the change in cibarial area upon
+dtrpa1 activation.
+
+freqvstime.py - A library of functions used to plot the pump frequency vs.
+time using data generated from ImageJ in which an ROI is drawn around the
+cibarium and the mean intensity over each frame is calculated.
+
+gfplot.py - A library of functions used to plot the dtrpa1 data (the pump
+count, the cibarial area, and whether the cibarium is held open).
+
+gof_matlab.py - Used to rewrite data for use in Matlab.
+
+poolgofdata.py - Used to pool the pump data over multiple experiments and
+genotypes.
+
+plotgoftraces.py - A script for plotting the mean intensity of a cibarial
+ROI for each movie.
+
+plotgoftraces_1plot.py - As above but plots the selected traces onto one
+graph.
+
+poolcibarealib.py - Library with functions to pool cibarial expansion data from
+multiple experiments into one file/graph.
+
+poolcibareas.py - Script to pool cibarial expansion data from multiple
+experiments into one file/graph.
+
+poolgofdata.py - Script to pool dTRPA1 data from multiple experiments into one
+file/graph.
+
+speclib.py - A library of functions for plotting spectrograms of the data.
+
+writecibareameans.py - Calculates the mean and standard deviation of cibarial
+area data for each condition and writes them into a text file.
+
+writepumpmeans.py - Calculates the mean and standard deviation of pump
+frequency data for each condition and writes them into a text file.

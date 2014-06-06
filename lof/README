@@ -1,0 +1,22 @@
+721_ttest.py - Script for calculating the pvalue of pump frequency data for
+721 x dtrpa1 flies compared to controls using the ttest.
+
+762_ttest.py  - Same as above but for 762 x dtrpa1 flies.
+
+droparealib.py - A script and a library of functions for analyzing the area
+of a residual fluid drop left on the proboscis after withdrawal of the
+capillary.  Input data is from ImageJ (for each movie, draw an ROI around
+the residual fluid drop, excluding the labellum, for the frames in which
+the cibarium has the least amount of fluid in it and the drop is the
+largest). For each movie, calculates the area of the fluid drop for each
+pump after capillary withdrawal and averages the areas at each pump.
+
+dropintlib.py - A script and a library of functions for analyzing the
+intensity of the residual fluid drop over time. Here one ROI is drawn
+around the cibarium and another around the labellum, and are sized so that
+they can accomodate movement of the proboscis.
+
+lof-batch.py - For each listed experiment, runs scripts for calculating
+pump frequency, ingestion rate, and volume of fluid ingested per pump.
+
+

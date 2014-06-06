@@ -1,0 +1,35 @@
+Python scripts for analyzing data related to the pump motor neuron project.
+Results of analysis published at http://www.pnas.org/content/109/16/6307.long
+
+cap - Scripts for working with movies of the capillary tubes used to feed the
+flies
+
+cibarea - Scripts for analyzing the extent of cibarial expansion
+
+cmn - Functions common to all analyses
+
+dftf - Scripts for finding pump frequency
+
+fmfp - scripts for working with .fmf files
+
+gof - Scripts for analyzing dtrpa1 data
+
+imagej - Macros for ImageJ and scripts for opening files with ImageJ from the command line 
+
+imaging - Scripts for analyzing gcamp data
+
+lof - Scripts for analyzing data from TNT experiments
+
+matlab - Matlab scripts for generating heatmap images and for performing
+statistical tests of behavioral and gcamp data.
+
+paper - Scripts for plotting graphs for use in the paper.
+
+params - Scripts for generating parameter files
+
+phase - Scripts for finding the duration of cibarial emptying and filling
+
+plot - Scripts for plotting data
+
+volperpump - Scripts for calculating the volume of fluid ingested per pump
+

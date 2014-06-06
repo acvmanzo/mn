@@ -1,0 +1,25 @@
+ImageJ Macros
+
+automeasure.txt - These macros are used to measure area or intensity of ROIs,
+save the results as results1.txt, save the ROIs as roi1.zip and save a picture
+of the ROI. The quantities being measured depend on the macro used.
+
+openjpgs.txt - Macro used to open multiple image sequences.
+
+roi_mm.txt - For use with the python file 'roi_mm.py'; used for performing
+multi-measure on behavior videos using pre-specified ROIs.
+
+tifftoavi.txt - For use with the python file 'tifftoavi.py'; used to convert
+multipage tiff files into avis.
+
+
+Python Scripts
+
+openser.py - Script for opening an image sequence in ImageJ that can be run
+from the command line.
+
+roi_mm.py - Script for automatically opening roi.zip files and running
+multi-measure in ImageJ. Used when I have previously specified the rois
+using the 'automeasure-roi only' script in imagej.
+
+

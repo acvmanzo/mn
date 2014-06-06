@@ -1,0 +1,24 @@
+WBRF = "/home/andrea/Documents/lab/motor_neurons/lof/2010-1210_113990_tnt_probend/2010-1210_113990_tnt_wbr/";
+
+a1 = newArray(
+"mov_20101210_192539/" ,
+"mov_20101210_192447/" ,
+"mov_20101210_192355/" ,
+"mov_20101210_192255/" ,
+"mov_20101210_192145/" ,
+"mov_20101210_192020/" ,
+"mov_20101210_191814/" 
+);
+
+for (i=0; i<a1.length; i++) {
+    wbr = WBRF + a1[i];
+    print(wbr);
+    x = getFileList(wbr);
+
+    lx = lengthOf(x);
+    print(lx);
+    run("Image Sequence...", "open=wbr number=lx starting=1 increment=1 scale=100 file=[] or=[] sort use");
+}
+
+
+

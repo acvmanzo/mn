@@ -1,0 +1,41 @@
+dye_analyze1.py - Scripts for calculating the dye area using functions in dyearea.py.
+
+dye_analyze2.py - See above.
+
+dyearea.py - A library of functions used to analyze the area of the abdomen
+filled with blue dye (normalized by the total abdomen area) after
+stimulating each fly. Input data is from ImageJ (for each fly, draw an ROI
+around the blue region of the abdomen and another one around the entire
+abdomen).
+
+dyeint.py - A library of functions used to analyze the intensity of the dye
+in the abdomen.
+
+gcanalyze.py - A script for analyzing the gcamp data using functions in
+gclib.py
+
+gclib.py - A library of functions used to analyze the gcamp data. Finds the
+peak deltaf/f, the duration of the response, the area under the curve and
+plots the results. Input data is from ImageJ (for each movie, draw an ROI
+around the cibarium and calculate the intensity over time). To calculate
+the deltaf/f trace, the background fluorescence is calculated using a
+3-second time window before stimulation; the raw trace is then divided by
+this number.  The peak deltaf/f is the peak of this trace; the duration is
+the amount of time this trace is > 15%. The area under the curve is
+calculated by summing the points that are >15% (area is time*intensity;
+each point can be thought of as a rectangle where the base is 1 second and
+the height is the intensity value). To normalize for different sampling
+frequencies, the trace is first divided by the frequency. 
+
+gcplot.py - A script for plotting the raw gcamp trace, the deltaf/f trace,
+and the convolved trace for each movie using functions in gclib.py.
+
+gctd.py - A script for plotting the cross-correlation function of the gcamp
+signals from two ROIs in the specified movies.
+
+tifftoavi.py - A script for converting tiffs into avis using ImageJ.
+(Files exported from Slidebook are in multipage tiff format and DipImage
+can't read them).
+
+writemeans_gc.py - Calculates the mean and standard deviation for each
+condition and writes them into a text file.

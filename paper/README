@@ -1,0 +1,72 @@
+cellcounts.py - For each GAL4 and combination of GAL4s I counted the number
+of cells in each hemisphere. This script calculates the means and standard
+deviations/errors of these counts and finds the pvalue of the differences
+of the means using the ttest. Data is in anatomy>paper>cellcounts
+
+multiplot.py - Library with functions for plotting bar graphs (pump
+frequency, ingestion rate, volume per pump, gcamp peak deltaf/f, gcamp
+response duration) for the paper 
+
+plotcapfile.py - From the pooled data, generates a text file listing the
+means and standard deviations of the capillary data. Plots a graph
+of the data.
+
+plotdeltatimefile.py - From the pooled data, generates a text file listing the
+means and standard deviations of the cibarial filling and empyting time. 
+Plots a graph of the data.
+
+plotdeltatime_lof.py - Scripts for plotting the bar graphs showing the
+cibarial emptying and filling durations for mutant flies (Fig 3E)
+
+plotdeltatime_wt.py - Scripts for plotting the bar graphs showing the
+cibarial emptying and filling durations (Fig 1F)
+
+plotdft_lof.py - Scripts for plotting the fourier transforms of the mean
+intensity traces (Fig. 3A)
+
+plotdft_wt.py - Scripts for plotting the fourier transforms of the mean
+intensity traces (Fig. 1B)
+
+plotdroparea.py - Scripts for plotting the area of the residual fluid drop
+upon capillary withdrawal (Fig. 3F)
+
+plotfreqfile.py - From the pooled data, generates a text file listing the
+means and standard deviations of the pump frequency data. Plots a graph of
+the data.
+
+plotfreqvstime.py - Script for plotting frequency vs time plots (Fig. 4B)
+
+plotgctd.py - Script for plotting fluorescence intensity over time of two
+ROIs from the same movie 
+
+plotpaperfig.py - Scripts and parameters for plotting behavioral
+bar graphs for the paper using functions in multiplot.py.
+
+plotpaperfiggc.py - Scripts and parameters for plotting gcamp
+bar graphs for the paper using functions in multiplot.py.
+
+plotpumpper.py - Script for plotting the pump frequency and PER bar graphs
+for CS flies (Fig. 1 C-E)
+
+plottraces_dropint.py - Script for plotting the dye intensity over time of
+an ROI drawn around the cibarium and an ROI drawn around the labellum.
+
+plottraces_gc_204.py - Script for plotting sample gcamp traces for motor
+neuron 11 activity (Fig. 5B)
+
+plottraces_gc_423.py - Script for plotting sample gcamp traces for motor
+neuron 12 activity (Fig. 5B)
+
+plottraces_gofpumps.py - Script for plotting the dye intensity traces of an
+ROI drawn around the cibarium in dtrpa1 flies (Fig. 4B)
+
+plottraces_lof.py - Script for plotting dye intensity traces for an ROI
+drawn around the cibarium in TNT experiments (Fig. 3A)
+
+plottraces_wt.py - Script for plotting dye intensity traces for an ROI
+drawn around the cibarium in CS experiments (Fig. 1B)
+
+plotvolperpumpfile.py -  From the pooled data, generates a text file
+listing the means and standard deviations of the volume/pump data. Plots
+a graph of the data.
+

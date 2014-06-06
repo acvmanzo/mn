@@ -1,0 +1,5 @@
+cibareacirc.py - A library of functions used to analyze the extent of
+cibarial expansion. Functions calculate the mean area of an ROI drawn
+around the cibarium when it is maximally expanded during each pump (i.e.,
+when the ROI is largest) normalized by the width of the proboscis. ROI data
+is from ImageJ and is taken from movies with a ventral view of the fly.
