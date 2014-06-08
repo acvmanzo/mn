@@ -1,5 +1,10 @@
 Python scripts for analyzing data related to the pump motor neuron project.
-Results of analysis published at http://www.pnas.org/content/109/16/6307.long
+
+Results of analysis published in Manzo A, Silies M, Gohl DM, Scott K. (2012).
+Motor neurons controlling fluid ingestion in Drosophila. Proc Natl Acad Sci 
+USA 109(16): 6307-12. Epub 2012 Apr 2. Available online at
+http://www.pnas.org/content/109/16/6307.
+
 
 cap - Scripts for working with movies of the capillary tubes used to feed the
 flies
