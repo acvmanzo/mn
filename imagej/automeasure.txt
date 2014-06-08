@@ -384,7 +384,8 @@ run("Set Measurements...", "area redirect=None decimal=3");
 y=getTitle();
 print(y);
 
-//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "imaging/" + "112648/" + "flypics/" + "data/"
+//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "imaging/" +
+ "112648/" + "flypics/" + "data/"
 home = getDirectory("home") + EXPT;
 
 myDir = home+"data/"+y+File.separator;
@@ -431,7 +432,8 @@ y = substring(x, i, q);
 print(y);
 
 // Defines the experiment directory.
-//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "lof/" + "2011-0329_423_tnt/" + "data_cap/"
+//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "lof/" +
+"2011-0329_423_tnt/" + "data_cap/"
 home = getDirectory("home") + EXPT + 'data_cap/';
 
 myDir = home+y+File.separator;
@@ -612,7 +614,8 @@ run("Set Measurements...", "area redirect=None decimal=3");
 y=getTitle();
 print(y);
 
-//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "imaging/" + "112648/" + "flypics/" + "data/"
+//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "imaging/" +
+"112648/" + "flypics/" + "data/"
 home = getDirectory("home") + EXPT;
 
 myDir = home + "flypics/" + "data/" + y + File.separator;
@@ -663,7 +666,8 @@ run("Set Measurements...", "mean redirect=None decimal=3");
 y=getTitle();
 print(y);
 
-//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "imaging/" + "112648/" + "flypics/" + "data/"
+//home = getDirectory("home") + "Documents/" + "lab/" +  "motor_neurons/" + "imaging/" +
+"112648/" + "flypics/" + "data/"
 home = getDirectory("home") + EXPT;
 
 myDir = home + "flypics/" + "data/" + y + File.separator;

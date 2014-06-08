@@ -54,14 +54,16 @@ def loadpropci(fname):
             dictprops[condition] = map(float, [prop, lci, uci, nsucc, n])
     return(dictprops)
 
-def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylabel, fontsz, figw, figh, figdpi, yaxisticks, ymin, barwidth, barnum, lw):
+def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylabel, fontsz, figw,
+        figh, figdpi, yaxisticks, ymin, barwidth, barnum, lw):
     
     matplotlib.rc('axes', linewidth=lw)
     matplotlib.rc('axes.formatter', limits = [-6, 6])
     
     # Sets font properties.
     fontv = mpl.font_manager.FontProperties()
-    # Uncomment line below to set the font to verdana; the default matplotlib font is very similar (just slightly narrower).
+    # Uncomment line below to set the font to verdana; the default matplotlib font is very
+    # similar (just slightly narrower).
     fontv = mpl.font_manager.FontProperties(fname='/home/andrea/.matplotlib/arial.ttf')
     #~ fontv = mpl.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/arial.ttf')
     fontv.set_size(fontsz)
@@ -76,7 +78,10 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
     ns = []
     
     # With this data, all the condition names are different.
-    if type == 'pumps' or type == 'cibarea' or type == 'gcpeakf' or type == 'gcpeakwater' or type == 'gcarea' or type == 'gcdur' or type == 'gcdurwater' or type == 'dyearea' or type == 'gcpeakfpool' or type == 'gcareapool' or type == 'gcdurpool' or type == 'dyeareapool'  or type == '721_lof' or type == '721_gof':
+    if type == 'pumps' or type == 'cibarea' or type == 'gcpeakf' or type == 'gcpeakwater' \ 
+    or type == 'gcarea' or type == 'gcdur' or type == 'gcdurwater' or type == 'dyearea' \ 
+    or type == 'gcpeakfpool' or type == 'gcareapool' or type == 'gcdurpool' \ 
+    or type == 'dyeareapool'  or type == '721_lof' or type == '721_gof':
         # Loads keys in order of plotting from keyfile.
         keylist = cmn.load_keys(keyfile)
         
@@ -91,7 +96,8 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
             conds.append(condition)
     
     else:
-        # Loads values from the file containing data to be plotted. Used for experiments where some of the conditions are the same (ex., UAS-dTRPA1)
+        # Loads values from the file containing data to be plotted. Used for experiments where
+        #some of the conditions are the same (ex., UAS-dTRPA1)
         with open(fname) as f:
             f.next()
             for l in f:
@@ -106,7 +112,8 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
     #if type == 'gcpeakf' or type == 'gcarea' or type == 'gcdur' or type == 'dyearea':
         #conds = [cond.replace('M ', 'M\n') for cond in conds]
     
-    if type == 'gcpeakfpool' or type == 'gcareapool' or type == 'gcdurpool' or type == 'dyeareapool':
+    if type == 'gcpeakfpool' or type == 'gcareapool' or type == 'gcdurpool' \ 
+    or type == 'dyeareapool':
         g1 = [cond.split('_')[0] for cond in conds]
         genotypes = [g1[0], g1[2]]
         genotypes = [gen.replace('112204', 'MN11') for gen in genotypes]
@@ -120,7 +127,10 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
     
           
     # Defines coordinates for each bar.
-    if type == 'gcpeakf' or type == 'gcpeakwater' or type == 'gcpeakfpool' or type == 'gcarea' or type == 'gcdur' or type == 'gcdurwater' or type == 'dyearea' or type == 'gcareapool' or type == 'gcdurpool' or type == 'dyeareapool' or type == '721_lof' or type == '721_gof':
+    if type == 'gcpeakf' or type == 'gcpeakwater' or type == 'gcpeakfpool' \ 
+    or type == 'gcarea' or type == 'gcdur' or type == 'gcdurwater' or type == 'dyearea' \ 
+    or type == 'gcareapool' or type == 'gcdurpool' or type == 'dyeareapool' \ 
+    or type == '721_lof' or type == '721_gof':
         lastbar = (1.5*barnum*barwidth)-barwidth # X-coordinate of last bar
         x_gen1 = np.linspace(0.5*barwidth, lastbar, barnum).tolist()
         x_list = x_gen1 # Coordinates for the temperature labels.
@@ -137,7 +147,9 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
         print(x_list)
     
     
-    if type == 'gcpeakf' or type == 'gcpeakwater' or type == 'gcpeakfpool' or type == 'gcarea' or type == 'gcdur' or type == 'gcdurwater' or type == 'dyearea' or type == 'gcareapool' or type == 'gcdurpool' or type == 'dyeareapool':
+    if type == 'gcpeakf' or type == 'gcpeakwater' or type == 'gcpeakfpool' \ 
+    or type == 'gcarea' or type == 'gcdur' or type == 'gcdurwater' or type == 'dyearea' \ 
+    or type == 'gcareapool' or type == 'gcdurpool' or type == 'dyeareapool':
         colors = np.tile('k', barnum).tolist()
        
         
@@ -166,12 +178,15 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
     
         
     #Plots the bar plot.
-    plt.bar(x_list, means, width=truebarw, bottom=0, color=colors, ecolor='k', capsize=0.5, linewidth=lw)
+    plt.bar(x_list, means, width=truebarw, bottom=0, color=colors, ecolor='k', capsize=0.5,
+            linewidth=lw)
 
-    #Uncomment the line below and comment the line above to plot both positive and negative error bars.
+    #Uncomment the line below and comment the line above to plot both positive and negative error
+    #bars.
     #plt.bar(x_list, means, width=0.9, bottom=0, color=colors, ecolor='k')
     
-    # The following code plots only the negative error bars for negative data points and positive error bars for positive data poitns.
+    # The following code plots only the negative error bars for negative data points and positive
+    #error bars for positive data points.
     ts = zip(means, stderrs)
     negerr = []
     poserr = []
@@ -185,7 +200,8 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
                 poserr.append(t[1])
          
         if errors == 'stderr':
-            plt.errorbar(xlabel_list, means, yerr=[negerr,poserr], fmt=None, ecolor='k', lw=lw, capsize=2)
+            plt.errorbar(xlabel_list, means, yerr=[negerr,poserr], fmt=None, ecolor='k', lw=lw,
+                    capsize=2)
             print(means)
             print(poserr)
         else:
@@ -197,9 +213,11 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
     #Values for negative error bars (all zeros).
         zeros = np.tile(0, len(x_list)).tolist()
         if errors == 'stderr':
-            plt.errorbar(xlabel_list, means, yerr=[zeros,stderrs], fmt=None, ecolor='k', lw=lw, capsize=2)
+            plt.errorbar(xlabel_list, means, yerr=[zeros,stderrs], fmt=None, ecolor='k', lw=lw,
+                    capsize=2)
         if errors == 'stdev':
-            plt.errorbar(xlabel_list, means, yerr=[zeros,stdevs], fmt=None, ecolor='k' ,lw=lw, capsize=2)
+            plt.errorbar(xlabel_list, means, yerr=[zeros,stdevs], fmt=None, ecolor='k' ,lw=lw,
+                    capsize=2)
     
     # Defines the axes.
     ax = plt.gca()
@@ -214,21 +232,25 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
         conds = conds2
 
 
-    # Adds labels to the x-axis at the x-coordinates specified in xlabel_list; labels are specified in the conds list.
+    # Adds labels to the x-axis at the x-coordinates specified in xlabel_list; labels are
+    #specified in the conds list.
     if type == 'gcpeakf' or type == 'gcarea' or type == 'gcdur' or type == 'dyearea':
         plt.xticks(xlabel_list, conds, fontproperties=fontv, rotation=90)
     
-    if type == 'capdata' or type == 'freq' or type == 'volperpump' or type == 'cibdiffa' or type == '721_lof' or type == '721_gof' or type == 'cibareacirc':
+    if type == 'capdata' or type == 'freq' or type == 'volperpump' or type == 'cibdiffa' \ 
+    or type == '721_lof' or type == '721_gof' or type == 'cibareacirc':
         plt.xticks(xlabel_list, conds, rotation=90, fontproperties=fonti)
     
-    if type == 'gcareapool' or type == 'gcpeakfpool' or type == 'gcdurpool' or type == 'dyeareapool':
+    if type == 'gcareapool' or type == 'gcpeakfpool' or type == 'gcdurpool' \ 
+    or type == 'dyeareapool':
         plt.xticks(xlabel_list, conds, fontproperties=fontv)
     
     if type == 'gcdurwater' or type == 'gcpeakwater':
         plt.xticks([])
     
     
-    # 'genlabely' and 'genline' sets the y coordinates for where the secondary genotype labels and the horizontal line above them appear.
+    # 'genlabely' and 'genline' sets the y coordinates for where the secondary genotype labels
+    #and the horizontal line above them appear.
     
         
     if type == 'cibarea':
@@ -321,9 +343,12 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
         x_genotypes = [x+barwidth for x in x_genotypes1]
         genotypes_x = zip(genotypes, x_genotypes)
         for item in genotypes_x:
-            # Plots the genotypes at the specified coordinates (x coordinate, y coordinate, string)
+            # Plots the genotypes at the specified coordinates (x coordinate, y coordinate,
+            #string)
             print('genlabely', genlabely)
-            plt.text(item[1], genlabely, item[0], fontproperties=fonti, horizontalalignment='center', verticalalignment='top', multialignment='center',rotation=90)
+            plt.text(item[1], genlabely, item[0], fontproperties=fonti,
+                    horizontalalignment='center', verticalalignment='top',
+                    multialignment='center',rotation=90)
         
         # Uncomment the lines below to draw vertical lines between the genotype names.
         #xlines1 = [x+ 2*barwidth for x in x_genotypes1]
@@ -347,14 +372,18 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
             line.set_clip_on(False)
             l = ax.add_line(line)
     
-    if type == 'gcpeakfpool' or type == 'gcareapool' or type == 'gcdurpool' or type == 'dyeareapool':
+    if type == 'gcpeakfpool' or type == 'gcareapool' or type == 'gcdurpool' \ 
+    or type == 'dyeareapool':
         x_genotypes1 =  map(lambda i: x_list[i],filter(lambda i: i%2 == 0,range(len(x_list))))
         # Adds an extra barwidth for each x coordinate.
         x_genotypes = [x+1.25*barwidth for x in x_genotypes1]
         genotypes_x = zip(genotypes, x_genotypes)
         for item in genotypes_x:
-            # Plots the genotypes at the specified coordinates (x coordinate, y coordinate, string)
-            plt.text(item[1], genlabely, item[0], fontproperties=fonti, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+            # Plots the genotypes at the specified coordinates (x coordinate, y coordinate,
+            #string)
+            plt.text(item[1], genlabely, item[0], fontproperties=fonti,
+                    horizontalalignment='center', verticalalignment='top', 
+                    multialignment='center',rotation=0)
         
          # Uncomment the lines below to draw horizontal lines above the genotype names.
         for x in x_genotypes1:
@@ -372,9 +401,12 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
         plt.xlabel('[Sucrose]', fontproperties=fontv, labelpad=4)
     
     if type == 'gcpeakf648' or type == 'gcdur648' or type == 'gcarea648' or type == 'dyearea648':
-        plt.text(lastbar/2 + 0.75*barwidth, genlabely, 'MN11+12', fontproperties=fonti, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+        plt.text(lastbar/2 + 0.75*barwidth, genlabely, 'MN11+12', fontproperties=fonti,
+                horizontalalignment='center', verticalalignment='top',multialignment='center', 
+                rotation=0)
         
-        #line = mpl.lines.Line2D([x_list[0], lastbar+barwidth], [genline, genline], lw=1., color='k')
+        #line = mpl.lines.Line2D([x_list[0], lastbar+barwidth], [genline, genline], lw=1.,
+        #color='k')
         #line.set_clip_on(False)
         #l = ax.add_line(line)
         
@@ -383,7 +415,8 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
     plt.yticks(fontproperties=fontv)
     
     # Formats the xticks.
-    if type == 'gcpeakf' or type == 'gcpeakfpool' or type == 'gcarea' or type == 'gcdur' or type == 'dyearea' or type == 'gcareapool' or type == 'gcdurpool' or type == 'dyeareapool':
+    if type == 'gcpeakf' or type == 'gcpeakfpool' or type == 'gcarea' or type == 'gcdur' \ 
+    or type == 'dyearea' or type == 'gcareapool' or type == 'gcdurpool' or type == 'dyeareapool':
         plt.xticks(multialignment = 'center', fontproperties=fontv)
     
     #Uncomment lines below to display without top and right borders.
@@ -428,14 +461,16 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
     for line in ax.get_xticklines():
         line.set_visible(False)
 
-     #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+     #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower
+     #lefthand corner of the figure.
     if type == 'freq' or type == 'volperpump' or type == 'capdata' or type == 'cibareacirc':
         fig1.subplots_adjust(bottom=0.3)
         fig1.subplots_adjust(right=0.8)
         fig1.subplots_adjust(left=0.15)
         #fig1.subplots_adjust(top=0.8)
     
-    if type == 'gcpeakf' or type == 'gcpeakfpool' or type == 'gcarea' or type == 'gcdur' or type == 'dyearea' or type == 'gcareapool' or type == 'gcdurpool' or type == 'dyeareapool':
+    if type == 'gcpeakf' or type == 'gcpeakfpool' or type == 'gcarea' or type == 'gcdur' \ 
+    or type == 'dyearea' or type == 'gcareapool' or type == 'gcdurpool' or type == 'dyeareapool':
         fig1.subplots_adjust(bottom=0.3)
         fig1.subplots_adjust(right=0.8)
         fig1.subplots_adjust(left=0.15)      
@@ -473,7 +508,9 @@ def multiplot(type, fname, keyfile, errors, savefig, figname, ylim, border, ylab
 
 
 def makeallsumm(data):
-    # From lof folder. Takes all mean summary files from the folders listed below and combines the info into one master file. 'Data' is the type of data (ex., pump, dtrpa, etc.). Start from experiment directory.
+    # From lof folder. Takes all mean summary files from the folders listed below and combines 
+    #the info into one master file. 'Data' is the type of data (ex., pump, dtrpa, etc.). Start
+    #from experiment directory.
     
     startpath = os.path.abspath('.')
     

@@ -79,8 +79,8 @@ def getflypic(roiname):
     
 
 #~ def hmsub(trace):
-    #~ """Mean-subtracts and then multiplies a trace (a numpy array) with a Hamming function of the same size as the 
-    #~ trace."""
+    #~ """Mean-subtracts and then multiplies a trace (a numpy array) with a Hamming function of
+    #~the same size as the ~ trace."""
     #~ 
     #~ return(np.hamming(np.size(trace))*(trace - np.mean(trace)))
 
@@ -320,7 +320,8 @@ def plotspecgram(td, nfft=256):
     TraceData.Processrawtrace."""
     
     
-    (Pxx, freqs, bins, im) = plt.specgram(td['rawtrace'], NFFT=nfft, Fs=td['fps'], detrend=mlab.detrend_mean, noverlap=nfft/2, pad_to=nfft)
+    (Pxx, freqs, bins, im) = plt.specgram(td['rawtrace'], NFFT=nfft, Fs=td['fps'],
+            detrend=mlab.detrend_mean, noverlap=nfft/2, pad_to=nfft)
     plt.axvline(x=td['f1']/td['fps'], c='k')
     plt.axvline(x=td['f2']/td['fps'], c='k')
     plt.axvline(x=td['f_end']/td['fps'], c='k', ls='--')
@@ -388,7 +389,8 @@ def savetrace(suffix):
 def savetracesumm(suffix, dpath='.',  moviefold = 'summary/dftf_movies/'):
     """Saves the current figure into the summary folder with the filename 'movie_suffix'. 
     
-    For instance, if you run savetracesumm(summ) in the folder '/home/andrea/Documents/lab/test2/data/mov_20100819_174601', 
+    For instance, if you run savetracesumm(summ) in the folder
+    '/home/andrea/Documents/lab/test2/data/mov_20100819_174601', 
     then the figure is saved with the filename 'mov_20100819_174601_summ.png' in the folder
     '/home/andrea/Documents/lab/test2/summary'.
     """
@@ -404,7 +406,8 @@ def savetracesumm(suffix, dpath='.',  moviefold = 'summary/dftf_movies/'):
 def savetracecorr(suffix, dpath='.'):
     """Saves the current figure into the corrections folder with the filename 'movie_suffix'. 
     
-    For instance, if you run savetracesumm(summ) in the folder '/home/andrea/Documents/lab/test2/data/mov_20100819_174601', 
+    For instance, if you run savetracesumm(summ) in the folder
+    '/home/andrea/Documents/lab/test2/data/mov_20100819_174601', 
     then the figure is saved with the filename 'mov_20100819_174601_summ.png' in the folder
     '/home/andrea/Documents/lab/test2/summary'.
     """

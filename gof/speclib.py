@@ -36,7 +36,13 @@ YLIM = 10
 PADMULTIPLE=4
 TIME = 12
 TIMEOFFSET = 2
-#EXPTS = ['/home/andrea/Documents/lab/motor_neurons/gof/dtrpa1/2011-0527_112648_dtrpa1/data/mov_20110527_151224', '/home/andrea/Documents/lab/motor_neurons/lof/2010-1130_tnt/data/mov_20101130_201605', '/media/Data/gof/dtrpa1/2011-0518_112648_dtrpa1/data/mov_20110518_192012', '/home/andrea/Documents/lab/motor_neurons/gof/dtrpa1/2011-0527_112648_dtrpa1/data/mov_20110527_150743']
+#EXPTS = [
+#'/home/andrea/Documents/lab/motor_neurons/gof/dtrpa1/2011-0527_112648_dtrpa1/data/'+
+#'mov_20110527_151224', 
+#'/home/andrea/Documents/lab/motor_neurons/lof/2010-1130_tnt/data/mov_20101130_201605',
+#'/media/Data/gof/dtrpa1/2011-0518_112648_dtrpa1/data/mov_20110518_192012',
+#'/home/andrea/Documents/lab/motor_neurons/gof/dtrpa1/2011-0527_112648_dtrpa1/data/'+
+#'mov_20110527_150743']
 
 LABMTGFOLD = '/home/andrea/Documents/lab/labmtg/2011-0815_labmtg_files/specs'
 FONTSIZE = 'x-large'
@@ -47,7 +53,9 @@ def plotcustomspec(td, nfft, time, xlim=30, ylim=10, padmultiple=1):
     trace = td['seltrace'][frameoffset:]
     
 
-    (Pxx, freqs, bins, im) = plt.specgram(trace, NFFT=nfft, Fs=td['fps'], detrend=mlab.detrend_mean, noverlap=nfft/2, pad_to=nfft*padmultiple, scale_by_freq=False)
+    (Pxx, freqs, bins, im) = plt.specgram(trace, NFFT=nfft, Fs=td['fps'],
+            detrend=mlab.detrend_mean, noverlap=nfft/2, pad_to=nfft*padmultiple,
+            scale_by_freq=False)
     
     #plt.axvline(x=td['f1']/td['fps'], c='k')
     #plt.axvline(x=td['f2']/td['fps'], c='k')
@@ -92,8 +100,9 @@ def batch_plotspecmovie(nfft, padmultiple):
 def savetracefold(suffix, fold):
     """Saves the current figure into the summary folder with the filename 'movie_suffix'. 
     
-    For instance, if you run savetracesumm(summ) in the folder '/home/andrea/Documents/lab/test2/data/mov_20100819_174601', 
-    then the figure is saved with the filename 'mov_20100819_174601_summ.png' in the folder
+    For instance, if you run savetracesumm(summ) in the folder
+    '/home/andrea/Documents/lab/test2/data/mov_20100819_174601', then the figure is saved with
+    the filename 'mov_20100819_174601_summ.png' in the folder
     '/home/andrea/Documents/lab/test2/summary'.
     """
     

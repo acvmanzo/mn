@@ -28,12 +28,16 @@ from mn.cmn.cmn import *
 
 
 class WBalRParams:
-    """Class defining the parameters for rotating and white balancing images using ImageMagick command line functions.
+    """Class defining the parameters for rotating and white balancing images using ImageMagick
+    command line functions.
         
     rot: Specifies the amount of rotation in degrees that is applied to the images. 
-    r, g, b: Specifies the scaling factors for each color channel that are used to white balance each image using the 'convert -recolor' function of ImageMagick. 
-    itype: Specifies the format of the image sequences generated from fmf files. Allowed values are 'bmp, 'jpg' and 'png'.
-    otype: Specifies the output format of the images being white-balanced and rotated. Allowed values include 'bmp' and 'jpg'.
+    r, g, b: Specifies the scaling factors for each color channel that are used to white balance
+    each image using the 'convert -recolor' function of ImageMagick. 
+    itype: Specifies the format of the image sequences generated from fmf files. Allowed values
+    are 'bmp, 'jpg' and 'png'.
+    otype: Specifies the output format of the images being white-balanced and rotated. Allowed
+    values include 'bmp' and 'jpg'.
     """
     
     def __init__(self, rot=0, r=1, g=1, b=1, itype='bmp', otype='jpg'):
@@ -48,7 +52,8 @@ class WBalRParams:
         
         recmat = '{0} 0 0 0 {1} 0 0 0 {2}'.format(self.r, self.g, self.b)
         root, ext = os.path.splitext(image)
-        cmdwbr = r'convert -rotate {0} -recolor "{1}" {2}.{4} {3}.{5}'.format(self.rot, recmat, root, root, self.itype, self.otype)
+        cmdwbr = r'convert -rotate {0} -recolor "{1}" {2}.{4} {3}.{5}'.format(self.rot, recmat,
+                root, root, self.itype, self.otype)
         exitcode = os.system(cmdwbr)
         if exitcode != 0:
             sys.exit(0)
@@ -58,7 +63,8 @@ def apply(image, params):
 	
 	recmat = '{0} 0 0 0 {1} 0 0 0 {2}'.format(params.r, params.g, params.b)
 	root, ext = os.path.splitext(image)
-	cmdwbr = r'convert -rotate {0} -recolor "{1}" {2}.{4} {3}.{5}'.format(params.rot, recmat, root, root, params.itype, params.otype)
+	cmdwbr = r'convert -rotate {0} -recolor "{1}" {2}.{4} {3}.{5}'.format(params.rot, recmat,
+                root, root, params.itype, params.otype)
 	os.system(cmdwbr)
 
     
@@ -68,7 +74,8 @@ def apply(image, params):
 
 
 #~ def batch(fn_name, ftype, params, fdir='.'):
-    #~ """Carries out the function 'fn_name' recursively on files with extension 'itype' (e.g., 'jpg' or '*') in directory 'fdir'.
+    #~ """Carries out the function 'fn_name' recursively on files with extension 'itype' (e.g.,
+    #~'jpg' or '*') in directory 'fdir'.
     #~ """
     
   
@@ -164,8 +171,8 @@ def bdir(params):
 
 
 def fmfconvimg(fmf, params, fdir='.'):
-    """Converts a single fmf file to a single image of type 'itype' (like for capfmfs). Image files are placed in a 
-    directory such as 'dirname_bmp/moviexxxx" in the above file structure.
+    """Converts a single fmf file to a single image of type 'itype' (like for capfmfs). Image
+    files are placed in a directory such as 'dirname_bmp/moviexxxx" in the above file structure.
     """
     name = os.path.basename(fmf)
     root, ext = os.path.splitext(name)

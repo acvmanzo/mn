@@ -15,6 +15,7 @@ first = files[0]
 
 arg = str(num) + '%' + first
 
-cmd = 'java -jar /home/andrea/software/ImageJ/ij.jar -macro /home/andrea/software/ImageJ/macros/openser.txt {0}&'.format(arg)
+cmd = 'java -jar /home/andrea/software/ImageJ/ij.jar'+
+' -macro /home/andrea/software/ImageJ/macros/openser.txt {0}&'.format(arg)
 
 os.system(cmd)

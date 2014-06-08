@@ -25,7 +25,8 @@ def measure(dname, wbrdir, dpardir):
     #'roi_mm.txt'
     arg = str(num) + '%' + first + '%' + roifile + '%' + resfile
     
-    cmd = 'java -jar /home/andrea/software/ImageJ/ij.jar -batch /home/andrea/software/ImageJ/macros/roi_mm.txt {0}'.format(arg)
+    cmd = 'java -jar /home/andrea/software/ImageJ/ij.jar' +
+    ' -batch /home/andrea/software/ImageJ/macros/roi_mm.txt {0}'.format(arg)
     os.system(cmd)
     
     return(resfile)

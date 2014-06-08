@@ -35,7 +35,8 @@ pcapm.plotnlpersec(CAPDATAFILE, K)
 #p = pcapm.gendictpps(CAPDATAFILE)
 #mp = pcapm.genlist(p)
 #k = p.keys()
-#gp.plotdata(p, mp, k, 's', 'pix/sec', 'Amount consumed \n pixels/sec', ylim=10, titlesize='x-large', xlabelsize='medium', xstart=0.25)
+#gp.plotdata(p, mp, k, 's', 'pix/sec', 'Amount consumed \n pixels/sec', ylim=10, 
+#titlesize='x-large', xlabelsize='medium', xstart=0.25)
 #plt.savefig('pixpersec')
 #plt.close()
 
@@ -43,6 +44,7 @@ pcapm.plotnlpersec(CAPDATAFILE, K)
 #n = pcapm.gendictnps(CAPDATAFILE)
 #mn = pcapm.genlist(n)
 #l = n.keys()
-#gp.plotdata(n, mn, l, 's', 'nL/sec', 'Amount consumed \n nL/sec', ylim=10, titlesize='x-large', xlabelsize='medium', xstart=0.25)
+#gp.plotdata(n, mn, l, 's', 'nL/sec', 'Amount consumed \n nL/sec', ylim=10, i
+#titlesize='x-large', xlabelsize='medium', xstart=0.25)
 #plt.savefig('nlpersec')
 ##plt.show()

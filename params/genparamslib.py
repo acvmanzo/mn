@@ -223,7 +223,8 @@ def gencapparams(fname):
             print('Removing old params file')
             os.remove(capparamsfile)
                 
-        if capmovie1 != 'x' and capmovie1 !='' and capmovie2 != 'x' and capmovie2 != '' and duration != 'x' and duration != '':
+        if capmovie1 != 'x' and capmovie1 !='' and capmovie2 != 'x' and capmovie2 != '' \ 
+        and duration != 'x' and duration != '':
 
             makenewdir(os.path.join('data', name))
             f = open(capparamsfile, 'w')

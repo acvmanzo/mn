@@ -26,7 +26,8 @@ FONTSIZE = 6.7
 LABELPAD = 4
 LINEWIDTH = 0.75
 
-ERRORS = 'stderr' # Determines whether error bars delineate standard error (stderr) or standard deviation (stdev)
+ERRORS = 'stderr' # Determines whether error bars delineate standard error (stderr) or 
+#standard deviation (stdev)
 SAVEFIG = 'yes'
 
 YAXISTICKS = 4
@@ -43,14 +44,17 @@ FNAME1MIN1MAX = 'cs_deltatime_means_1min_1max.txt'
 KEYFILE = 'keyfile_v'
 
 
-def multiplot_deltatime(fname1max1min, fname1min1max, keyfile, errors, savefig, figname, ylim, ylabel, figw, figh, figdpi, yaxisticks, ymin, barwidth, barnum, othercolor, fontsz, lp, lw):
+def multiplot_deltatime(fname1max1min, fname1min1max, keyfile, errors, savefig, figname, ylim,
+        ylabel, figw, figh, figdpi, yaxisticks, ymin, barwidth, barnum, othercolor, fontsz, lp,
+        lw):
     
     matplotlib.rc('axes', linewidth=lw)
     matplotlib.rc('axes.formatter', limits = [-6, 6])
     
     # Sets font properties.
     fontv = mpl.font_manager.FontProperties()
-    # Uncomment line below to set the font to verdana; the default matplotlib font is very similar (just slightly narrower).
+    # Uncomment line below to set the font to verdana; the default matplotlib font is very 
+    #similar (just slightly narrower).
     fontv = mpl.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/arial.ttf')
     fontv.set_size(fontsz)
     
@@ -120,14 +124,17 @@ def multiplot_deltatime(fname1max1min, fname1min1max, keyfile, errors, savefig, 
     xlim = x_list_1max1min[-1]+3*barwidth
 
     #Plots the bar plot.
-    plt.bar(x_list_1max1min, means_1max1min, width=truebarw, color=colors_1max1min, ecolor='k', label='Filling', lw=lw)
+    plt.bar(x_list_1max1min, means_1max1min, width=truebarw, color=colors_1max1min, ecolor='k',
+            label='Filling', lw=lw)
     # Plots error bars.
     zeros = np.tile(0, len(x_list_1max1min)).tolist()
     x_errbar = [x + 0.5*truebarw for x in x_list_1max1min]
     if errors == 'stderr':
-        plt.errorbar(x_errbar, means_1max1min, yerr=[zeros,stderrs_1max1min], fmt=None, ecolor='k', lw=lw, capsize=2)
+        plt.errorbar(x_errbar, means_1max1min, yerr=[zeros,stderrs_1max1min], fmt=None,
+                ecolor='k', lw=lw, capsize=2)
     if errors == 'stdev':
-        plt.errorbar(x_errbar, means_1max1min, yerr=[zeros,stdevs_1max1min], fmt=None, ecolor='k', lw=lw, capsize=2)
+        plt.errorbar(x_errbar, means_1max1min, yerr=[zeros,stdevs_1max1min], fmt=None,
+                ecolor='k', lw=lw, capsize=2)
     
     
     #### Plots deltatime 1min1max #####
@@ -140,14 +147,17 @@ def multiplot_deltatime(fname1max1min, fname1min1max, keyfile, errors, savefig, 
       
    
     #Plots the bar plot.
-    plt.bar(x_list_1min1max, means_1min1max, width=truebarw, color=colors_1min1max, ecolor='k', label='Emptying', lw=lw)
+    plt.bar(x_list_1min1max, means_1min1max, width=truebarw, color=colors_1min1max, ecolor='k',
+            label='Emptying', lw=lw)
     # Plots error bars.
     zeros = np.tile(0, len(x_list_1min1max)).tolist()
     x_errbar_1min1max = [x + 0.5*truebarw for x in x_list_1min1max]
     if errors == 'stderr':
-        plt.errorbar(x_errbar_1min1max, means_1min1max, yerr=[zeros,stderrs_1min1max], fmt=None, ecolor='k', lw=lw, capsize=2)
+        plt.errorbar(x_errbar_1min1max, means_1min1max, yerr=[zeros,stderrs_1min1max], fmt=None,
+                ecolor='k', lw=lw, capsize=2)
     if errors == 'stdev':
-        plt.errorbar(x_errbar_1min1max, means_1min1max, yerr=[zeros,stdevs_1min1max], fmt=None, ecolor='k', lw=lw, capsize=2)
+        plt.errorbar(x_errbar_1min1max, means_1min1max, yerr=[zeros,stdevs_1min1max], fmt=None,
+                ecolor='k', lw=lw, capsize=2)
 
     
     # Defines the axes.
@@ -194,7 +204,8 @@ def multiplot_deltatime(fname1max1min, fname1min1max, keyfile, errors, savefig, 
     plt.ylabel(ylabel, labelpad=lp, fontproperties=fontv, multialignment='center')
     
     # Plots legend
-    legend = plt.legend(loc='upper right', bbox_to_anchor = (1.2, 1.4), markerscale=0.1, numpoints=1, labelspacing=0.2)
+    legend = plt.legend(loc='upper right', bbox_to_anchor = (1.2, 1.4), markerscale=0.1,
+            numpoints=1, labelspacing=0.2)
     # Changes legend font to fontsz.
     ltext  = legend.get_texts()
     plt.setp(ltext, fontproperties=fontv)
@@ -203,16 +214,22 @@ def multiplot_deltatime(fname1max1min, fname1min1max, keyfile, errors, savefig, 
     
     
      # Writes the label for 500 mM sucrose.    
-    line = mpl.lines.Line2D([x_list_1max1min[0],x_list_1max1min[2]+2*barwidth], [-0.183, -0.183], lw=lw, color='k')
+    line = mpl.lines.Line2D([x_list_1max1min[0],x_list_1max1min[2]+2*barwidth], [-0.183, -0.183],
+            lw=lw, color='k')
     line.set_clip_on(False)
     l = ax1.add_line(line)
    
-    plt.text(xlabel_list[1], -0.21, '500 mM sucrose', fontproperties=fontv, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+    plt.text(xlabel_list[1], -0.21, '500 mM sucrose', fontproperties=fontv,
+            horizontalalignment='center', verticalalignment='top',multialignment='center',
+            rotation=0)
     
     # Writes the label for sucrose.
-    plt.text(xlabel_list[3]+barwidth, -0.11, 'sucrose', fontproperties=fontv, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+    plt.text(xlabel_list[3]+barwidth, -0.11, 'sucrose', fontproperties=fontv,
+            horizontalalignment='center', verticalalignment='top',multialignment='center',
+            rotation=0)
 
-    #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand
+    #corner of the figure.
     fig1.subplots_adjust(bottom=ADJBOTTOM)
     fig1.subplots_adjust(right=ADJRIGHT)
     fig1.subplots_adjust(left=ADJLEFT)
@@ -222,14 +239,17 @@ def multiplot_deltatime(fname1max1min, fname1min1max, keyfile, errors, savefig, 
         plt.savefig('deltatime.png', dpi=FIGDPI)
         plt.savefig('deltatime.svg', dpi=FIGDPI)
 
-def multiplot_deltatime2(fname1max1min, fname1min1max, keyfile, errors, savefig, figname, ylim, ylabel, figw, figh, figdpi, yaxisticks, ymin, barwidth, barnum, othercolor, fontsz, lp, lw):
+def multiplot_deltatime2(fname1max1min, fname1min1max, keyfile, errors, savefig, figname, ylim,
+        ylabel, figw, figh, figdpi, yaxisticks, ymin, barwidth, barnum, othercolor, fontsz, lp,
+        lw):
     
     matplotlib.rc('axes', linewidth=lw)
     matplotlib.rc('axes.formatter', limits = [-6, 6])
     
     # Sets font properties.
     fontv = mpl.font_manager.FontProperties()
-    # Uncomment line below to set the font to verdana; the default matplotlib font is very similar (just slightly narrower).
+    # Uncomment line below to set the font to verdana; the default matplotlib font is very
+    #similar (just slightly narrower).
     fontv = mpl.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/arial.ttf')
     fontv.set_size(fontsz)
     
@@ -307,7 +327,8 @@ def multiplot_deltatime2(fname1max1min, fname1min1max, keyfile, errors, savefig,
     xlim = x_list_1max1min[-1]+3*barwidth
 
     #Plots the bar plot.
-    plt.bar(x_list_1max1min, means_1max1min, width=truebarw, color=colors_1max1min, ecolor='k', label='Filling', lw=lw)
+    plt.bar(x_list_1max1min, means_1max1min, width=truebarw, color=colors_1max1min, ecolor='k',
+            label='Filling', lw=lw)
     # Plots error bars.
     zeros = np.tile(0, len(x_list_1max1min)).tolist()
     x_errbar = [x + 0.5*truebarw for x in x_list_1max1min]
@@ -327,14 +348,17 @@ def multiplot_deltatime2(fname1max1min, fname1min1max, keyfile, errors, savefig,
       
    
     #Plots the bar plot.
-    plt.bar(x_list_1min1max, means_1min1max, width=truebarw, color=colors_1min1max, ecolor='k', label='Emptying', lw=lw)
+    plt.bar(x_list_1min1max, means_1min1max, width=truebarw, color=colors_1min1max, ecolor='k',
+            label='Emptying', lw=lw)
     # Plots error bars.
     zeros = np.tile(0, len(x_list_1min1max)).tolist()
     x_errbar_1min1max = [x + 0.5*truebarw for x in x_list_1min1max]
     if errors == 'stderr':
-        plt.errorbar(x_errbar_1min1max, means_1min1max, yerr=[zeros,stderrs_1min1max], fmt=None, ecolor='k', lw=lw, capsize=2)
+        plt.errorbar(x_errbar_1min1max, means_1min1max, yerr=[zeros,stderrs_1min1max], fmt=None,
+                ecolor='k', lw=lw, capsize=2)
     if errors == 'stdev':
-        plt.errorbar(x_errbar_1min1max, means_1min1max, yerr=[zeros,stdevs_1min1max], fmt=None, ecolor='k', lw=lw, capsize=2)
+        plt.errorbar(x_errbar_1min1max, means_1min1max, yerr=[zeros,stdevs_1min1max], fmt=None,
+                ecolor='k', lw=lw, capsize=2)
 
     
     # Defines the axes.
@@ -381,7 +405,8 @@ def multiplot_deltatime2(fname1max1min, fname1min1max, keyfile, errors, savefig,
     plt.ylabel(ylabel, labelpad=lp, fontproperties=fontv, multialignment='center')
     
     # Plots legend
-    legend = plt.legend(loc='upper right', bbox_to_anchor = (1, 1.4), markerscale=0.1, numpoints=1, labelspacing=0.2)
+    legend = plt.legend(loc='upper right', bbox_to_anchor = (1, 1.4), markerscale=0.1,
+            numpoints=1, labelspacing=0.2)
     # Changes legend font to fontsz.
     ltext  = legend.get_texts()
     plt.setp(ltext, fontproperties=fontv)
@@ -390,21 +415,27 @@ def multiplot_deltatime2(fname1max1min, fname1min1max, keyfile, errors, savefig,
     
     
      # Writes the label for 500 mM sucrose.    
-    line = mpl.lines.Line2D([x_list_1max1min[0],x_list_1max1min[2]+2*barwidth], [-0.11, -0.11], lw=lw, color='k')
+    line = mpl.lines.Line2D([x_list_1max1min[0],x_list_1max1min[2]+2*barwidth], [-0.11, -0.11],
+            lw=lw, color='k')
     line.set_clip_on(False)
     l = ax1.add_line(line)
     
-    plt.text(xlabel_list[1], -0.14, '% MC', fontproperties=fontv, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+    plt.text(xlabel_list[1], -0.14, '% MC', fontproperties=fontv, horizontalalignment='center',
+            verticalalignment='top',multialignment='center',rotation=0)
     
            
     # Writes the label for sucrose.
-    line = mpl.lines.Line2D([x_list_1max1min[3],x_list_1max1min[5]+2*barwidth], [-0.11, -0.11], lw=lw, color='k')
+    line = mpl.lines.Line2D([x_list_1max1min[3],x_list_1max1min[5]+2*barwidth], [-0.11, -0.11],
+            lw=lw, color='k')
     line.set_clip_on(False)
     l = ax1.add_line(line)
     
-    plt.text(xlabel_list[4], -0.14, 'sucrose (M)', fontproperties=fontv, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+    plt.text(xlabel_list[4], -0.14, 'sucrose (M)', fontproperties=fontv,
+            horizontalalignment='center', verticalalignment='top',multialignment='center', 
+            rotation=0)
 
-    #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand
+    #corner of the figure.
     fig1.subplots_adjust(bottom=ADJBOTTOM)
     fig1.subplots_adjust(right=ADJRIGHT)
     fig1.subplots_adjust(left=ADJLEFT)
@@ -415,4 +446,6 @@ def multiplot_deltatime2(fname1max1min, fname1min1max, keyfile, errors, savefig,
         plt.savefig('deltatime.svg', dpi=FIGDPI)
 
 
-multiplot_deltatime2(FNAME1MAX1MIN, FNAME1MIN1MAX, KEYFILE, ERRORS, SAVEFIG, FIGNAME, YLIM, YLABEL, FIGW, FIGH, FIGDPI, YAXISTICKS, YMIN, BARWIDTH, BARNUM, OTHERCOLOR, FONTSIZE, LABELPAD, LINEWIDTH)
+multiplot_deltatime2(FNAME1MAX1MIN, FNAME1MIN1MAX, KEYFILE, ERRORS, SAVEFIG, FIGNAME, YLIM,
+        YLABEL, FIGW, FIGH, FIGDPI, YAXISTICKS, YMIN, BARWIDTH, BARNUM, OTHERCOLOR, FONTSIZE,
+        LABELPAD, LINEWIDTH)

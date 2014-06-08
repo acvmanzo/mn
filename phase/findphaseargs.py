@@ -45,6 +45,7 @@ DROI = {'Mean1': [6, 1, 0, 6, 1, 0], 'Mean2': [6, 1, 0, 6, 1, 0]}
 
 # Experiments to be pooled.
  
-#EXPTS = ['/home/andrea/Documents/lab/motor_neurons/lof/2010-1130_tnt', '/home/andrea/Documents/lab/motor_neurons/lof/2010-1213_tnt']
+#EXPTS = ['/home/andrea/Documents/lab/motor_neurons/lof/2010-1130_tnt', 
+#'/home/andrea/Documents/lab/motor_neurons/lof/2010-1213_tnt']
  
 

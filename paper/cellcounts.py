@@ -70,7 +70,8 @@ with open('2011-0915_ttest_results.txt', 'w') as f:
     f.write('112204 vs. 423 + 112204 \t {0} \t {1}\n'.format(z[0], z[1]))
     f.write('423 vs. 423 + 112204 \t {0} \t {1}\n'.format(w[0], w[1]))
 
-#Compares genotypes to see if the differences in cell counts from the left side of the brain are statistically significant.
+#Compares genotypes to see if the differences in cell counts from the left side of the brain are
+#statistically significant.
 x = stats.ttest_ind(left['112648'], left['112648 + 423'])
 y = stats.ttest_ind(left['112648'], left['112648 + 112204'])
 z = stats.ttest_ind(left['112204'], left['112204 + 423'])
@@ -83,7 +84,8 @@ with open('2011-0915_ttest_results_left.txt', 'w') as f:
     f.write('112204 vs. 423 + 112204 \t {0} \t {1}\n'.format(z[0], z[1]))
     f.write('423 vs. 423 + 112204 \t {0} \t {1}\n'.format(w[0], w[1]))
 
-#Compares genotypes to see if the differences in cell counts from the right side of the brain are statistically significant.
+#Compares genotypes to see if the differences in cell counts from the right side of the brain are
+#statistically significant.
 x = stats.ttest_ind(right['112648'], right['112648 + 423'])
 y = stats.ttest_ind(right['112648'], right['112648 + 112204'])
 z = stats.ttest_ind(right['112204'], right['112204 + 423'])
@@ -96,7 +98,8 @@ with open('2011-0915_ttest_results_right.txt', 'w') as f:
     f.write('112204 vs. 423 + 112204 \t {0} \t {1}\n'.format(z[0], z[1]))
     f.write('423 vs. 423 + 112204 \t {0} \t {1}\n'.format(w[0], w[1]))
 
-# Compares genotypes to see if the differences in cell counts between the left and right side of the brain of the same genotypes are statstically different.
+# Compares genotypes to see if the differences in cell counts between the left and right side of
+#the brain of the same genotypes are statstically different.
 x = stats.ttest_ind(left['112648'], right['112648'])
 y = stats.ttest_ind(left['112204'], right['112204'])
 z = stats.ttest_ind(left['423'], right['423'])
@@ -108,7 +111,8 @@ with open('2011-0915_ttest_left_right.txt', 'w') as f:
     f.write('left vs. right 423 \t {0} \t {1}\n'.format(z[0], z[1]))
 
 
-#fig1 = gpl.plotdata(sum, msum, k, 'b', 'Number of cells', 'Cell Counts', ylim = 8, xd=4, xlabelsize=12)
+#fig1 = gpl.plotdata(sum, msum, k, 'b', 'Number of cells', 'Cell Counts', ylim = 8, xd=4,
+#xlabelsize=12)
 #fig1.subplots_adjust(bottom=0.2)
 #plt.savefig('2011-0915_cellcounts.png')
 

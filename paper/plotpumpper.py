@@ -14,7 +14,8 @@ import mn.paper.multiplot as mp
 
 
 
-ERRORS = 'stderr' # Determines whether error bars delineate standard error (stderr) or standard deviation (stdev)
+ERRORS = 'stderr' # Determines whether error bars delineate standard error (stderr) or standard
+#deviation (stdev)
 SAVEFIG = 'yes'
 FIGDPI = 600
 YAXISTICKS = 5
@@ -42,25 +43,30 @@ FONTSIZE = 6.7
 
 KEYFILES = ['keyfile_c', 'keyfile_s']
 
-CONDPER = ['g24 h/500 mM suc', 'g24 h/50 mM suc', 'g48 h/100 mM suc', 'g24 h/100 mM suc', 'g10 h/100 mM suc']
-CONDPUMP = ['24 hours/500 mM sucrose', '24 hours/50 mM sucrose', '48 hours/100 mM sucrose', '24 hours/100 mM sucrose', '10 hours/100 mM sucrose']
+CONDPER = ['g24 h/500 mM suc', 'g24 h/50 mM suc', 'g48 h/100 mM suc', 'g24 h/100 mM suc', 
+'g10 h/100 mM suc']
+CONDPUMP = ['24 hours/500 mM sucrose', '24 hours/50 mM sucrose', '48 hours/100 mM sucrose',
+'24 hours/100 mM sucrose', '10 hours/100 mM sucrose']
 
 
 PUMPFOL = '/home/andrea/Documents/lab/motor_neurons/wildtype/pooled/pumpfreq_pooled/'
 PUMPFILE = 'means_cs_pumpfreq.txt'
 
 PERFOL = '/home/andrea/Documents/lab/motor_neurons/wildtype/pooled/per_check/'
-PERFILE = '/home/andrea/Documents/lab/motor_neurons/wildtype/pooled/per-check/per-check_cibdata_m_alpha0.05.txt'
+PERFILE = '/home/andrea/Documents/lab/motor_neurons/wildtype/pooled/per-check/'+
+'per-check_cibdata_m_alpha0.05.txt'
 
 
-def multiplot_visc(pumpfname, keyfile, errors, savefig, figname, ylim, ylabel, figw, figh, figdpi, yaxisticks, ymin, barwidth, lw, fontsz, lpx, lpy):
+def multiplot_visc(pumpfname, keyfile, errors, savefig, figname, ylim, ylabel, figw, figh, 
+        figdpi, yaxisticks, ymin, barwidth, lw, fontsz, lpx, lpy):
     
     matplotlib.rc('axes', linewidth=lw)
     matplotlib.rc('axes.formatter', limits = [-6, 6])
     
     # Sets font properties.
     fontv = mpl.font_manager.FontProperties()
-    # Uncomment line below to set the font to verdana; the default matplotlib font is very similar (just slightly narrower).
+    # Uncomment line below to set the font to verdana; the default matplotlib font is very
+    #similar (just slightly narrower).
     fontv = mpl.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/arial.ttf')
     fontv.set_size(fontsz)
     
@@ -118,9 +124,11 @@ def multiplot_visc(pumpfname, keyfile, errors, savefig, figname, ylim, ylabel, f
     zeros = np.tile(0, len(x_list)).tolist()
     x_errbar = xlabel_list
     if errors == 'stderr':
-        plt.errorbar(x_errbar, means, yerr=[zeros,stderrs], fmt=None, ecolor='k', lw=lw, capsize=2)
+        plt.errorbar(x_errbar, means, yerr=[zeros,stderrs], fmt=None, ecolor='k', lw=lw,
+                capsize=2)
     if errors == 'stdev':
-        plt.errorbar(x_errbar, means, yerr=[zeros,stdevs], fmt=None, ecolor='k', lw=lw, capsize=2)
+        plt.errorbar(x_errbar, means, yerr=[zeros,stdevs], fmt=None, ecolor='k', lw=lw, 
+                capsize=2)
     
     # Defines the axes.
     ax1 = plt.gca()
@@ -130,10 +138,14 @@ def multiplot_visc(pumpfname, keyfile, errors, savefig, figname, ylim, ylabel, f
     line.set_clip_on(False)
     l = ax1.add_line(line)
    
-    plt.text(xlabel_list[1], -4.05, '500 mM sucrose', fontproperties=fontv, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+    plt.text(xlabel_list[1], -4.05, '500 mM sucrose', fontproperties=fontv, 
+            horizontalalignment='center', verticalalignment='top',multialignment='center', 
+            rotation=0)
     
     # Writes the label for sucrose.
-    plt.text(xlabel_list[3]+barwidth, -2.15, 'sucrose', fontproperties=fontv, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+    plt.text(xlabel_list[3]+barwidth, -2.15, 'sucrose', fontproperties=fontv, 
+            horizontalalignment='center', verticalalignment='top',multialignment='center', 
+            rotation=0)
     
     # Formats the yticks.
     plt.yticks(fontproperties=fontv)
@@ -176,10 +188,12 @@ def multiplot_visc(pumpfname, keyfile, errors, savefig, figname, ylim, ylabel, f
     
    
     
-     #plt.text(xlabel_list[1], -2, '[Sucrose]', fontproperties=fontv, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+     #plt.text(xlabel_list[1], -2, '[Sucrose]', fontproperties=fontv,
+     #horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
     
     
-    #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand
+    #corner of the figure.
     fig1.subplots_adjust(bottom=ADJBOTTOM)
     fig1.subplots_adjust(right=ADJRIGHT)
     fig1.subplots_adjust(left=ADJLEFT)
@@ -189,14 +203,16 @@ def multiplot_visc(pumpfname, keyfile, errors, savefig, figname, ylim, ylabel, f
         plt.savefig('pump_per_'+keyfile+'.png', dpi=300)
         plt.savefig('pump_per_'+keyfile+'.svg', dpi=300)
 
-def multiplot_visc2(pumpfname, keyfile, errors, savefig, figname, ylim, ylabel, figw, figh, figdpi, yaxisticks, ymin, barwidth, lw, fontsz, lpx, lpy):
+def multiplot_visc2(pumpfname, keyfile, errors, savefig, figname, ylim, ylabel, figw, figh, 
+        figdpi, yaxisticks, ymin, barwidth, lw, fontsz, lpx, lpy):
     
     matplotlib.rc('axes', linewidth=lw)
     matplotlib.rc('axes.formatter', limits = [-6, 6])
     
     # Sets font properties.
     fontv = mpl.font_manager.FontProperties()
-    # Uncomment line below to set the font to verdana; the default matplotlib font is very similar (just slightly narrower).
+    # Uncomment line below to set the font to verdana; the default matplotlib font is very 
+    #similar (just slightly narrower).
     fontv = mpl.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/arial.ttf')
     fontv.set_size(fontsz)
     
@@ -263,7 +279,8 @@ def multiplot_visc2(pumpfname, keyfile, errors, savefig, figname, ylim, ylabel, 
     zeros = np.tile(0, len(x_list)).tolist()
     x_errbar = xlabel_list
     if errors == 'stderr':
-        plt.errorbar(x_errbar, means, yerr=[zeros,stderrs], fmt=None, ecolor='k', lw=lw, capsize=2)
+        plt.errorbar(x_errbar, means, yerr=[zeros,stderrs], fmt=None, ecolor='k', lw=lw, 
+                capsize=2)
     if errors == 'stdev':
         plt.errorbar(x_errbar, means, yerr=[zeros,stdevs], fmt=None, ecolor='k', lw=lw, capsize=2)
     
@@ -275,13 +292,15 @@ def multiplot_visc2(pumpfname, keyfile, errors, savefig, figname, ylim, ylabel, 
     line.set_clip_on(False)
     l = ax1.add_line(line)
     
-    plt.text(xlabel_list[1], -2.8, '% MC', fontproperties=fontv, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)    
+    plt.text(xlabel_list[1], -2.8, '% MC', fontproperties=fontv, horizontalalignment='center', 
+            verticalalignment='top',multialignment='center',rotation=0)    
     # Writes the label for sucrose.
     line = mpl.lines.Line2D([x_list[3],x_list[5]+barwidth], [-2.15, -2.15], lw=lw, color='k')
     line.set_clip_on(False)
     l = ax1.add_line(line)
     
-    plt.text(xlabel_list[4], -2.8, 'sucrose (M)', fontproperties=fontv, horizontalalignment='center', verticalalignment='top', rotation=0)
+    plt.text(xlabel_list[4], -2.8, 'sucrose (M)', fontproperties=fontv, 
+            horizontalalignment='center', verticalalignment='top', rotation=0)
     
     # Formats the yticks.
     plt.yticks(fontproperties=fontv)
@@ -324,10 +343,13 @@ def multiplot_visc2(pumpfname, keyfile, errors, savefig, figname, ylim, ylabel, 
     
    
     
-     #plt.text(xlabel_list[1], -2, '[Sucrose]', fontproperties=fontv, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+     #plt.text(xlabel_list[1], -2, '[Sucrose]', fontproperties=fontv, 
+     #horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+
     
     
-    #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand
+    #corner of the figure.
     fig1.subplots_adjust(bottom=ADJBOTTOM)
     fig1.subplots_adjust(right=ADJRIGHT)
     fig1.subplots_adjust(left=ADJLEFT)
@@ -339,14 +361,16 @@ def multiplot_visc2(pumpfname, keyfile, errors, savefig, figname, ylim, ylabel, 
 
 
 
-def multiplot_pumpper(pumpfname, perfname, keyfile, errors, savefig, figname, ylim, ylabel, ylabelper, figw, figh, figdpi, yaxisticks, ymin, barwidth, lw, fontsz, lpx, lpy):
+def multiplot_pumpper(pumpfname, perfname, keyfile, errors, savefig, figname, ylim, ylabel, 
+        ylabelper, figw, figh, figdpi, yaxisticks, ymin, barwidth, lw, fontsz, lpx, lpy):
     
     matplotlib.rc('axes', linewidth=lw)
     matplotlib.rc('axes.formatter', limits = [-6, 6])
     
     # Sets font properties.
     fontv = mpl.font_manager.FontProperties()
-    # Uncomment line below to set the font to verdana; the default matplotlib font is very similar (just slightly narrower).
+    # Uncomment line below to set the font to verdana; the default matplotlib font is very 
+    #similar (just slightly narrower).
     fontv = mpl.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/arial.ttf')
     fontv.set_size(fontsz)
     
@@ -405,7 +429,8 @@ def multiplot_pumpper(pumpfname, perfname, keyfile, errors, savefig, figname, yl
     zeros = np.tile(0, len(x_list)).tolist()
     x_errbar = [x - 0.5*barwidth for x in xlabel_list]
     if errors == 'stderr':
-        plt.errorbar(x_errbar, means, yerr=[zeros,stderrs], fmt=None, ecolor='k', lw=lw, capsize=2)
+        plt.errorbar(x_errbar, means, yerr=[zeros,stderrs], fmt=None, ecolor='k', lw=lw, 
+                capsize=2)
     if errors == 'stdev':
         plt.errorbar(x_errbar, means, yerr=[zeros,stdevs], fmt=None, ecolor='k', lw=lw, capsize=2)
     
@@ -503,7 +528,8 @@ def multiplot_pumpper(pumpfname, perfname, keyfile, errors, savefig, figname, yl
     # Plots the yticks and ylabel for the PER scale.
     plt.yticks(fontproperties=fontv, color=PERTEXTCOLOR)
     plt.ylim(ymax=100)
-    plt.ylabel(ylabelper, labelpad=lpy, fontproperties=fontv, multialignment='center', rotation=-90, color=PERTEXTCOLOR)
+    plt.ylabel(ylabelper, labelpad=lpy, fontproperties=fontv, multialignment='center', 
+            rotation=-90, color=PERTEXTCOLOR)
     
 
     ### ADJUSTS FIGURE PROPERTIES ####
@@ -517,7 +543,8 @@ def multiplot_pumpper(pumpfname, perfname, keyfile, errors, savefig, figname, yl
     plt.xlim( [0, xlim] )
     print(xlim)
     
-    #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand
+    #corner of the figure.
     fig1.subplots_adjust(bottom=ADJBOTTOM)
     fig1.subplots_adjust(right=ADJRIGHT)
     fig1.subplots_adjust(left=ADJLEFT)
@@ -536,7 +563,10 @@ if __name__ == '__main__':
     perfile = PERFILE
     
     for keyfile in KEYFILES:
-        multiplot_pumpper(pumpfile, perfile, keyfile, ERRORS, SAVEFIG, FIGNAME, YLIM, YLABEL, YLABELPER, FIGW, FIGH, FIGDPI, YAXISTICKS, YMIN, BARWIDTH, LINEWIDTH, FONTSIZE, LABELPADX, LABELPADY)
+        multiplot_pumpper(pumpfile, perfile, keyfile, ERRORS, SAVEFIG, FIGNAME, YLIM, YLABEL, 
+                YLABELPER, FIGW, FIGH, FIGDPI, YAXISTICKS, YMIN, BARWIDTH, LINEWIDTH, FONTSIZE, 
+                LABELPADX, LABELPADY)
 
-    multiplot_visc2(pumpfile, 'keyfile_v', ERRORS, SAVEFIG, FIGNAME, YLIM, YLABEL, FIGW, FIGH, FIGDPI, YAXISTICKS, YMIN, BARWIDTH, LINEWIDTH, FONTSIZE, LABELPADX, LABELPADY)
+    multiplot_visc2(pumpfile, 'keyfile_v', ERRORS, SAVEFIG, FIGNAME, YLIM, YLABEL, FIGW, FIGH, 
+            FIGDPI, YAXISTICKS, YMIN, BARWIDTH, LINEWIDTH, FONTSIZE, LABELPADX, LABELPADY)
 

@@ -352,10 +352,11 @@ def savebar(fname = 'bargraph'):
 
 
 
-def plotdata(dictdata, dictmeans, keylist, ptype, ylabel, ftitle, ymin=0, ylim=10, datac='b', meanc='r',
-bcolor='k', withleg='no', err='sterr', xd=1, xstart=0, xtoffset=0, end=1, titlesize='xx-large', xlabelsize='large'):
-    """Plots either a bar graph or a scatter plot using data from 'dictdata', with means taken from 'dictmeans' in the 
-    order specified by 'keylist'. 
+def plotdata(dictdata, dictmeans, keylist, ptype, ylabel, ftitle, ymin=0, ylim=10, datac='b', 
+        meanc='r', bcolor='k', withleg='no', err='sterr', xd=1, xstart=0, xtoffset=0, end=1, 
+        titlesize='xx-large', xlabelsize='large'):
+    """Plots either a bar graph or a scatter plot using data from 'dictdata', with means taken
+    from 'dictmeans' in the order specified by 'keylist'. 
     
     ptype = ['b' | 's']
         b: bar graph
@@ -375,9 +376,9 @@ bcolor='k', withleg='no', err='sterr', xd=1, xstart=0, xtoffset=0, end=1, titles
     xstart is the distance from zero to the first set of data points on the x-axis.
     xtoffset is the distance between the labels on the x-axis.
     
-    Start and xtoffset can be changed to provide the appropriate spacing for the data points along the 
-    x-axis. Also, if two sets of data are to be plotted using the same x-axis labels, start and 
-    xtoffset can be changed so that the two sets of data share the same labels.
+    Start and xtoffset can be changed to provide the appropriate spacing for the data points 
+    along the x-axis. Also, if two sets of data are to be plotted using the same x-axis labels,
+    start and xtoffset can be changed so that the two sets of data share the same labels.
     """
     
     i = keylist
@@ -408,7 +409,8 @@ bcolor='k', withleg='no', err='sterr', xd=1, xstart=0, xtoffset=0, end=1, titles
         dataxvals.extend(xv)
         
         # 'meanyvals' is a list of the mean values for each condition, 'meanstdev' is a list of 
-        # the standard deviations for each condition, and 'meansterr' is a list of the standard errors 
+        # the standard deviations for each condition, and 'meansterr' is a list of the standard 
+        # errors 
         # for each condition.
         mean, stdev, sterr, n, label = dictmeans[condition]
         meanyvals.append(mean)
@@ -432,9 +434,11 @@ bcolor='k', withleg='no', err='sterr', xd=1, xstart=0, xtoffset=0, end=1, titles
     
     if ptype == 'b':
         if err == 'sterr':
-            plt.bar(x_list, meanyvals, width=0.5, color=bcolor, yerr=meansterr, ecolor=bcolor, label=label)
+            plt.bar(x_list, meanyvals, width=0.5, color=bcolor, yerr=meansterr, ecolor=bcolor, 
+                    label=label)
         if err == 'stdev':
-            plt.bar(x_list, meanyvals, width=0.5, color=bcolor, yerr=meanstdev, ecolor=bcolor, label=label)
+            plt.bar(x_list, meanyvals, width=0.5, color=bcolor, yerr=meanstdev, ecolor=bcolor, 
+                    label=label)
         if err == 'none':
             plt.bar(x_list, meanyvals, width=0.5, color=bcolor, ecolor=bcolor, label=label)
         xtoffset = xtoffset + 0.25
@@ -529,10 +533,11 @@ def plot_phaseplot(dictdata, keys, autok, title, withn='yes'):
         plt.draw()
     
 
-def plotdata_ci(dictdata, dictpercent, keylist, ptype, ylabel, ftitle, ymin=-5, ylim=100, datac='b', meanc='r',
-bcolor='k', withleg='no', err='sterr', xd=1, xstart=0, xtoffset=0, end=1, titlesize='xx-large', xlabelsize='large'):
-    """Plots either a bar graph or a scatter plot using data from 'dictdata', with means taken from 'dictmeans' in the 
-    order specified by 'keylist'. 
+def plotdata_ci(dictdata, dictpercent, keylist, ptype, ylabel, ftitle, ymin=-5, ylim=100, 
+        datac='b', meanc='r', bcolor='k', withleg='no', err='sterr', xd=1, xstart=0, xtoffset=0,
+        end=1, titlesize='xx-large', xlabelsize='large'):
+    """Plots either a bar graph or a scatter plot using data from 'dictdata', with means taken 
+    from 'dictmeans' in the order specified by 'keylist'. 
     
     ptype = ['b' | 's']
         b: bar graph
@@ -582,8 +587,8 @@ bcolor='k', withleg='no', err='sterr', xd=1, xstart=0, xtoffset=0, end=1, titles
         dataxvals.extend(xv)
         
         # 'meanyvals' is a list of the mean values for each condition, 'meanstdev' is a list of 
-        # the standard deviations for each condition, and 'meansterr' is a list of the standard errors 
-        # for each condition.
+        # the standard deviations for each condition, and 'meansterr' is a list of the 
+        # standard errors for each condition.
         prop, lci, uci, nsuccess, n = dictpercent[condition] # num = # of successes; n = total
         prop, lci, uci, nsuccess, n = map(float, [prop, lci, uci, num, n])
         percent = 100*prop
@@ -640,8 +645,8 @@ bcolor='k', withleg='no', err='sterr', xd=1, xstart=0, xtoffset=0, end=1, titles
         #label + ', n = {0}'.format(n))
            
         # Plots the mean values and the error bar.
-        plt.errorbar(x_list, percentyvals, yerr=[lcivals,ucivals], mfc=meanc, mec=meanc, ecolor=meanc, ms=7, 
-            elinewidth=2, barsabove='True', capsize=8, fmt='o')
+        plt.errorbar(x_list, percentyvals, yerr=[lcivals,ucivals], mfc=meanc, mec=meanc, 
+                ecolor=meanc, ms=7, elinewidth=2, barsabove='True', capsize=8, fmt='o')
         
         #This line specifies the x and y limits; modify as needed.
         plt.axis([0.5, num+end, ymin, ylim])
@@ -781,9 +786,10 @@ def plot_phaseplot_lpf(dictdata, keys, autok, title, withn='yes'):
 
 
     
-#def plotdatac(dictdata, dictmeans, keylist, ptype, ylabel, ftitle, ymin=0, ylim=10, datac='b', meanc='r',
-#bcolor='k', withleg='no', xd=1, xstart=0, xtoffset=0, end=1, lw=1):
-    #"""Plots either a bar graph or a scatter plot using data from 'dictdata', with means taken from 'dictmeans' in the 
+#def plotdatac(dictdata, dictmeans, keylist, ptype, ylabel, ftitle, ymin=0, ylim=10, datac='b', 
+# meanc='r', bcolor='k', withleg='no', xd=1, xstart=0, xtoffset=0, end=1, lw=1):
+    #"""Plots either a bar graph or a scatter plot using data from 'dictdata', with means taken 
+    #from 'dictmeans' in the 
     #order specified by 'keylist'. 
     
     #ptype = ['b' | 's']
@@ -802,9 +808,9 @@ def plot_phaseplot_lpf(dictdata, keys, autok, title, withn='yes'):
     #xstart is the distance from zero to the first set of data points on the x-axis.
     #xtoffset is the distance between the labels on the x-axis.
     
-    #Start and xtoffset can be changed to provide the appropriate spacing for the data points along the 
-    #x-axis. Also, if two sets of data are to be plotted using the same x-axis labels, start and 
-    #xtoffset can be changed so that the two sets of data share the same labels.
+    #Start and xtoffset can be changed to provide the appropriate spacing for the data points 
+    #along the x-axis. Also, if two sets of data are to be plotted using the same x-axis labels, 
+    #start and xtoffset can be changed so that the two sets of data share the same labels.
     #"""
     
     #matplotlib.rc('grid', linewidth=2)
@@ -833,7 +839,8 @@ def plot_phaseplot_lpf(dictdata, keys, autok, title, withn='yes'):
         #dataxvals.extend(xv)
         
         ## 'meanyvals' is a list of the mean values for each condition, 'meanstdev' is a list of 
-        ## the standard deviations for each condition, and 'meansterr' is a list of the standard errors 
+        ## the standard deviations for each condition, and 'meansterr' is a list of the standard 
+        ## errors 
         ## for each condition.
         #mean, stdev, sterr, n, label = dictmeans[condition]
         #meanyvals.append(mean)
@@ -856,7 +863,8 @@ def plot_phaseplot_lpf(dictdata, keys, autok, title, withn='yes'):
         ##cond_list.append(formcondition)
     
     #if ptype == 'b':
-        #plt.bar(x_list, meanyvals, width=0.5, color=bcolor, yerr=sterr, ecolor=bcolor, label=label)
+        #plt.bar(x_list, meanyvals, width=0.5, color=bcolor, yerr=sterr, ecolor=bcolor, 
+        #label=label)
         #xtoffset = xtoffset + 0.25
         ##This line specifies the x and y limits; modify as needed.
         #plt.axis([0.5, num+1, ymin, ylim])
@@ -873,7 +881,8 @@ def plot_phaseplot_lpf(dictdata, keys, autok, title, withn='yes'):
         ##label + ', n = {0}'.format(n))
            
         ## Plots the mean values and the error bar.
-        #plt.errorbar(x_list, meanyvals, meansterr, mfc=meanc, mec=meanc, ecolor=meanc, ms=7, fmt='o')
+        #plt.errorbar(x_list, meanyvals, meansterr, mfc=meanc, mec=meanc, ecolor=meanc, ms=7, 
+        #fmt='o')
         
         ##This line specifies the x and y limits; modify as needed.
         #plt.axis([0.5, num+end, 0, ylim])
@@ -1079,7 +1088,8 @@ def gendict1val(fname):
 
 
 
-def plot_phase_freq(dictdata, title, ymin=0, ylim=8, datac='b', meanc='r', bcolor='k', withleg='no'):
+def plot_phase_freq(dictdata, title, ymin=0, ylim=8, datac='b', meanc='r', bcolor='k', 
+        withleg='no'):
     """Plots a scatter plot of phase vs. frequency for each condition.
     
     ylabel = label for the yaxis
@@ -1123,7 +1133,8 @@ def plot_phase_freq(dictdata, title, ymin=0, ylim=8, datac='b', meanc='r', bcolo
             #t.set_fontsize('medium') 
 
 
-def plot_phase_freq_oneplot(dictdata, keys, title, markersize, ymin=0, ylim=8, datac='b', meanc='r', bcolor='k', withleg='no'):
+def plot_phase_freq_oneplot(dictdata, keys, title, markersize, ymin=0, ylim=8, datac='b', 
+        meanc='r', bcolor='k', withleg='no'):
 
     colors = ['r', 'b', 'g', 'y', 'k']
     plt.suptitle(title, fontsize='x-large' )
@@ -1143,7 +1154,8 @@ def plot_phase_freq_oneplot(dictdata, keys, title, markersize, ymin=0, ylim=8, d
         
         #for datum in data[0]:
             #print(datum)
-        plt.scatter(xdata, ydata, c=datac, edgecolor=datac, marker='s', s=markersize, label=condition + '\n n=' + n)
+        plt.scatter(xdata, ydata, c=datac, edgecolor=datac, marker='s', s=markersize, 
+                label=condition + '\n n=' + n)
         
         #for datum in data[1:]:
             #plt.scatter(*datum, c=datac, marker='s')
@@ -1157,7 +1169,8 @@ def plot_phase_freq_oneplot(dictdata, keys, title, markersize, ymin=0, ylim=8, d
 
 
 def gendictgc(fname):
-    # Returns three dictionaries, one containing data for the peak deltaf/f, one for the area of the response, and one for the duration of the response.
+    # Returns three dictionaries, one containing data for the peak deltaf/f, one for the area of 
+    # the response, and one for the duration of the response.
     
     peakd = {}
     aread = {}
@@ -1166,8 +1179,10 @@ def gendictgc(fname):
     with open(fname) as f:
         f.next()
         for l in f: 
-            movie, tastant, fps, zmotion, neurons, peak, area, dur, dfthreshold = map(str.strip, l.split(','))
-            fps, zmotion, neurons, peak, area, dur, dfthreshold = map(float, [fps, zmotion, neurons, peak, area, dur, dfthreshold])
+            movie, tastant, fps, zmotion, neurons, peak, area, dur, dfthreshold = map(str.strip,
+                    l.split(','))
+            fps, zmotion, neurons, peak, area, dur, dfthreshold = map(float, [fps, zmotion, 
+                neurons, peak, area, dur, dfthreshold])
             
             ds = zip([peakd, aread, durd], [peak, area, dur])
             for d in ds:

@@ -270,7 +270,8 @@ class TraceData:
             for l in open(self.paramsfile):
                 coldict[l.split(',')[0]] = (l.split(',')[1].strip('\n'))
             
-            coldict['fps'], coldict['neurons'], coldict['zmotion'] = map(float, [coldict['fps'],coldict['neurons'], coldict['zmotion']])
+            coldict['fps'], coldict['neurons'], coldict['zmotion'] = map(float,
+                    [coldict['fps'],coldict['neurons'], coldict['zmotion']])
             coldict['stimfr'] = STIMSEC*coldict['fps']
             coldict['bgfr'] = (STIMSEC-BGSEC)*coldict['fps']
             fps = coldict['fps']
@@ -295,20 +296,26 @@ class TraceData:
             coldict['dff']['peaki'] = list(coldict['dff']['trace']).index(coldict['dff']['peak'])
             coldict['dff']['peakisec'] = coldict['dff']['peaki']/coldict['fps']
             
-            coldict['dff']['area'] = area(coldict['dff']['trace'], coldict['stimfr'], coldict['fps'], DFTHRESHOLD)
+            coldict['dff']['area'] = area(coldict['dff']['trace'], coldict['stimfr'],
+                    coldict['fps'], DFTHRESHOLD)
             
-            coldict['dff']['duration'] = duration(coldict['dff']['trace'], coldict['stimfr'], coldict['fps'], DFTHRESHOLD)
+            coldict['dff']['duration'] = duration(coldict['dff']['trace'], coldict['stimfr'], 
+                    coldict['fps'], DFTHRESHOLD)
             
             # Dictionary containing trace, peak value, area, and duration for convolved deltaf/f trace.
             coldict['dffc'] = {}
             
-            coldict['dffc']['trace'] = np.convolve(coldict['dff']['trace'], window(winlen_frames), 'same')
+            coldict['dffc']['trace'] = np.convolve(coldict['dff']['trace'], window(winlen_frames),
+                    'same')
             
-            coldict['dffc']['peak'] = peak(coldict['dffc']['trace'], coldict['stimfr'], coldict['fps'])
+            coldict['dffc']['peak'] = peak(coldict['dffc']['trace'], coldict['stimfr'],
+                    coldict['fps'])
             
-            coldict['dffc']['area'] = area(coldict['dffc']['trace'], coldict['stimfr'], coldict['fps'], DFTHRESHOLD)
+            coldict['dffc']['area'] = area(coldict['dffc']['trace'], coldict['stimfr'],
+                    coldict['fps'], DFTHRESHOLD)
             
-            coldict['dffc']['duration'] = duration(coldict['dffc']['trace'], coldict['stimfr'], coldict['fps'], DFTHRESHOLD)
+            coldict['dffc']['duration'] = duration(coldict['dffc']['trace'], coldict['stimfr'],
+                    coldict['fps'], DFTHRESHOLD)
             
             tracedict[roi] = coldict
         
@@ -351,10 +358,15 @@ def writemetrics(dict):
                 with open(summpath, 'w') as f:
                     f.write('Movie,Tastant,FPS,Zmotion,Neurons,Peak,Area,Dur,DFThreshold\n')
             
-            fps, zmotion, neurons, peakn, arean, durationn, dfthreshold = map(str, [dict[roi]['fps'], dict[roi]['zmotion'], dict[roi]['neurons'], dict[roi][x]['peak'], dict[roi][x]['area'], dict[roi][x]['duration'], DFTHRESHOLD])
+            fps, zmotion, neurons, peakn, arean, durationn, dfthreshold = map(str,
+                    [dict[roi]['fps'], dict[roi]['zmotion'], dict[roi]['neurons'],
+                        dict[roi][x]['peak'], dict[roi][x]['area'], dict[roi][x]['duration'],
+                        DFTHRESHOLD])
             
             with open(summpath, 'a') as f:
-                f.write(dict[roi]['name'] + ',' + dict[roi]['tastant'] + ',' + fps + ',' + zmotion + ',' + neurons + ',' + peakn + ',' + arean + ',' + durationn + ',' + dfthreshold + '\n')
+                f.write(dict[roi]['name'] + ',' + dict[roi]['tastant'] + ',' + fps + ','
+                        + zmotion + ',' + neurons + ',' + peakn + ',' + arean + ',' + durationn
+                        + ',' + dfthreshold + '\n')
 
 def batch_writemetrics():
     
@@ -403,9 +415,11 @@ def plotarea(k, fname, type='s', ymax=10):
     for tastant, values in d.iteritems():
         print(tastant, np.max(values))
     if type == 'b':
-        genplotlib.plotdata(d, md, k, 'b', 'intensity-seconds', 'Area under curve', 0, ymax, xlabelsize='medium')
+        genplotlib.plotdata(d, md, k, 'b', 'intensity-seconds', 'Area under curve', 0, ymax,
+                xlabelsize='medium')
     if type == 's':
-        genplotlib.plotdata(d, md, k, 's', 'Area under curve', 'Area under curve', 0, ymax+15, xlabelsize='medium')
+        genplotlib.plotdata(d, md, k, 's', 'Area under curve', 'Area under curve', 0, ymax+15,i
+                xlabelsize='medium')
 
 def plotdur(k, fname, type='s', ymax=30):
     plt.figure()

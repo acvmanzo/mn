@@ -9,7 +9,8 @@ import pickle
 import matplotlib as mpl
 
 # Plots raw traces on one graph from the movies specified below.
-# Run from the 'data' folder; in the 'data' folder are individual movie folders (similar to the experiment/data folders).
+# Run from the 'data' folder; in the 'data' folder are individual movie folders 
+# (similar to the experiment/data folders).
 
 # Same values as in dftf.py, but only plotting roi1.
 DFTSIZE=10000
@@ -52,7 +53,8 @@ XLIMHZ = 10
 LINEWIDTH = 0.75
 
 
-# Dictionary where the keys are the movie names and the values are the condition, the y offset of the trace (so that they aren't on top of each other), and the color the of the trace.
+# Dictionary where the keys are the movie names and the values are the condition, the y offset of
+# the trace (so that they aren't on top of each other), and the color the of the trace.
 
 #MOVIES = {'mov_20101130_200135': ['112648-GAL4', 32.5+1, 'k'], 'mov_20110803_190537': ['UAS-TNT', 14+1, 'b'], 'mov_20101213_193258': ['112648 x TNT', 0, 'r']}
 
@@ -66,18 +68,24 @@ LINEWIDTH = 0.75
 
 #MOVIES = {'mov_20110830_152007': ['24 h/100 mM suc', 70, 'k', '(i) '], 'mov_20110830_192926': ['10 h/100 mM suc', 45, 'k', '(ii) '], 'mov_20110901_182709' :['24 h/500 mM suc', 20, 'k', '(iii) '], 'mov_20110113_180524': ['500 mM suc + 2.5% MC', -1, 'k', '(iv) ']}
 
-MOVIES = {'mov_20110830_192926': ['10 h/100 mM suc', 70, 'k', '(i) '], 'mov_20110830_152007': ['24 h/100 mM suc', 45, 'k', '(ii) '], 'mov_20110901_182709' :['24 h/500 mM suc', 20, 'k', '(iii) '], 'mov_20110113_180524': ['24 h/500 mM suc + 2.5% MC', -1, 'k', '(iv) ']}
+MOVIES = {'mov_20110830_192926': ['10 h/100 mM suc', 70, 'k', '(i) '], 
+'mov_20110830_152007': ['24 h/100 mM suc', 45, 'k', '(ii) '], 
+'mov_20110901_182709' :['24 h/500 mM suc', 20, 'k', '(iii) '], 
+'mov_20110113_180524': ['24 h/500 mM suc + 2.5% MC', -1, 'k', '(iv) ']}
 
 matplotlib.rc('axes', linewidth=LINEWIDTH)
 
 
-def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, ylim, time, ymin, lw):
+def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, ylim, time, ymin, 
+        lw):
     
-    """Moviedict is the above dictionary of movies, toplotdict is a dictionary produced by toplot(), and other values are what's specified as global variables."""
+    """Moviedict is the above dictionary of movies, toplotdict is a dictionary produced by 
+    toplot(), and other values are what's specified as global variables."""
     print(toplotdict.keys())
     
     fontv = mpl.font_manager.FontProperties()
-    # Uncomment line below to set the font to verdana; the default matplotlib font is very similar (just slightly narrower).
+    # Uncomment line below to set the font to verdana; the default matplotlib font is very 
+    # similar (just slightly narrower).
     fontv = mpl.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/arial.ttf')
     fontv.set_size(fontsz)
     
@@ -95,14 +103,18 @@ def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, y
         plt.plot(xvals, data, color, linewidth=lw, label=condition)
         print(condition)
         #if k == 'mov_20110113_180524':
-            #plt.text(0.5, offset+7, inum+condition, horizontalalignment='left', fontproperties=fontv)
+            #plt.text(0.5, offset+7, inum+condition, horizontalalignment='left', 
+            #fontproperties=fontv)
         #else:
-            #plt.text(0.5, offset+9, inum+condition, horizontalalignment='left', fontproperties=fontv)
+            #plt.text(0.5, offset+9, inum+condition, horizontalalignment='left', 
+            #fontproperties=fontv)
         
         if k == 'mov_20110113_180524':
-            plt.text(0.05, offset+7, inum+condition, horizontalalignment='left', fontproperties=fontv)
+            plt.text(0.05, offset+7, inum+condition, horizontalalignment='left', 
+                    fontproperties=fontv)
         else:
-            plt.text(0.05, offset+9, inum+condition, horizontalalignment='left', fontproperties=fontv)
+            plt.text(0.05, offset+9, inum+condition, horizontalalignment='left', 
+                    fontproperties=fontv)
 
     ax = plt.gca()
 
@@ -145,7 +157,8 @@ def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, y
     # Specifies axis limits.
     plt.axis( [0, time, ymin, ylim])
     
-    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower 
+    #lefthand corner of the figure.
     fig1.subplots_adjust(top=0.95)
     fig1.subplots_adjust(left=0.15)
     #fig1.subplots_adjust(right=0.95)
@@ -153,7 +166,8 @@ def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, y
     
 
 def gentoplot(time):
-    """Generates a dictionary where the keys are movie names and the values are the raw trace for plotting. Time specifies the length of time in seconds of the plots shown."""
+    """Generates a dictionary where the keys are movie names and the values are the raw trace for
+    plotting. Time specifies the length of time in seconds of the plots shown."""
     
     toplot = {}
 
@@ -214,7 +228,8 @@ def gentoplot_dft(xlimhz):
                 prop = xlimhz/(td['fps']/2)
                 tracelen = np.rint(prop*len(td['dftnormtrunctrace']))
                 
-                toplot[td['moviename']] = [xpoints[:tracelen], td['dftnormtrunctrace'][:tracelen], condition]
+                toplot[td['moviename']] = [xpoints[:tracelen], 
+                        td['dftnormtrunctrace'][:tracelen], condition]
     
     return(toplot)
 
@@ -238,7 +253,8 @@ if TYPE == 'dft':
 
 if TYPE == 'raw':
     toplot = gentoplot(TIME)
-    oneplot(MOVIES, toplot, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, YLABEL, YLIM, TIME, YMIN, LINEWIDTH)
+    oneplot(MOVIES, toplot, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, YLABEL, YLIM, TIME, YMIN, 
+            LINEWIDTH)
 
     # Saves the figures in plots/plots.
     plotfolder = os.path.join(os.path.dirname(os.path.abspath('../')), 'plots')

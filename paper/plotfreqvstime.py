@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
-# This script plots frequency vs. time plots, one for each movie, using scripts in mn/gof/freqvstime.py
+# This script plots frequency vs. time plots, one for each movie, using scripts in
+#mn/gof/freqvstime.py
 # Run from the 'phase_analysis/ifiles' folder.
 
 import sys
@@ -26,7 +27,8 @@ YAXISTICKS = 5
 XAXISTICKS = 4
 TIME = 8
 WINDOWSEC = 1
-PLOTFOLDER = '/home/andrea/Documents/lab/motor_neurons/gof/dtrpa1/pooled_112648_dtrpa1/sample_traces/conv_plots'
+PLOTFOLDER = \
+'/home/andrea/Documents/lab/motor_neurons/gof/dtrpa1/pooled_112648_dtrpa1/sample_traces/conv_plots'
 
 
 
@@ -37,18 +39,28 @@ print('Plotting traces')
 COLS= ['Mean1']
 ROIS = ['roi1']
 
-#MOVIES = {'mov_20101130_200533': ['control',45, 'k'], 'mov_20110518_195501': ['UAS-dtrpa1 - 32', 30, 'b'], 'mov_20110527_163607_part2' :['112648 x dtrpa1 - 32', 15, '#FF6A00'], 'mov_20110518_192012': ['112648 x dtrpa1 - 32', -5, 'r']}
+#MOVIES = {'mov_20101130_200533': ['control',45, 'k'],
+#'mov_20110518_195501': ['UAS-dtrpa1 - 32', 30, 'b'],
+#'mov_20110527_163607_part2' :['112648 x dtrpa1 - 32', 15, '#FF6A00'],
+#'mov_20110518_192012': ['112648 x dtrpa1 - 32', -5, 'r']}
 
-#MOVIES = {'mov_20101130_200533': ['control', 45, 'k'], 'mov_20110518_195501': ['UAS-dtrpa1 - 32', 30, 'b'], 'mov_20110527_163607_part2' :['112648 x dtrpa1 - 32', 15, '#FF6A00'], 'mov_20110518_192012': ['112648 x dtrpa1 - 32', -5, 'r'], 'mov_20110518_184849': ['112648 x dtrpa1 - 32', 0, 'r']}
+#MOVIES = {'mov_20101130_200533': ['control', 45, 'k'], 
+#'mov_20110518_195501': ['UAS-dtrpa1 - 32', 30, 'b'],
+#'mov_20110527_163607_part2' :['112648 x dtrpa1 - 32', 15, '#FF6A00'],
+#'mov_20110518_192012': ['112648 x dtrpa1 - 32', -5, 'r'],
+#'mov_20110518_184849': ['112648 x dtrpa1 - 32', 0, 'r']}
+
+MOVIES = {'mov_20110517_181356': ['control', 67, 'k', '(i) '],
+'mov_20110518_195501': ['UAS-dtrpa1 - 32', 45, 'k', '(ii) '],
+'mov_20110527_163607_part2' :['112648 x dtrpa1 - 32', 20, '#B52634', '(iii) '],
+'mov_20110518_192012': ['112648 x dtrpa1 - 32', -7, '#B52634', '(iv) ']}
 
 
-MOVIES = {'mov_20110517_181356': ['control', 67, 'k', '(i) '], 'mov_20110518_195501': ['UAS-dtrpa1 - 32', 45, 'k', '(ii) '], 'mov_20110527_163607_part2' :['112648 x dtrpa1 - 32', 20, '#B52634', '(iii) '], 'mov_20110518_192012': ['112648 x dtrpa1 - 32', -7, '#B52634', '(iv) ']}
-
-
-
-def plotfvt_paper(moviedict, figw, figh, figdpi, fontsz, ylim, border, ylabel, yaxisticks, xaxisticks, ymin):
+def plotfvt_paper(moviedict, figw, figh, figdpi, fontsz, ylim, border, ylabel, yaxisticks, 
+        xaxisticks, ymin):
     
-    os.chdir('/home/andrea//Documents/lab/motor_neurons/gof/dtrpa1/pooled_112648_dtrpa1/sample_traces/phase_analysis/ifiles')
+    os.chdir('/home/andrea//Documents/lab/motor_neurons/gof/dtrpa1/pooled_112648_dtrpa1/'+
+            'sample_traces/phase_analysis/ifiles')
     
     d = ft.min_idict()
     e = ft.min_frames(d, TIME)
@@ -110,7 +122,8 @@ def plotfvt_paper(moviedict, figw, figh, figdpi, fontsz, ylim, border, ylabel, y
         ## Removes tick labels and ticks from xaxis.
         #ax.axes.xaxis.set_major_locator(matplotlib.ticker.NullLocator())
         
-        # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+        # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower
+        #lefthand corner of the figure.
         fig1.subplots_adjust(bottom=0.23)
         fig1.subplots_adjust(left=0.17)
         fig1.subplots_adjust(right=0.95)
@@ -136,12 +149,14 @@ def plotfvt_paper(moviedict, figw, figh, figdpi, fontsz, ylim, border, ylabel, y
 
 
 
-#Run from the 'phase_analysis/ifiles' folder; in the 'data' folder are individual movie folders (similar to the experiment/data folders).
+#Run from the 'phase_analysis/ifiles' folder; in the 'data' folder are individual movie folders
+#(similar to the experiment/data folders).
 
 matplotlib.rc('axes', linewidth=0.75)
 
 # Generates dft traces and plots for each roi in each movie.
-plotfvt_paper(MOVIES, FIGW, FIGH, FIGDPI, FONTSIZE, YLIM, BORDER, YLABEL, YAXISTICKS, XAXISTICKS, YMIN)
+plotfvt_paper(MOVIES, FIGW, FIGH, FIGDPI, FONTSIZE, YLIM, BORDER, YLABEL, YAXISTICKS, XAXISTICKS,
+        YMIN)
 
 #ft.genf1dict()
 

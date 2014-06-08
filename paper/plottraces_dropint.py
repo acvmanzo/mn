@@ -1,7 +1,8 @@
 #! /usr/bin/env python
 
 # 
-# Run from the 'data_intensity' folder; in this folder are individual movie folders (similar to the experiment/data folders).
+#Run from the 'data_intensity' folder; in this folder are individual movie folders (similar to 
+#the experiment/data folders).
 
 import sys
 import os
@@ -35,11 +36,16 @@ FS = 60
 print('Plotting traces')    
 
 
-MOVIES = {'mov_20110313_181051': ['MN11 x TNT', 0.6, 'k', '(i) '], 'mov_20110313_192534': ['MN11-GAL4', 0.4, 'k', '(ii) '], 'mov_20110313_195959': ['UAS-TNT', 0.4, 'k', '(iii) '], 'mov_20110316_195256': ['UAS-TNT', 0.4, 'k', '(iii) ']}
+MOVIES = {'mov_20110313_181051': ['MN11 x TNT', 0.6, 'k', '(i) '], 
+'mov_20110313_192534': ['MN11-GAL4', 0.4, 'k', '(ii) '], 
+'mov_20110313_195959': ['UAS-TNT', 0.4, 'k', '(iii) '], 
+'mov_20110316_195256': ['UAS-TNT', 0.4, 'k', '(iii) ']}
 
 
-def plottrace_paper(moviedict, figw, figh, figdpi, fontsz, border, xlabel, ylabel, yaxisticks, xaxisticks, labels, lw, fs):
-    """Plots the first half of the normalized and truncated dft trace; td is a dictionary generated using method TraceData.Processrawtrace."""
+def plottrace_paper(moviedict, figw, figh, figdpi, fontsz, border, xlabel, ylabel, yaxisticks, 
+        xaxisticks, labels, lw, fs):
+    """Plots the first half of the normalized and truncated dft trace; td is a dictionary 
+    generated using method TraceData.Processrawtrace."""
     
     for movie, val in moviedict.iteritems():
         os.chdir(movie)
@@ -119,7 +125,8 @@ def plottrace_paper(moviedict, figw, figh, figdpi, fontsz, border, xlabel, ylabe
             plt.ylabel(ylabel, fontsize=fontsz, labelpad=12)
             fig1.figsize = (6, 3)
             
-        # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+        # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower 
+        #lefthand corner of the figure.
         fig1.subplots_adjust(bottom=0.3)
         fig1.subplots_adjust(left=0.05)
         fig1.subplots_adjust(right=0.95)
@@ -138,7 +145,8 @@ def plottrace_paper(moviedict, figw, figh, figdpi, fontsz, border, xlabel, ylabe
         
         # Saves the figures in plots/plots.
         if labels == 'no':
-            plotfolder = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath('.'))), 'plots')
+            plotfolder = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath('.'))),
+                    'plots')
             makenewdir(plotfolder)
             figname = os.path.join(plotfolder, movie + '_trace_nolab')
             plt.savefig(figname+'.svg', dpi=FIGDPI, format='svg')
@@ -146,7 +154,8 @@ def plottrace_paper(moviedict, figw, figh, figdpi, fontsz, border, xlabel, ylabe
             os.chdir('../')
 
         if labels == 'yes':
-            plotfolder = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath('.'))), 'plots')
+            plotfolder = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath('.'))),
+                    'plots')
             makenewdir(plotfolder)
             figname = os.path.join(plotfolder, movie + '_trace')
             plt.savefig(figname+'.svg', dpi=FIGDPI, format='svg')
@@ -163,7 +172,8 @@ files = dftf.batch_s('.')
 
 # Generates dft traces and plots for each roi in each movie.
 
-plottrace_paper(MOVIES, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, XLABEL, YLABEL, YAXISTICKS, XAXISTICKS, LABELS, LINEWIDTH, FS)
+plottrace_paper(MOVIES, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, XLABEL, YLABEL, YAXISTICKS,
+        XAXISTICKS, LABELS, LINEWIDTH, FS)
     
 os.chdir('../')
 

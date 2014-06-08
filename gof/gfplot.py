@@ -294,7 +294,8 @@ def plotcibdata_noci(keyfile='keylist', fname='cib_pumps.txt', type='b'):
     #keylist = sorted(pcib.keys())
     keylist = cmn.load_keys(keyfile)
 
-    fig1 = genplotlib.plotdata(cib, cibdict, keylist, type, ylabel='%', ftitle='Percentage of flies with open' + ' cibariums', ylim=100, ymin=-2)
+    fig1 = genplotlib.plotdata(cib, cibdict, keylist, type, ylabel='%',
+            ftitle='Percentage of flies with open' + ' cibariums', ylim=100, ymin=-2)
     fig1.subplots_adjust(bottom=0.45)
 
 
@@ -304,7 +305,8 @@ def plotcibdata_ci(fname, gname, keyfile='keylist', type='b'):
     cibpercent = genpercent_ci(gname)
     keylist = cmn.load_keys(keyfile)
     
-    fig1 = genplotlib.plotdata_ci(cibpoints, cibpercent, keylist, type, '%', ftitle='Percentage of flies with open' + ' cibariums', ylim=100, ymin=-2)
+    fig1 = genplotlib.plotdata_ci(cibpoints, cibpercent, keylist, type, '%',
+            ftitle='Percentage of flies with open' + ' cibariums', ylim=100, ymin=-2)
     fig1.subplots_adjust(bottom=0.45)
     
 
@@ -316,8 +318,8 @@ def plotpumpdata(keyfile='keylist', fname='cib_pumps.txt', type='b', ylim=40):
     #keylist = sorted(mpumps.keys())
     keylist = cmn.load_keys(keyfile)
     
-    fig1 = genplotlib.plotdata(pumps, mpumps, keylist, type, ylabel='# of pumps', ftitle = 'Number of ' 
-    + 'pumps over 30 seconds', ylim=ylim, ymin=-2)
+    fig1 = genplotlib.plotdata(pumps, mpumps, keylist, type, ylabel='# of pumps',
+            ftitle = 'Number of ' + 'pumps over 30 seconds', ylim=ylim, ymin=-2)
     fig1.subplots_adjust(bottom=0.45)
 
 
@@ -406,7 +408,8 @@ def checkmaxmin(droi):
 
         maxsurr, maxwinlen, maxtrshift, minsurr, minwinlen, mintrshift = droi[roi]
         
-        dmax, dmin = peaklib.maxminanalysis(rawdata, maxsurr, maxwinlen, maxtrshift, minsurr, minwinlen, mintrshift)
+        dmax, dmin = peaklib.maxminanalysis(rawdata, maxsurr, maxwinlen, maxtrshift, minsurr,
+                minwinlen, mintrshift)
         
         d[roi+'_dmax'] = dmax
         d[roi+'_dmin'] = dmin

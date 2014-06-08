@@ -14,8 +14,10 @@ import mn.lof.droparealib as dal
 import mn.dftf.dftf as dftf
 
 #NAME = '112648'
-#EXPTS = ['2010-1130_tnt_180f', '2010-1201_113990_tnt_180f', '2010-1210_tnt_180f', '2010-1213_tnt_180f']
-#EXPTS = ['2010-1130_112648_tnt_probend', '2010-1201_113990_tnt_probend', '2010-1210_113990_tnt_probend', '2010-1213_112648_tnt_probend']
+#EXPTS = ['2010-1130_tnt_180f', '2010-1201_113990_tnt_180f', '2010-1210_tnt_180f', 
+#'2010-1213_tnt_180f']
+#EXPTS = ['2010-1130_112648_tnt_probend', '2010-1201_113990_tnt_probend', 
+#'2010-1210_113990_tnt_probend', '2010-1213_112648_tnt_probend']
 
 #NAME = '423'
 ##EXPTS = ['2011-0329_423_tnt_180f', '2011-0331_423_tnt_180f', '2011-0406_423_tnt_180f']
@@ -47,7 +49,8 @@ def bg_key(p_peakf_file, keyfile, roi):
     for k in keylist:
         dictdata2[k] = dictdata[k]
     
-    genplotlib.plotdata(dictdata2, dictmeans, keylist, 'b', ylabel='Hz', ftitle='Mean pumping frequency', xlabelsize = 'medium')
+    genplotlib.plotdata(dictdata2, dictmeans, keylist, 'b', ylabel='Hz', 
+            ftitle='Mean pumping frequency', xlabelsize = 'medium')
     plt.savefig('pooled_dftf_freq_bar_'+roi)
     
 def plotandsavepooledbargraph(p_peakf_file, roi):
@@ -145,7 +148,8 @@ def plotpixpersec(capfile):
     p = pcapm.gendictpps(capfile)
     mp = pcapm.genlist(p)
     k = p.keys()
-    genplotlib.plotdata(p, mp, k, 's', 'pix/sec', 'Amount consumed \n pixels/sec', ylim=10, titlesize='x-large', xlabelsize='medium', xstart=0.25)
+    genplotlib.plotdata(p, mp, k, 's', 'pix/sec', 'Amount consumed \n pixels/sec', ylim=10, 
+            titlesize='x-large', xlabelsize='medium', xstart=0.25)
     plt.savefig('pooled_cap_pixpersec')
     plt.close()
 
@@ -153,7 +157,8 @@ def plotnlpersec(capfile):
     n = pcapm.gendictnps(capfile)
     mn = pcapm.genlist(n)
     l = n.keys()
-    genplotlib.plotdata(n, mn, l, 's', 'nL/sec', 'Amount consumed \n nL/sec', ylim=10, titlesize='x-large', xlabelsize='medium', xstart=0.25)
+    genplotlib.plotdata(n, mn, l, 's', 'nL/sec', 'Amount consumed \n nL/sec', ylim=10, 
+            titlesize='x-large', xlabelsize='medium', xstart=0.25)
     plt.savefig('pooled_cap_nlpersec')
     #plt.show()
 
@@ -449,8 +454,10 @@ def pool_probendarea_results(datafol, expts):
 if __name__ == '__main__':
     # Start from main pooled folder.
     
-    #condcurr = ['500 mM + 2% mc', '500 mM', '24 hours/500 mM sucrosews', '10h/100 mM sucrose', '1 M sucrose', '2 M sucrose']
-    #condnew = ['2% MC', '0% MC', '24 hours/500 mM sucrose', '10 hours/100 mM sucrose', '1 M', '2 M']
+    #condcurr = ['500 mM + 2% mc', '500 mM', '24 hours/500 mM sucrosews', '10h/100 mM sucrose', 
+    #'1 M sucrose', '2 M sucrose']
+    #condnew = ['2% MC', '0% MC', '24 hours/500 mM sucrose', '10 hours/100 mM sucrose', '1 M', 
+    #'2 M']
 
     
     homefol = os.path.abspath('.')
@@ -460,21 +467,24 @@ if __name__ == '__main__':
     #os.chdir(pumpfol)
     #pf = pool_dftf_results()
     #print(pf)
-    #os.system('python ~/python/mn/paper/plotfreqfile.py {0} {1} {2} {3}'.format(pf, '../keylist', NAME + '_freq.png', NAME + '_freq_means.txt'))
+    #os.system('python ~/python/mn/paper/plotfreqfile.py {0} {1} {2} {3}'.format(pf, 
+    #'../keylist', NAME + '_freq.png', NAME + '_freq_means.txt'))
     
     #print('Pooling cap data')
     #os.chdir(homefol)
     #capfol = cmn.makenewdir('capdata')
     #os.chdir(capfol)
     #pf = pool_cap_results()
-    #os.system('python ~/python/mn/paper/plotcapfile.py {0} {1} {2} {3}'.format(pf, '../keylist', NAME + '_capdata.png', NAME + '_capdata_means.txt'))
+    #os.system('python ~/python/mn/paper/plotcapfile.py {0} {1} {2} {3}'.format(pf,
+    #'../keylist', NAME + '_capdata.png', NAME + '_capdata_means.txt'))
     
     #print('Pooling volperpump data')
     #os.chdir(homefol)
     #volppfol = cmn.makenewdir('volperpump')
     #os.chdir(volppfol)
     #pf = pool_volperpump_results()
-    #os.system('python ~/python/mn/paper/plotvolperpumpfile.py {0} {1} {2} {3}'.format(pf, '../keylist', NAME + '_volperpump.png', NAME + '_volperpump_means.txt'))
+    #os.system('python ~/python/mn/paper/plotvolperpumpfile.py {0} {1} {2} {3}'.format(pf,
+    #'../keylist', NAME + '_volperpump.png', NAME + '_volperpump_means.txt'))
     
     print('Pooling deltatime data')
     os.chdir(homefol)
@@ -487,7 +497,8 @@ if __name__ == '__main__':
     for c in files_fol:
         os.chdir(c[1])
         print(c)
-        os.system('python ~/python/mn/paper/plotdeltatimefile.py {0} {1} {2} {3}'.format(c[0], '../keyfile_v', NAME + '_{0}.png'.format(c[1]), NAME + '_{0}_means.txt'.format(c[1]))) 
+        os.system('python ~/python/mn/paper/plotdeltatimefile.py {0} {1} {2} {3}'.format(c[0],
+            '../keyfile_v', NAME + '_{0}.png'.format(c[1]), NAME + '_{0}_means.txt'.format(c[1]))) 
         os.chdir('../')
    
     #print('Pooling cibarea data')
@@ -502,11 +513,13 @@ if __name__ == '__main__':
     #name = (os.path.basename(os.getcwd())).split('_')[1]
     
     #if name == '112648':
-        #expts = ['2010-1130_112648_tnt_probend', '2010-1201_113990_tnt_probend', '2010-1210_113990_tnt_probend', '2010-1213_112648_tnt_probend']
+        #expts = ['2010-1130_112648_tnt_probend', '2010-1201_113990_tnt_probend',
+        #'2010-1210_113990_tnt_probend', '2010-1213_112648_tnt_probend']
     
 
     #if name == '423':
-        #expts = ['2011-0329_423_tnt_probend', '2011-0331_423_tnt_probend', '2011-0406_423_tnt_probend']
+        #expts = ['2011-0329_423_tnt_probend', '2011-0331_423_tnt_probend',
+        #'2011-0406_423_tnt_probend']
     
 
     #if name == '112204':

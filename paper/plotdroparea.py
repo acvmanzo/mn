@@ -14,11 +14,13 @@ print(os.path.basename(os.getcwd()))
 name = (os.path.basename(os.getcwd())).split('_')[1]
 
 if name == '112648':
-    expts = ['2010-1130_112648_tnt_probend', '2010-1201_113990_tnt_probend', '2010-1210_113990_tnt_probend', '2010-1213_112648_tnt_probend']
+    expts = ['2010-1130_112648_tnt_probend', '2010-1201_113990_tnt_probend',
+            '2010-1210_113990_tnt_probend', '2010-1213_112648_tnt_probend']
     POINTS = 2
 
 if name == '423':
-    expts = ['2011-0329_423_tnt_probend', '2011-0331_423_tnt_probend', '2011-0406_423_tnt_probend']
+    expts = ['2011-0329_423_tnt_probend', '2011-0331_423_tnt_probend',
+            '2011-0406_423_tnt_probend']
     POINTS = 3
 
 if name == '112204':
@@ -96,13 +98,9 @@ def plotmeanspaper(meanpointsdict, withyticks):
         
         
         
-        plt.errorbar(x, y, yerr=stderr, xerr=None, elinewidth=0.75, mfc=color, mec=color, ecolor=color, barsabove='True', capsize=2, fmt='o', ms=2.5, label=condleg)
+        plt.errorbar(x, y, yerr=stderr, xerr=None, elinewidth=0.75, mfc=color, mec=color,
+                ecolor=color, barsabove='True', capsize=2, fmt='o', ms=2.5, label=condleg)
         
-        
-    
-    
-    
-    
     plt.xticks(np.arange(POINTS+1), fontproperties=fontv)
     
     if withyticks == 'yes':    
@@ -111,7 +109,8 @@ def plotmeanspaper(meanpointsdict, withyticks):
         plt.xlabel('Pump number', fontproperties=fontv)
         plt.ylabel('Area ('r'mm$^2$)', fontproperties=fontv)
         
-        legend = plt.legend(loc='upper right', bbox_to_anchor = (1.5, 1.6), markerscale=0.1, numpoints=1, labelspacing=0.1)
+        legend = plt.legend(loc='upper right', bbox_to_anchor = (1.5, 1.6), markerscale=0.1,
+                numpoints=1, labelspacing=0.1)
         ltext  = legend.get_texts()
         plt.setp(ltext, fontproperties=fonti)
         # Removes border around the legend.
@@ -143,19 +142,12 @@ def plotmeanspaper(meanpointsdict, withyticks):
         ax.yaxis.set_ticklabels([''])
     
     
-    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower
+    #lefthand corner of the figure.
     fig1.subplots_adjust(bottom=0.23)
     fig1.subplots_adjust(left=0.17)
     fig1.subplots_adjust(right=0.95)
     
-
-    
-    
-
-
-
-
-
 
 ad, pd, pdd, md, sd, asd = pool_probendarea_results('data_area_liquid', expts)
 os.chdir(probendpath)

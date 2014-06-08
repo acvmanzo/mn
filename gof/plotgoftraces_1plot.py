@@ -8,7 +8,8 @@ import matplotlib
 import pickle
 
 # Plots raw traces on one graph from the movies specified below.
-# Run from the 'data' folder; in the 'data' folder are individual movie folders (similar to the experiment/data folders).
+# Run from the 'data' folder; in the 'data' folder are individual movie folders (similar to the
+# experiment/data folders).
 
 # Same values as in dftf.py, but only plotting roi1.
 DFTSIZE=10000
@@ -53,18 +54,25 @@ XLIMHZ = 10
 
 
 
-# Dictionary where the keys are the movie names and the values are the condition, the y offset of the trace (so that they aren't on top of each other), and the color the of the trace.
+# Dictionary where the keys are the movie names and the values are the condition, the y offset of
+# the trace (so that they aren't on top of each other), and the color the of the trace.
 
 #MOVIES = {'mov_20101130_200135': ['112648-GAL4', 32.5+1, 'k'], 'mov_20110803_190537': ['UAS-TNT', 14+1, 'b'], 'mov_20101213_193258': ['112648 x TNT', 0, 'r']}
 
-DFT_MOVIES = {'mov_20101130_200135': ['112648-GAL4', 3.1-0.25, 'k'], 'mov_20110803_190537': ['UAS-TNT', 1.8-0.25, 'b'], 'mov_20101213_193258': ['112648 x TNT', 0.25, 'r']}
+DFT_MOVIES = {'mov_20101130_200135': ['112648-GAL4', 3.1-0.25, 'k'],
+'mov_20110803_190537': ['UAS-TNT', 1.8-0.25, 'b'],
+'mov_20101213_193258': ['112648 x TNT', 0.25, 'r']}
 
-MOVIES = {'mov_20110518_184507': ['184507', 150, 'k'], 'mov_20110518_185105': ['185105', 50, 'r'], 'mov_20110518_184217': ['184217', 100, 'y'], 'mov_20110518_184849': ['184849', 0, 'b']}
+MOVIES = {'mov_20110518_184507': ['184507', 150, 'k'],
+'mov_20110518_185105': ['185105', 50, 'r'],
+'mov_20110518_184217': ['184217', 100, 'y'],
+'mov_20110518_184849': ['184849', 0, 'b']}
 
 
 def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, ylim, time, ymin):
     
-    """Moviedict is the above dictionary of movies, toplotdict is a dictionary produced by toplot(), and other values are what's specified as global variables."""
+    """Moviedict is the above dictionary of movies, toplotdict is a dictionary produced by
+    toplot(), and other values are what's specified as global variables."""
     
     fig1 = plt.figure(figsize=(figw, figh), dpi=figdpi, facecolor='w', edgecolor='k')
     
@@ -118,14 +126,16 @@ def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, y
     # Specifies axis limits.
     plt.axis( [0, time, ymin, ylim])
     
-    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand
+    # corner of the figure.
     #fig1.subplots_adjust(top=0.8)
     #fig1.subplots_adjust(left=0.15)
     #fig1.subplots_adjust(right=0.95)
     
 
 def gentoplot(time):
-    """Generates a dictionary where the keys are movie names and the values are the raw trace for plotting. Time specifies the length of time in seconds of the plots shown."""
+    """Generates a dictionary where the keys are movie names and the values are the raw trace for
+    plotting. Time specifies the length of time in seconds of the plots shown."""
     
     toplot = {}
 

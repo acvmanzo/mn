@@ -5,14 +5,15 @@ import time
 import math
 
 def hmsub(trace):
-    """Mean-subtracts and then multiplies a trace (a numpy array) with a Hamming function of the same size as the 
-    trace."""
+    """Mean-subtracts and then multiplies a trace (a numpy array) with a 
+    Hamming function of the same size as the trace."""
     
     return(np.hamming(np.size(trace))*(trace - np.mean(trace)))
 
 
 def makenewdir(newdir):
-    """Makes the new directory 'newdir' without raising an exception if 'newdir' already exists."""
+    """Makes the new directory 'newdir' without raising an exception if 
+    'newdir' already exists."""
     
     try:
         os.makedirs(newdir)
@@ -26,13 +27,15 @@ def var_str(name, value):
 
 
 def batch(fn_name, ftype, params, fdir='.'):
-    """Carries out the function 'fn_name' recursively on files with extension 'itype' (e.g., 'jpg' or '*') in directory 'fdir'.
+    """Carries out the function 'fn_name' recursively on files with extension 
+    'itype' (e.g., 'jpg' or '*') in directory 'fdir'.
     """
     
   
     os.chdir(fdir)
     names = glob.iglob('*{0}'.format(ftype))
-    # Absolute path rather than relative path allows changing of directories in fn_name.
+    # Absolute path rather than relative path allows changing of directories
+    # in fn_name.
     names = [os.path.abspath(name) for name in names]
     names = sorted(names)
     for name in names:

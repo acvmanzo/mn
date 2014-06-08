@@ -8,7 +8,8 @@ DATA = sys.argv[1]
 
 KEYFILE = 'keylist'
 #DATA = 'freq' # Choose 'capdata', 'freq'
-ERRORS = 'stderr' # Determines whether error bars delineate standard error (stderr) or standard deviation (stdev)
+ERRORS = 'stderr' # Determines whether error bars delineate standard error (stderr) or
+#standard deviation (stdev)
 SAVEFIG = 'yes'
 BORDER = 'no' # Whether the top and right splines (borders) are drawn.
 FIGDPI = 600
@@ -149,4 +150,5 @@ if DATA == 'cibareacirc':
 
 
 if True:
-    multiplot(DATA, FNAME, KEYFILE, ERRORS, SAVEFIG, FIGNAME, YLIM, BORDER, YLABEL, FONTSIZE, FIGW, FIGH, FIGDPI, YAXISTICKS, YMIN, BARWIDTH, BARNUM, LINEWIDTH)
+    multiplot(DATA, FNAME, KEYFILE, ERRORS, SAVEFIG, FIGNAME, YLIM, BORDER, YLABEL, FONTSIZE,
+            FIGW, FIGH, FIGDPI, YAXISTICKS, YMIN, BARWIDTH, BARNUM, LINEWIDTH)

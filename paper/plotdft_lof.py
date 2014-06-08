@@ -1,7 +1,8 @@
 #! /usr/bin/env python
 
 # This script plots sample dft plots, one for each movie.
-# Run from the 'data' folder; in the 'data' folder are individual movie folders (similar to the experiment/data folders).
+# Run from the 'data' folder; in the 'data' folder are individual movie folders (similar to the
+# experiment/data folders).
 
 import sys
 import os
@@ -41,13 +42,19 @@ COLS= ['Mean1']
 ROIS = ['roi1']
 
 
-#DFT_MOVIES = {'mov_20101130_200135': ['112648-GAL4', 32.5+1, 'k', '(i) '], 'mov_20110803_190537': ['UAS-TNT', 14+1, 'k', '(ii) '], 'mov_20101213_193258': ['112648 x TNT', 0, '#B52634', '(iii) ']}
+#DFT_MOVIES = {'mov_20101130_200135': ['112648-GAL4', 32.5+1, 'k', '(i) '],
+#'mov_20110803_190537': ['UAS-TNT', 14+1, 'k', '(ii) '],
+#'mov_20101213_193258': ['112648 x TNT', 0, '#B52634', '(iii) ']}
 
-DFT_MOVIES = {'mov_20101130_200030': ['MN11+12-GAL4', 26, 'k', '(i) '], 'mov_20101130_201605': ['UAS-TNT', 12, 'k', '(ii) '], 'mov_20101213_193258': ['MN11+12 x TNT', 0, '#B52634', '(iii) ']}
+DFT_MOVIES = {'mov_20101130_200030': ['MN11+12-GAL4', 26, 'k', '(i) '],
+'mov_20101130_201605': ['UAS-TNT', 12, 'k', '(ii) '],
+'mov_20101213_193258': ['MN11+12 x TNT', 0, '#B52634', '(iii) ']}
 
 
-def plottrace_paper(td, figw, figh, figdpi, fontsz, ylim, border, ylabel, yaxisticks, xaxisticks, xlimhz, color, labels):
-    """Plots the first half of the normalized and truncated dft trace; td is a dictionary generated using method TraceData.Processrawtrace."""
+def plottrace_paper(td, figw, figh, figdpi, fontsz, ylim, border, ylabel, yaxisticks, xaxisticks,
+        xlimhz, color, labels):
+    """Plots the first half of the normalized and truncated dft trace; td is a dictionary
+    generated using method TraceData.Processrawtrace."""
     
     m = td['peakf']
     
@@ -62,7 +69,8 @@ def plottrace_paper(td, figw, figh, figdpi, fontsz, ylim, border, ylabel, yaxist
     tracelen = np.rint(prop*len(td['dftnormtrunctrace']))
     print(tracelen)
     
-    plt.plot(xpoints[:tracelen], td['dftnormtrunctrace'][:tracelen], color, label='peak frequency = {0} Hz'.format(m), linewidth=3)
+    plt.plot(xpoints[:tracelen], td['dftnormtrunctrace'][:tracelen], color,
+            label='peak frequency = {0} Hz'.format(m), linewidth=3)
     
      #Plots legend and removes the border around it.
     #legend = plt.legend(numpoints = 1, loc='best')
@@ -96,7 +104,8 @@ def plottrace_paper(td, figw, figh, figdpi, fontsz, ylim, border, ylabel, yaxist
         plt.ylabel(ylabel, fontsize=fontsz, labelpad=12)
         fig1.figsize = (6, 3)
         
-    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand
+    #corner of the figure.
     fig1.subplots_adjust(bottom=0.3)
     fig1.subplots_adjust(left=0.05)
     fig1.subplots_adjust(right=0.95)
@@ -127,8 +136,10 @@ def plottrace_paper(td, figw, figh, figdpi, fontsz, ylim, border, ylabel, yaxist
 
 
 
-def plotdft_paper(td, figw, figh, figdpi, fontsz, ylim, border, ylabel, yaxisticks, xaxisticks, xlimhz, color, labels, lw):
-    """Plots the first half of the normalized and truncated dft trace; td is a dictionary generated using method TraceData.Processrawtrace."""
+def plotdft_paper(td, figw, figh, figdpi, fontsz, ylim, border, ylabel, yaxisticks, xaxisticks,
+        xlimhz, color, labels, lw):
+    """Plots the first half of the normalized and truncated dft trace; td is a dictionary
+    generated using method TraceData.Processrawtrace."""
     
     fontv = matplotlib.font_manager.FontProperties()
     fontv = matplotlib.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/arial.ttf')
@@ -151,7 +162,8 @@ def plotdft_paper(td, figw, figh, figdpi, fontsz, ylim, border, ylabel, yaxistic
     tracelen = np.rint(prop*len(td['dftnormtrunctrace']))
     print(tracelen)
     
-    plt.plot(xpoints[:tracelen], td['dftnormtrunctrace'][:tracelen], color, label='peak frequency = {0} Hz'.format(m), linewidth=lw)
+    plt.plot(xpoints[:tracelen], td['dftnormtrunctrace'][:tracelen], color,
+            label='peak frequency = {0} Hz'.format(m), linewidth=lw)
     
      #Plots legend and removes the border around it.
     #legend = plt.legend(numpoints = 1, loc='best')
@@ -186,7 +198,8 @@ def plotdft_paper(td, figw, figh, figdpi, fontsz, ylim, border, ylabel, yaxistic
     if labels ==  'yes':
         fig1.subplots_adjust(left=0.2)
         plt.ylabel(ylabel, fontproperties=fontv, labelpad=4)
-    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower
+    #lefthand corner of the figure.
     else:
         fig1.subplots_adjust(bottom=0.38)
         fig1.subplots_adjust(left=0.07)
@@ -233,7 +246,8 @@ for movie, val in DFT_MOVIES.iteritems():
             
             condition, offset, color, inum = val
 
-            plotdft_paper(td, FIGW, FIGH, FIGDPI, FONTSIZE, YLIM, BORDER, YLABEL, YAXISTICKS, XAXISTICKS, XLIMHZ, color, LABELS, LINEWIDTH)
+            plotdft_paper(td, FIGW, FIGH, FIGDPI, FONTSIZE, YLIM, BORDER, YLABEL, YAXISTICKS,
+                    XAXISTICKS, XLIMHZ, color, LABELS, LINEWIDTH)
     
     os.chdir('../')
 

@@ -7,9 +7,11 @@ import mn.plot.genplotlib as gp
 from mn.cmn.cmn import *
 
 def capmovielist(fname):
-    """Generates a list of the movies that have pictures of the capillary tube during feeding experiments.
+    """Generates a list of the movies that have pictures of the capillary 
+    tube during feeding experiments.
     
-    First, take the column marked "Capillary" from the notes file and save it as a comma-separated text file. Then run the function on that file.
+    First, take the column marked "Capillary" from the notes file and save it
+    as a comma-separated text file. Then run the function on that file.
     """
     
     f = open(fname)
@@ -30,8 +32,8 @@ def capmovielist(fname):
 
 
 def mvcapmovies(capmovlist, capdirname='capfmfs', fdir='.'):
-    """Moves movies in capmovielist to a new directory. If run from the directory 
-    experiment/fmfs, will put in the directory experiment/capfmfs."""
+    """Moves movies in capmovielist to a new directory. If run from the
+    directory experiment/fmfs, will put in the directory experiment/capfmfs."""
     
     capmovlistl = []
     for i in capmovlist:
@@ -68,7 +70,8 @@ def batchfiles(fdir='.'):
     
     os.chdir(fdir)
     names = glob.iglob('*')
-    # Absolute path rather than relative path allows changing of directories in fn_name.
+    # Absolute path rather than relative path allows changing of directories 
+    # in fn_name.
     names = sorted([os.path.abspath(name) for name in names])
     return(names)
 
@@ -99,8 +102,8 @@ class CapMovieData:
             
     
 def deltalength(dict, fname='results1.txt', fdir='.'):
-    """Finds the difference in length in the capillary liquid between two capillary images. 
-    Returns the results in a dictionary.
+    """Finds the difference in length in the capillary liquid between two
+    capillary images.  Returns the results in a dictionary.
     
     'dict' is a dictionary containing the info in the capparams file
     'fname' is the name of the results file generated in ImageJ.
@@ -110,9 +113,11 @@ def deltalength(dict, fname='results1.txt', fdir='.'):
     l = [1, 2]
     
     for n in l:
-        #The results files for the length of the capillary liquid are in movie folders in the 
-        #experiment/data_cap folder. For each capmovie (capmovie1 and capmovie2), this line 
-        #specifies the path to the appropriate data_cap/movie/results1.txt file.
+        #The results files for the length of the capillary liquid are in 
+        #movie folders in the 
+        #experiment/data_cap folder. For each capmovie (capmovie1 and 
+        #capmovie2), this line specifies the path to the appropriate 
+        #data_cap/movie/results1.txt file.
         moviepath = os.path.join(os.path.dirname(os.path.abspath(fdir)) + '_cap', dict['capmovie'+str(n)])
         movieres = os.path.join(moviepath, fname)
         
@@ -339,7 +344,8 @@ def plotpixpersec(capfile, k):
     
     p = gendictpps(capfile)
     mp = genlist(p)
-    gp.plotdata(p, mp, k, 's', 'pix/sec', 'Amount consumed \n pixels/sec', ylim=10, titlesize='x-large', xlabelsize='medium', xstart=0.25)
+    gp.plotdata(p, mp, k, 's', 'pix/sec', 'Amount consumed \n pixels/sec', 
+            ylim=10, titlesize='x-large', xlabelsize='medium', xstart=0.25)
     plt.savefig('cap_pixpersec')
     plt.close()
 
@@ -355,11 +361,15 @@ def plotnlpersec(capfile, l):
 
     print(max(o))
     
-    gp.plotdata(n, mn, l, 's', 'nL/sec', 'Amount consumed', ylim=max(o)+0.3*max(o), titlesize='x-large', xlabelsize='medium', xstart=0.25)
+    gp.plotdata(n, mn, l, 's', 'nL/sec', 'Amount consumed', 
+            ylim=max(o)+0.3*max(o), titlesize='x-large', xlabelsize='medium',
+            xstart=0.25)
     plt.savefig('cap_nlpersec')
     
     plt.figure()
-    gp.plotdata(n, mn, l, 'b', 'nL/sec', 'Amount consumed', ylim=max(o)+0.3*max(o), titlesize='x-large', xlabelsize='medium', xstart=0.25)
+    gp.plotdata(n, mn, l, 'b', 'nL/sec', 'Amount consumed', 
+            ylim=max(o)+0.3*max(o), titlesize='x-large', xlabelsize='medium',
+            xstart=0.25)
     plt.savefig('cap_nlpersec_bar')
     
     #plt.show()

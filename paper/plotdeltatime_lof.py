@@ -44,14 +44,17 @@ OTHERCOLOR = '#555659'
 
 
 
-def multiplot_deltatime(fname1max1min, fname1min1max, errors, savefig, figname, ylim, ylabel, figw, figh, figdpi, yaxisticks, ymin, barwidth, barnum, othercolor, fontsz, lw, capsize, lpy):
+def multiplot_deltatime(fname1max1min, fname1min1max, errors, savefig, figname, ylim, ylabel,
+        figw, figh, figdpi, yaxisticks, ymin, barwidth, barnum, othercolor, fontsz, lw, capsize,
+        lpy):
     
     matplotlib.rc('axes', linewidth=lw)
     matplotlib.rc('axes.formatter', limits = [-6, 6])
     
     # Sets font properties.
     fontv = mpl.font_manager.FontProperties()
-    # Uncomment line below to set the font to verdana; the default matplotlib font is very similar (just slightly narrower).
+    # Uncomment line below to set the font to verdana; the default matplotlib font is very
+    # similar (just slightly narrower).
     fontv = mpl.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/arial.ttf')
     fontv.set_size(fontsz)
     
@@ -126,14 +129,17 @@ def multiplot_deltatime(fname1max1min, fname1min1max, errors, savefig, figname, 
     xlim = x_list_1max1min[-1]+3*barwidth
 
     #Plots the bar plot.
-    plt.bar(x_list_1max1min, means_1max1min, width=truebarw, color=colors_1max1min, ecolor='k', label='Filling', linewidth=lw)
+    plt.bar(x_list_1max1min, means_1max1min, width=truebarw, color=colors_1max1min, ecolor='k', 
+            label='Filling', linewidth=lw)
     # Plots error bars.
     zeros = np.tile(0, len(x_list_1max1min)).tolist()
     x_errbar = [x + 0.5*truebarw for x in x_list_1max1min]
     if errors == 'stderr':
-        plt.errorbar(x_errbar, means_1max1min, yerr=[zeros,stderrs_1max1min], fmt=None, ecolor='k', lw=lw, capsize=capsize)
+        plt.errorbar(x_errbar, means_1max1min, yerr=[zeros,stderrs_1max1min], fmt=None,
+                ecolor='k', lw=lw, capsize=capsize)
     if errors == 'stdev':
-        plt.errorbar(x_errbar, means_1max1min, yerr=[zeros,stdevs_1max1min], fmt=None, ecolor='k', lw=lw, capsize=capsize)
+        plt.errorbar(x_errbar, means_1max1min, yerr=[zeros,stdevs_1max1min], fmt=None,
+                ecolor='k', lw=lw, capsize=capsize)
     
     
     #### Plots deltatime 1min1max #####
@@ -146,14 +152,17 @@ def multiplot_deltatime(fname1max1min, fname1min1max, errors, savefig, figname, 
       
    
     #Plots the bar plot.
-    plt.bar(x_list_1min1max, means_1min1max, width=truebarw, color=colors_1min1max, ecolor='k', label='Emptying', linewidth=lw)
+    plt.bar(x_list_1min1max, means_1min1max, width=truebarw, color=colors_1min1max, ecolor='k',
+            label='Emptying', linewidth=lw)
     # Plots error bars.
     zeros = np.tile(0, len(x_list_1min1max)).tolist()
     x_errbar_1min1max = [x + 0.5*truebarw for x in x_list_1min1max]
     if errors == 'stderr':
-        plt.errorbar(x_errbar_1min1max, means_1min1max, yerr=[zeros,stderrs_1min1max], fmt=None, ecolor='k', lw=lw, capsize=capsize)
+        plt.errorbar(x_errbar_1min1max, means_1min1max, yerr=[zeros,stderrs_1min1max], fmt=None,
+                ecolor='k', lw=lw, capsize=capsize)
     if errors == 'stdev':
-        plt.errorbar(x_errbar_1min1max, means_1min1max, yerr=[zeros,stdevs_1min1max], fmt=None, ecolor='k', lw=lw, capsize=capsize)
+        plt.errorbar(x_errbar_1min1max, means_1min1max, yerr=[zeros,stdevs_1min1max], fmt=None,
+                ecolor='k', lw=lw, capsize=capsize)
 
     
     # Defines the axes.
@@ -162,7 +171,8 @@ def multiplot_deltatime(fname1max1min, fname1min1max, errors, savefig, figname, 
     plt.yticks(fontproperties=fontv)
     
     # Plots the xticks.
-    plt.xticks(xlabel_list, conds_1max1min, rotation=90, multialignment = 'center', fontproperties=fonti)
+    plt.xticks(xlabel_list, conds_1max1min, rotation=90, multialignment = 'center',
+            fontproperties=fonti)
     
     #Uncomment lines below to display without top and right borders.
     for loc, spine in ax1.spines.iteritems():
@@ -198,14 +208,16 @@ def multiplot_deltatime(fname1max1min, fname1min1max, errors, savefig, figname, 
     plt.ylabel(ylabel, labelpad=lpy, fontproperties=fontv, multialignment='center')
     
     # Plots legend
-    legend = plt.legend(loc='upper right', bbox_to_anchor = (1.05, 1.5), markerscale=0.1, numpoints=1, labelspacing=0.2)
+    legend = plt.legend(loc='upper right', bbox_to_anchor = (1.05, 1.5), markerscale=0.1, 
+            numpoints=1, labelspacing=0.2)
     # Changes legend font to fontsz.
     ltext  = legend.get_texts()
     plt.setp(ltext, fontproperties=fontv)
     # Removes border around the legend.
     legend.draw_frame(False)
 
-    #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    #Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand
+    #corner of the figure.
     fig1.subplots_adjust(bottom=ADJBOTTOM)
     fig1.subplots_adjust(right=ADJRIGHT)
     fig1.subplots_adjust(left=ADJLEFT)
@@ -219,4 +231,6 @@ def multiplot_deltatime(fname1max1min, fname1min1max, errors, savefig, figname, 
 #genotype = sys.argv[1]
 fname1max1min = 'all_ph_1max_1min_means.txt'
 fname1min1max = 'all_ph_1min_1max_means.txt'
-multiplot_deltatime(fname1max1min, fname1min1max, ERRORS, SAVEFIG, FIGNAME, YLIM, YLABEL, FIGW, FIGH, FIGDPI, YAXISTICKS, YMIN, BARWIDTH, BARNUM, OTHERCOLOR, FONTSIZE, LINEWIDTH, CAPSIZE, LABELPADY)
+multiplot_deltatime(fname1max1min, fname1min1max, ERRORS, SAVEFIG, FIGNAME, YLIM, YLABEL, FIGW,
+        FIGH, FIGDPI, YAXISTICKS, YMIN, BARWIDTH, BARNUM, OTHERCOLOR, FONTSIZE, LINEWIDTH,
+        CAPSIZE, LABELPADY)

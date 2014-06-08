@@ -10,7 +10,8 @@ import mn.gof.freqvstime as ft
 
 
 # Plots raw traces on one graph from the movies specified below.
-# Run from the 'data' folder; in the 'data' folder are individual movie folders (similar to the experiment/data folders).
+# Run from the 'data' folder; in the 'data' folder are individual movie folders (similar to the 
+# experiment/data folders).
 
 # Same values as in dftf.py, but only plotting roi1.
 DFTSIZE=10000
@@ -69,34 +70,62 @@ XLIMHZ = 10
 
 
 
-# Dictionary where the keys are the movie names and the values are the condition, the y offset of the trace (so that they aren't on top of each other), and the color the of the trace.
+# Dictionary where the keys are the movie names and the values are the condition, the y offset of
+# the trace (so that they aren't on top of each other), and the color the of the trace.
 
-#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 'mov_20110518_191243': ['423 x dTRPA1 - 24', 30, 'b'], 'mov_20110527_163607_part2' :['423 x dTRPA1 - 32', 15, 'r'], 'mov_20110518_192012': ['423 x dTRPA1 - 32', -5, 'r']}
-#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 'mov_20110518_191243': ['423 x dTRPA1 - 24', 30, 'b'], 'mov_20110527_163607_part2' :['423 x dTRPA1 - 32', 15, 'r'], 'mov_20110527_150743': ['423 x dTRPA1 - 32', -5, 'r']}
-#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 'mov_20110518_195501': ['UAS-dTRPA1 - 32', 30, 'b'], 'mov_20110527_163607_part2' :['423 x dTRPA1 - 32', 15, 'r'], 'mov_20110527_150743': ['423 x dTRPA1 - 32', -5, 'r']}
-#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 'mov_20110518_195501': ['UAS-dTRPA1 - 32', 30, 'b'], 'mov_20110527_163607_part2' :['423 x dTRPA1 - 32', 15, 'r'], 'mov_20110527_150743': ['423 x dTRPA1 - 32', -5, 'r']}
+#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 
+#'mov_20110518_191243': ['423 x dTRPA1 - 24', 30, 'b'], 
+#'mov_20110527_163607_part2' :['423 x dTRPA1 - 32', 15, 'r'], 
+#'mov_20110518_192012': ['423 x dTRPA1 - 32', -5, 'r']}
 
-#MOVIES = {'mov_20101130_200533': ['control',67, 'k'], 'mov_20110518_195501': ['UAS-dTRPA1 - 32', 45, 'b'], 'mov_20110527_163607_part2' :['112648 x dTRPA1 - 32', 20, '#FF6A00'], 'mov_20110518_192012': ['112648 x dTRPA1 - 32', -7, 'r']}
+#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 
+#'mov_20110518_191243': ['423 x dTRPA1 - 24', 30, 'b'], 
+#'mov_20110527_163607_part2' :['423 x dTRPA1 - 32', 15, 'r'], 
+#'mov_20110527_150743': ['423 x dTRPA1 - 32', -5, 'r']}
+
+#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 
+#'mov_20110518_195501': ['UAS-dTRPA1 - 32', 30, 'b'], 
+#'mov_20110527_163607_part2' :['423 x dTRPA1 - 32', 15, 'r'], 
+#'mov_20110527_150743': ['423 x dTRPA1 - 32', -5, 'r']}
+
+#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 
+#'mov_20110518_195501': ['UAS-dTRPA1 - 32', 30, 'b'], 
+#'mov_20110527_163607_part2' :['423 x dTRPA1 - 32', 15, 'r'], 
+#'mov_20110527_150743': ['423 x dTRPA1 - 32', -5, 'r']}
+
+#MOVIES = {'mov_20101130_200533': ['control',67, 'k'], 
+#'mov_20110518_195501': ['UAS-dTRPA1 - 32', 45, 'b'], 
+#'mov_20110527_163607_part2' :['112648 x dTRPA1 - 32', 20, '#FF6A00'], 
+#'mov_20110518_192012': ['112648 x dTRPA1 - 32', -7, 'r']}
 
 # USED IN THE CURRENT GRAPH
-#MOVIES = {'mov_20101130_200533': ['control', 67, 'k'], 'mov_20110518_195501': ['UAS-dTRPA1 - 32', 
-#45, 'b'], 'mov_20110527_163607_part2' :['112648 x dTRPA1 - 32', 20, '#FF6A00'], 'mov_20110518_184849': 
-#['112648 x dTRPA1 - 32', -7, 'r']}
+#MOVIES = {'mov_20101130_200533': ['control', 67, 'k'], 
+#'mov_20110518_195501': ['UAS-dTRPA1 - 32', 45, 'b'], 
+#'mov_20110527_163607_part2' :['112648 x dTRPA1 - 32', 20, '#FF6A00'], 
+#'mov_20110518_184849': ['112648 x dTRPA1 - 32', -7, 'r']}
 
 # WITH DTRPA DRINKING AT 32
-#MOVIES = {'mov_20110517_174209': ['control', 67, 'k', '(i) '], 'mov_20110518_195501': ['UAS-dTRPA1 - 32', 45, 'k', '(ii) '], 'mov_20110527_163607_part2' :['112648 x dTRPA1 - 32', 20, '#B52634', '(iii) '], 'mov_20110518_192012': ['112648 x dTRPA1 - 32', -7, '#B52634', '(iv) ']}
+#MOVIES = {'mov_20110517_174209': ['control', 67, 'k', '(i) '], 
+#'mov_20110518_195501': ['UAS-dTRPA1 - 32', 45, 'k', '(ii) '], 
+#'mov_20110527_163607_part2' :['112648 x dTRPA1 - 32', 20, '#B52634', '(iii) '], 
+#'mov_20110518_192012': ['112648 x dTRPA1 - 32', -7, '#B52634', '(iv) ']}
 
-#MOVIES = {'mov_20110517_181356': ['UAS-dTRPA1 - drinking - 32'+u'\u00b0'+'C', 67, 'k', '(i) '], 'mov_20110518_195501': ['UAS-dTRPA1 - 32', 45, 'k', '(ii) '], 'mov_20110527_163607_part2' :['MN11+12 x dTRPA1 - 32', 20, '#B52634', '(iii) '], 'mov_20110518_192012': ['MN11+12 x dTRPA1 - 32', -7, '#B52634', '(iv) ']}
-MOVIES = {'mov_20110517_181356': ['UAS-dTRPA1 - drinking', 67, 'k', '(i) '], 'mov_20110518_195501': ['UAS-dTRPA1', 45, 'k', '(ii) '], 'mov_20110527_163607_part2' :['MN11+12 x dTRPA1 - fly 1', 20, '#B52634', '(iii) '], 'mov_20110518_192012': ['MN11+12 x dTRPA1 - fly 2', -7, '#B52634', '(iv) ']}
+#MOVIES = {'mov_20110517_181356': ['UAS-dTRPA1 - drinking - 32'+u'\u00b0'+'C', 67, 'k', '(i) '], 
+#'mov_20110518_195501': ['UAS-dTRPA1 - 32', 45, 'k', '(ii) '], 
+#'mov_20110527_163607_part2' :['MN11+12 x dTRPA1 - 32', 20, '#B52634', '(iii) '], 
+#'mov_20110518_192012': ['MN11+12 x dTRPA1 - 32', -7, '#B52634', '(iv) ']}
+
+MOVIES = {'mov_20110517_181356': ['UAS-dTRPA1 - drinking', 67, 'k', '(i) '], 
+'mov_20110518_195501': ['UAS-dTRPA1', 45, 'k', '(ii) '], 
+'mov_20110527_163607_part2' :['MN11+12 x dTRPA1 - fly 1', 20, '#B52634', '(iii) '], 
+'mov_20110518_192012': ['MN11+12 x dTRPA1 - fly 2', -7, '#B52634', '(iv) ']}
 
 
-
-
-
-
-def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, ylim, time, ymin, xaxisticks, withleg='no'):
+def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, ylim, time, ymin, 
+        xaxisticks, withleg='no'):
     
-    """Moviedict is the above dictionary of movies, toplotdict is a dictionary produced by toplot(), and other values are what's specified as global variables."""
+    """Moviedict is the above dictionary of movies, toplotdict is a dictionary produced by 
+    toplot(), and other values are what's specified as global variables."""
     fontv = matplotlib.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/arial.ttf')
     fontv.set_size(fontsz)
     
@@ -118,17 +147,22 @@ def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, y
 
         if k == 'mov_20110517_181356':
             plt.text(0.2, offset+9, inum, horizontalalignment='left', fontproperties=fontv)
-            plt.text(0.65, offset+9.8, condition, horizontalalignment='left', fontproperties=fonti)
-            #plt.text(3.05, offset+9, '- drinking', horizontalalignment='left', fontproperties=fontv)            
+            plt.text(0.65, offset+9.8, condition, horizontalalignment='left', 
+                    fontproperties=fonti)
+            #plt.text(3.05, offset+9, '- drinking', horizontalalignment='left', 
+            #fontproperties=fontv)            
         if k == 'mov_20110518_195501':
             plt.text(0.2, offset+4, inum, horizontalalignment='left', fontproperties=fontv)
-            plt.text(0.72, offset+4.8, condition, horizontalalignment='left', fontproperties=fonti)
+            plt.text(0.72, offset+4.8, condition, horizontalalignment='left', 
+                    fontproperties=fonti)
         if k == 'mov_20110527_163607_part2':
             plt.text(0.2, offset+5, inum, horizontalalignment='left', fontproperties=fontv)
-            plt.text(0.8, offset+5.8, condition, horizontalalignment='left', fontproperties=fonti)
+            plt.text(0.8, offset+5.8, condition, horizontalalignment='left', 
+                    fontproperties=fonti)
         if k == 'mov_20110518_192012':
             plt.text(0.2, offset+9, inum, horizontalalignment='left', fontproperties=fontv)
-            plt.text(0.8, offset+9.8, condition, horizontalalignment='left', fontproperties=fonti)
+            plt.text(0.8, offset+9.8, condition, horizontalalignment='left', 
+                    fontproperties=fonti)
 
 
 
@@ -177,7 +211,8 @@ def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, y
     # Specifies axis limits.
     plt.axis( [0, time-TIMEOFFSET, ymin, ylim])
     
-    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand
+    #corner of the figure.
     #fig1.subplots_adjust(top=0.8)
     fig1.subplots_adjust(left=0.1)
     #fig1.subplots_adjust(right=0.95)
@@ -187,7 +222,8 @@ def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, y
         #line.set_visible(False)
 
 def gentoplot(time):
-    """Generates a dictionary where the keys are movie names and the values are the raw trace for plotting. Time specifies the length of time in seconds of the plots shown."""
+    """Generates a dictionary where the keys are movie names and the values are the raw trace for
+    plotting. Time specifies the length of time in seconds of the plots shown."""
     
     toplot = {}
 
@@ -210,7 +246,9 @@ def gentoplot(time):
                 frames = time * td['fps']
                 frameoffset = TIMEOFFSET * td['fps']
                 #print(frames)
-                if os.path.basename(file) == 'mov_20101130_200533' or os.path.basename(file) == 'mov_20110517_181356' or os.path.basename(file) == 'mov_20110517_174209':
+                if os.path.basename(file) == 'mov_20101130_200533' \ 
+                or os.path.basename(file) == 'mov_20110517_181356' \ 
+                or os.path.basename(file) == 'mov_20110517_174209':
                     plottime = td['seltrace'][frameoffset:frames]/8
                 elif os.path.basename(file) == 'mov_20110518_192012':
                     plottime = td['seltrace'][frameoffset:frames]/1.5
@@ -257,7 +295,8 @@ def gentoplot_dft(xlimhz):
                 prop = xlimhz/(td['fps']/2)
                 tracelen = np.rint(prop*len(td['dftnormtrunctrace']))
                 
-                toplot[td['moviename']] = [xpoints[:tracelen], td['dftnormtrunctrace'][:tracelen], condition]
+                toplot[td['moviename']] = [xpoints[:tracelen], 
+                        td['dftnormtrunctrace'][:tracelen], condition]
     
     return(toplot)
 
@@ -280,7 +319,8 @@ def saveplotpickle(type, withleg = 'no'):
             plt.savefig(figname+'.svg', dpi=FIGDPI)
             plt.savefig(figname+'.png', dpi=FIGDPI)
 
-        # Saves a file showing the movies I used for the plot and a pickle file with all the variables.
+        # Saves a file showing the movies I used for the plot and a pickle file with all the 
+        #variables.
         fname = os.path.join(plotfolder, 'movies_used_for_rawtraces.txt')
         with open(fname, 'w') as f:
             for k, v in MOVIES.iteritems():
@@ -319,7 +359,8 @@ if __name__ == "__main__":
         e = ft.min_frames(d, TIME)
         toplot = ft.pumpsovertime(e, WINDOWSEC)
         
-        oneplot(ft.MOVIES, toplot, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, YLABEL, YLIM, XLIMHZ, YMIN)
+        oneplot(ft.MOVIES, toplot, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, YLABEL, YLIM, XLIMHZ, 
+                YMIN)
         # Saves the figures in plots/plots.
         
         
@@ -327,7 +368,8 @@ if __name__ == "__main__":
     if TYPE == 'dft':
         toplot = gentoplot_dft(XLIMHZ)
         #oneplot(MOVIES, toplot, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, YLABEL, YLIM, TIME)
-        oneplot(DFT_MOVIES, toplot, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, YLABEL, YLIM, XLIMHZ, YMIN)
+        oneplot(DFT_MOVIES, toplot, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, YLABEL, YLIM, XLIMHZ, 
+                YMIN)
 
         # Saves the figures in plots/plots.
         plotfolder = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath('.'))), 'plots')
@@ -348,7 +390,8 @@ if __name__ == "__main__":
         matplotlib.rc('axes', linewidth=0.75)
         
         toplot = gentoplot(TIME)
-        oneplot(MOVIES, toplot, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, YLABEL, YLIM, TIME, YMIN, XAXISTICKS)
+        oneplot(MOVIES, toplot, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, YLABEL, YLIM, TIME, YMIN, 
+                XAXISTICKS)
         saveplotpickle(TYPE, WITHLEG)
        
 

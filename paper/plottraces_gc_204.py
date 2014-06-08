@@ -9,7 +9,8 @@ from mn.imaging.gclib import *
 
 
 # Plots raw traces on one graph from the movies specified below.
-# Run from the 'data' folder; in the 'data' folder are individual movie folders (similar to the experiment/data folders).
+# Run from the 'data' folder; in the 'data' folder are individual movie folders (similar to the 
+# experiment/data folders).
 
 # Same values as in dftf.py, but only plotting roi1.
 RESULTS_FILE = 'results1.txt'
@@ -36,14 +37,33 @@ TIME = 40
 YAXISTICKS = 4
 
 
-# Dictionary where the keys are the movie names and the values are the condition, the y offset of the trace (so that they aren't on top of each other), and the color the of the trace.
+# Dictionary where the keys are the movie names and the values are the condition, the y offset of
+# the trace (so that they aren't on top of each other), and the color the of the trace.
 
-#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 'mov_20110518_191243': ['423 x dtrpa1 - 24', 30, 'b'], 'mov_20110527_163607_part2' :['423 x dtrpa1 - 32', 15, 'r'], 'mov_20110518_192012': ['423 x dtrpa1 - 32', -5, 'r']}
-#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 'mov_20110518_191243': ['423 x dtrpa1 - 24', 30, 'b'], 'mov_20110527_163607_part2' :['423 x dtrpa1 - 32', 15, 'r'], 'mov_20110527_150743': ['423 x dtrpa1 - 32', -5, 'r']}
-#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 'mov_20110518_195501': ['UAS-dtrpa1 - 32', 30, 'b'], 'mov_20110527_163607_part2' :['423 x dtrpa1 - 32', 15, 'r'], 'mov_20110527_150743': ['423 x dtrpa1 - 32', -5, 'r']}
-#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 'mov_20110518_195501': ['UAS-dtrpa1 - 32', 30, 'b'], 'mov_20110527_163607_part2' :['423 x dtrpa1 - 32', 15, 'r'], 'mov_20110527_150743': ['423 x dtrpa1 - 32', -5, 'r']}
+#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 
+#'mov_20110518_191243': ['423 x dtrpa1 - 24', 30, 'b'], 
+#'mov_20110527_163607_part2' :['423 x dtrpa1 - 32', 15, 'r'], 
+#'mov_20110518_192012': ['423 x dtrpa1 - 32', -5, 'r']}
 
-#MOVIES = {'mov_20101130_200533': ['control',67, 'k'], 'mov_20110518_195501': ['UAS-dtrpa1 - 32', 45, 'b'], 'mov_20110527_163607_part2' :['112648 x dtrpa1 - 32', 20, '#FF6A00'], 'mov_20110518_192012': ['112648 x dtrpa1 - 32', -7, 'r']}
+#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 
+#'mov_20110518_191243': ['423 x dtrpa1 - 24', 30, 'b'], 
+#'mov_20110527_163607_part2' :['423 x dtrpa1 - 32', 15, 'r'], 
+#'mov_20110527_150743': ['423 x dtrpa1 - 32', -5, 'r']}
+
+#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 
+#'mov_20110518_195501': ['UAS-dtrpa1 - 32', 30, 'b'], 
+#'mov_20110527_163607_part2' :['423 x dtrpa1 - 32', 15, 'r'], 
+#'mov_20110527_150743': ['423 x dtrpa1 - 32', -5, 'r']}
+
+#MOVIES = {'mov_20101130_201605': ['wild type',45, 'k'], 
+#'mov_20110518_195501': ['UAS-dtrpa1 - 32', 30, 'b'], 
+#'mov_20110527_163607_part2' :['423 x dtrpa1 - 32', 15, 'r'], 
+#'mov_20110527_150743': ['423 x dtrpa1 - 32', -5, 'r']}
+
+#MOVIES = {'mov_20101130_200533': ['control',67, 'k'], 
+#'mov_20110518_195501': ['UAS-dtrpa1 - 32', 45, 'b'], 
+#'mov_20110527_163607_part2' :['112648 x dtrpa1 - 32', 20, '#FF6A00'], 
+#'mov_20110518_192012': ['112648 x dtrpa1 - 32', -7, 'r']}
 
 #OFFSETS = [1+1.75+1.75+1.75, 1+1.75+1.75, 1+1.75, 1]
 OFFSETS = [4.5, 3.6, 2.8, 1.8, 1]
@@ -63,7 +83,8 @@ matplotlib.rc('axes', linewidth=1)
 def oneplot(moviedict, figw, figh, figdpi, fontsz, border, ylabel, ymax, ymin, 
 withleg='no'):
     
-    """Moviedict is the above dictionary of movies, toplotdict is a dictionary produced by toplot(), and other values are what's specified as global variables."""
+    """Moviedict is the above dictionary of movies, toplotdict is a dictionary produced by 
+    toplot(), and other values are what's specified as global variables."""
     
     fontv = mpl.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/arial.ttf')
     fontv.set_size(fontsz)
@@ -167,7 +188,8 @@ withleg='no'):
         ax.yaxis.set_major_locator(matplotlib.ticker.MaxNLocator(10))
     
     
-    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower 
+    #lefthand corner of the figure.
     #fig1.subplots_adjust(top=0.8)
     fig1.subplots_adjust(left=0.2)
     fig1.subplots_adjust(right=0.8)
@@ -185,17 +207,22 @@ withleg='no'):
     #line2.set_clip_on(False)
     #l = ax.add_line(line2)
     
-    #plt.text(44.5, 0.8, '5 sec', fontsize=FONTSIZE, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+    #plt.text(44.5, 0.8, '5 sec', fontsize=FONTSIZE, horizontalalignment='center', 
+    #verticalalignment='top',multialignment='center',rotation=0)
     
-    #plt.text(50.25, 2, '100%\n' + r'$\Delta$' + 'F/F''', fontsize=FONTSIZE, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+    #plt.text(50.25, 2, '100%\n' + r'$\Delta$' + 'F/F''', fontsize=FONTSIZE, 
+    #horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
     
     #Code for putting the legend on left
     linex = -19
     liney = 1
     
-    plt.text(linex+1.5, liney-0.2, ' 3s', fontproperties=fontv, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+    plt.text(linex+1.5, liney-0.2, ' 3s', fontproperties=fontv, horizontalalignment='center', 
+            verticalalignment='top',multialignment='center',rotation=0)
     
-    plt.text(linex-6, liney+1, '100%\n(' + r'$\Delta$' + 'F/F)''', fontproperties=fontv, horizontalalignment='center', verticalalignment='top',multialignment='center',rotation=0)
+    plt.text(linex-6, liney+1, '100%\n(' + r'$\Delta$' + 'F/F)''', fontproperties=fontv, 
+            horizontalalignment='center', verticalalignment='top',multialignment='center',
+            rotation=0)
     
     xv = [linex, linex+3]
     yv = [liney, liney]
@@ -210,7 +237,8 @@ withleg='no'):
     l = ax.add_line(line2)
     
     
-    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower lefthand corner of the figure.
+    # Adjusts the space between the plot and the edges of the figure; (0,0) is the lower 
+    #lefthand corner of the figure.
     #fig1.subplots_adjust(top=0.8)
     fig1.subplots_adjust(left=0.42)
     #fig1.subplots_adjust(left=0.5)
@@ -234,7 +262,8 @@ def saveplotpickle(withleg = 'no', border='no'):
     else:
         plt.savefig(figname+'.svg', dpi=FIGDPI)
         plt.savefig(figname+'.png', dpi=FIGDPI)
-    # Saves a file showing the movies I used for the plot and a pickle file with all the variables.
+    # Saves a file showing the movies I used for the plot and a pickle file with all the 
+    #variables.
     fname = os.path.join(plotfolder, 'movies_used_for_rawtraces.txt')
     with open(fname, 'w') as f:
         for k, v in MOVIES.iteritems():

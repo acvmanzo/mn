@@ -20,7 +20,8 @@ ios = zip(inputs, outputs)
 args = [io[0]+'%'+io[1] for io in ios]
 
 for arg in args:
-    cmd = 'java -jar /home/andrea/software/ImageJ/ij.jar -batch /home/andrea/software/ImageJ/macros/tifftoavi.txt {0}'.format(arg)
+    cmd = 'java -jar /home/andrea/software/ImageJ/ij.jar' +
+    ' -batch /home/andrea/software/ImageJ/macros/tifftoavi.txt {0}'.format(arg)
     os.system(cmd)
 
 

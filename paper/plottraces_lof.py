@@ -9,7 +9,8 @@ import pickle
 import matplotlib as mpl
 
 # Plots raw traces on one graph from the movies specified below.
-# Run from the 'data' folder; in the 'data' folder are individual movie folders (similar to the experiment/data folders).
+# Run from the 'data' folder; in the 'data' folder are individual movie folders (similar to the 
+# experiment/data folders).
 
 # Same values as in dftf.py, but only plotting roi1.
 DFTSIZE=10000
@@ -53,11 +54,14 @@ XLIMHZ = 10
 
 
 
-# Dictionary where the keys are the movie names and the values are the condition, the y offset of the trace (so that they aren't on top of each other), and the color the of the trace.
+# Dictionary where the keys are the movie names and the values are the condition, the y offset of 
+# the trace (so that they aren't on top of each other), and the color the of the trace.
 
 #PREVIOUSMOVIES = {'mov_20101130_200135': ['MN11+12-GAL4', 26, 'k', '(i) '], 'mov_20110803_190537': ['UAS-TNT', 12, 'k', '(ii) '], 'mov_20101213_193258': ['MN11+12 x TNT', 0, '#B52634', '(iii) ']}
 
-MOVIES = {'mov_20101130_200030': ['MN11+12-GAL4', 26, 'k', '(i) '], 'mov_20101130_201605': ['UAS-TNT', 12, 'k', '(ii) '], 'mov_20101213_193258': ['MN11+12 x TNT', 0, '#B52634', '(iii) ']}
+MOVIES = {'mov_20101130_200030': ['MN11+12-GAL4', 26, 'k', '(i) '], 
+'mov_20101130_201605': ['UAS-TNT', 12, 'k', '(ii) '], 
+'mov_20101213_193258': ['MN11+12 x TNT', 0, '#B52634', '(iii) ']}
 
 #DFT_MOVIES = {'mov_20101130_200135': ['112648-GAL4', 3.1-0.25, 'k'], 'mov_20110803_190537': ['UAS-TNT', 1.8-0.25, 'b'], 'mov_20101213_193258': ['112648 x TNT', 0.25, 'r']}
 
@@ -72,18 +76,22 @@ MOVIES = {'mov_20101130_200030': ['MN11+12-GAL4', 26, 'k', '(i) '], 'mov_2010113
 matplotlib.rc('axes', linewidth=LINEWIDTH)
 
 
-def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, ylim, time, ymin, lw):
+def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, ylim, time, ymin, 
+        lw):
     
-    """Moviedict is the above dictionary of movies, toplotdict is a dictionary produced by toplot(), and other values are what's specified as global variables."""
+    """Moviedict is the above dictionary of movies, toplotdict is a dictionary produced by 
+    toplot(), and other values are what's specified as global variables."""
     print(toplotdict.keys())
     
     fontv = mpl.font_manager.FontProperties()
-    # Uncomment line below to set the font to verdana; the default matplotlib font is very similar (just slightly narrower).
+    # Uncomment line below to set the font to verdana; the default matplotlib font is very 
+    # similar (just slightly narrower).
     fontv = mpl.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/arial.ttf')
     fontv.set_size(fontsz)
     
     fonti = mpl.font_manager.FontProperties()
-    # Uncomment line below to set the font to verdana; the default matplotlib font is very similar (just slightly narrower).
+    # Uncomment line below to set the font to verdana; the default matplotlib font is very 
+    #similar (just slightly narrower).
     fonti = mpl.font_manager.FontProperties(fname='/usr/share/matplotlib/mpl-data/fonts/ttf/ariali.ttf')
     fonti.set_size(fontsz)
     
@@ -101,21 +109,26 @@ def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, y
         plt.plot(xvals, data, color, linewidth=0.75, label=condition)
         print(condition)
         #if k == 'mov_20110113_180524':
-            #plt.text(0.5, offset+7, inum+condition, horizontalalignment='left', fontproperties=fontv)
+            #plt.text(0.5, offset+7, inum+condition, horizontalalignment='left', 
+            #fontproperties=fontv)
         #else:
-            #plt.text(0.5, offset+9, inum+condition, horizontalalignment='left', fontproperties=fontv)
+            #plt.text(0.5, offset+9, inum+condition, horizontalalignment='left', 
+            #fontproperties=fontv)
         
         # Plots text labels
         
         if k == 'mov_20101130_200030':
             plt.text(0.03, offset+6, inum, horizontalalignment='left', fontproperties=fontv)
-            plt.text(0.11, offset+6.5, condition, horizontalalignment='left', fontproperties=fonti)
+            plt.text(0.11, offset+6.5, condition, horizontalalignment='left', 
+                    fontproperties=fonti)
         if k == 'mov_20101130_201605':
             plt.text(0.03, offset+5, inum, horizontalalignment='left', fontproperties=fontv)
-            plt.text(0.125, offset+5.5, condition, horizontalalignment='left', fontproperties=fonti)
+            plt.text(0.125, offset+5.5, condition, horizontalalignment='left', 
+                    fontproperties=fonti)
         if k == 'mov_20101213_193258':
             plt.text(0.03, offset+3, inum, horizontalalignment='left', fontproperties=fontv)
-            plt.text(0.137, offset+3.5, condition, horizontalalignment='left', fontproperties=fonti)
+            plt.text(0.137, offset+3.5, condition, horizontalalignment='left', 
+                    fontproperties=fonti)
 
     ax = plt.gca()
 
@@ -125,7 +138,8 @@ def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, y
     ##handles, labels = ax.get_legend_handles_labels()
     ##handles2 = handles[0], handles[2], handles[1], handles[3]
     ##labels2 = labels[0], labels[2], labels[1], labels[3]
-    ##legend = ax.legend(handles2, labels2, bbox_to_anchor=(0, 0, 1, 1), transform=plt.gcf().transFigure)
+    ##legend = ax.legend(handles2, labels2, bbox_to_anchor=(0, 0, 1, 1), 
+    ##transform=plt.gcf().transFigure)
     ### Changes legend font to fontsz.
     #ltext  = legend.get_texts()
     #plt.setp(ltext, fontsize=fontsz)
@@ -166,7 +180,8 @@ def oneplot(moviedict, toplotdict, figw, figh, figdpi, fontsz, border, ylabel, y
     
 
 def gentoplot(time):
-    """Generates a dictionary where the keys are movie names and the values are the raw trace for plotting. Time specifies the length of time in seconds of the plots shown."""
+    """Generates a dictionary where the keys are movie names and the values are the raw trace for
+    plotting. Time specifies the length of time in seconds of the plots shown."""
     
     toplot = {}
 
@@ -227,7 +242,8 @@ def gentoplot_dft(xlimhz):
                 prop = xlimhz/(td['fps']/2)
                 tracelen = np.rint(prop*len(td['dftnormtrunctrace']))
                 
-                toplot[td['moviename']] = [xpoints[:tracelen], td['dftnormtrunctrace'][:tracelen], condition]
+                toplot[td['moviename']] = [xpoints[:tracelen], 
+                        td['dftnormtrunctrace'][:tracelen], condition]
     
     return(toplot)
 
@@ -251,7 +267,8 @@ if TYPE == 'dft':
 
 if TYPE == 'raw':
     toplot = gentoplot(TIME)
-    oneplot(MOVIES, toplot, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, YLABEL, YLIM, TIME, YMIN, LINEWIDTH)
+    oneplot(MOVIES, toplot, FIGW, FIGH, FIGDPI, FONTSIZE, BORDER, YLABEL, YLIM, TIME, YMIN, 
+            LINEWIDTH)
 
     # Saves the figures in plots/plots.
     plotfolder = os.path.join(os.path.dirname(os.path.abspath('../')), 'plots')

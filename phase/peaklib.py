@@ -362,7 +362,12 @@ def b_plotandsaverawmovies():
 
 
 def findmaxormin(raw, surr, winlen, maxormin, trshift):
-    """Raw is the raw trace.  Surr is the number of points to the right and left of the trace that will be compared with the central point. Winlen is the window length for convolution; set to 1 for no convolution. Max or min specifies whether the max or min points are identified. Trshift specifies the number of standard deviations to add/subtract to the mean when defining a threshold. Positive trshift values bring the thresshold closer to the max/min value. Default values are specified as global variables."""
+    """Raw is the raw trace.  Surr is the number of points to the right and left of the trace 
+    that will be compared with the central point. Winlen is the window length for convolution;
+    set to 1 for no convolution. Max or min specifies whether the max or min points are 
+    identified. Trshift specifies the number of standard deviations to add/subtract to the 
+    mean when defining a threshold. Positive trshift values bring the thresshold closer to the
+    max/min value. Default values are specified as global variables."""
     
     d = {}
     d['winlen'] = winlen
@@ -742,7 +747,10 @@ def loadmaxmintimes(picklefname):
         dict = unpicklefile.load()
         #print(dict)
     
-    # The dictionary contains a list of times that each max or min occured for each roi. This generates lists of 1's and 0's where each 1 occurs during the frame that a max or min occurred in the raw data. COMPARE is a list of dictionary keys of the two lists of times being compared.
+    # The dictionary contains a list of times that each max or min occured for each roi. This 
+    # generates lists of 1's and 0's where each 1 occurs during the frame that a max or min 
+    # occurred in the raw data. COMPARE is a list of dictionary keys of the two lists of times 
+    # being compared.
     
     a_i, b_i = [dict[x]['i'] for x in COMPARE] #Lists of frames that a max or min occured.
     #print(a, b)
@@ -771,7 +779,8 @@ def loadmaxmintimes(picklefname):
     a = a[0:alast1]
     b = b[0:blast1]
     
-    # Makes sure that the lists of 1's and 0's are the same length. If not, adds extra zeros to the end of the shorter trace to match the longer trace.
+    # Makes sure that the lists of 1's and 0's are the same length. If not, adds extra zeros to 
+    # the end of the shorter trace to match the longer trace.
     try:
         assert len(a) == len(b)
         
@@ -1032,7 +1041,8 @@ def writeavgs(deltaframe, freq, cond, outfile):
     
     # Writes the average phase difference to a summary file.
     with open(outfile, 'a') as h:
-        h.write('{0},{1},{2},{3},{4},{5},{6},{7}\n'.format(movie, avgdf, std_avgdf, avgdt,std_avgdt, avgdp, freq, cond))
+        h.write('{0},{1},{2},{3},{4},{5},{6},{7}\n'.format(movie, avgdf, std_avgdf, avgdt, 
+            std_avgdt, avgdp, freq, cond))
   
 
 
@@ -1158,11 +1168,13 @@ def plotdeltatime(fname, k):
     print(n)
     
     plt.figure()
-    genplotlib.plotdata(d, md, k, 's', 'Delay (seconds)', 'Time delay', ymin=0.05, ylim=(max(n)+0.1*max(n)))
+    genplotlib.plotdata(d, md, k, 's', 'Delay (seconds)', 'Time delay', ymin=0.05, 
+            ylim=(max(n)+0.1*max(n)))
     plt.savefig('deltatime_summ')
     
     plt.figure()
-    genplotlib.plotdata(d, md, k, 'b', 'Delay (seconds)', 'Time delay', ymin=0.05, ylim=(max(n)+0.1*max(n)))
+    genplotlib.plotdata(d, md, k, 'b', 'Delay (seconds)', 'Time delay', ymin=0.05, 
+            ylim=(max(n)+0.1*max(n)))
     plt.savefig('deltatime_summ_bar')
     
 

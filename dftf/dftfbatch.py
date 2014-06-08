@@ -66,7 +66,8 @@ for file in files:
         for l in open('params'):
             name, val = l.split(',')
             dl[name] = val
-        psumm = os.path.join(os.path.dirname(os.path.abspath('../')), 'summary', 'sample_length_'+dl['sample_length'].rstrip('\n'))
+        psumm = os.path.join(os.path.dirname(os.path.abspath('../')), 'summary',
+                'sample_length_'+dl['sample_length'].rstrip('\n'))
         with open(psumm, 'w') as g:
             pass
         break

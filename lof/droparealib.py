@@ -130,7 +130,8 @@ def b_plotpoints(files, summfold):
 
 
 def areadict_multpts(files):
-    """Makes a dictionary where the keys are conditions and the values is a list of lists; each list is the area measurements for one movie."""
+    """Makes a dictionary where the keys are conditions and the values is a list of lists;
+    each list is the area measurements for one movie."""
     
     # Run from data folder.
     
@@ -152,7 +153,9 @@ def areadict_multpts(files):
 
 
 def areadict(files):
-    """Makes a dictionary where the keys are conditions and the values is a list of lists; each list is the area measurements for one movie. Only includes movies with at least two pumps."""
+    """Makes a dictionary where the keys are conditions and the values is a list of lists;
+    each list is the area measurements for one movie. Only includes movies with at least two
+    pumps."""
     
     conddict = {}
      
@@ -171,7 +174,8 @@ def areadict(files):
   
 
 def areadict_norm(files, data_hwidth_fol):
-    """Makes a dictionary where the keys are conditions and the values is a list of lists; each list is the area measurements for one movie."""
+    """Makes a dictionary where the keys are conditions and the values is a list of lists;
+    each list is the area measurements for one movie."""
     
     # Run from data folder.
     
@@ -191,7 +195,8 @@ def areadict_norm(files, data_hwidth_fol):
     return(conddict)
     
 def areapoints_dict(areadict):   
-    """Generates a dictionary of dictionaries. The highest keys are the conditions. The next set of keys is the pump number. The values are the areas at that pump number."""
+    """Generates a dictionary of dictionaries. The highest keys are the conditions. The next set
+    of keys is the pump number. The values are the areas at that pump number."""
       
     pointsdict = {}
         
@@ -221,7 +226,9 @@ def areapoints_dict(areadict):
 
         
 def areapoints(areadict):   
-    """Generates a dictionary of dictionaries. The keys are the conditions. The values are lists of lists; each list is the area measured at that pump number. For example, the first list is the dye areas at the first pump."""
+    """Generates a dictionary of dictionaries. The keys are the conditions. The values are lists
+    of lists; each list is the area measured at that pump number. For example, the first list is
+    the dye areas at the first pump."""
       
     pointsdict = {}
         
@@ -434,7 +441,8 @@ def savestats(areastatsdict, summfold, statsname):
     for point, data in areastatsdict.iteritems():
         for comp in data.iterkeys():
             with open(statsfile, 'a') as f:
-                f.write('{0},{1},{2},{3}\n'.format(point, comp, data[comp]['pval'], data[comp]['tstat']))
+                f.write('{0},{1},{2},{3}\n'.format(point, comp, data[comp]['pval'],
+                    data[comp]['tstat']))
 
 
 def plotmeans(meanpointsdict):
@@ -453,7 +461,8 @@ def plotmeans(meanpointsdict):
         stderr = val['stderr']
         
         plt.plot(x, y, 'o', color=color, label=condition)
-        plt.errorbar(x, y, stderr, elinewidth=1, mfc=color, mec=color, ecolor=color, barsabove='True', capsize=4, fmt='o')
+        plt.errorbar(x, y, stderr, elinewidth=1, mfc=color, mec=color, ecolor=color,
+                barsabove='True', capsize=4, fmt='o')
         plt.legend()
         plt.xlabel('Pump number')
         plt.ylabel('Area')
@@ -666,7 +675,8 @@ if __name__ == '__main__':
     
     #for x, y in points.iteritems():
         
-        #plt.errorbar(x_list, meanyvals, meansterr, mfc=meanc, mec=meanc, ecolor=meanc, ms=7, elinewidth=2, barsabove='True', capsize=8, fmt='o')
+        #plt.errorbar(x_list, meanyvals, meansterr, mfc=meanc, mec=meanc, ecolor=meanc, ms=7,
+        #elinewidth=2, barsabove='True', capsize=8, fmt='o')
         
 #plt.xlim( (-1, 10) )
 #plt.legend()
